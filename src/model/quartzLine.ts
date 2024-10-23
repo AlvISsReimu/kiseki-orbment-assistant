@@ -170,16 +170,15 @@ export abstract class QuartzLine {
       const quartz = getQuartzById(quartzId)
       return quartz ? quartz.name_i18n[language] : 'N/A'
     })
-    const elementLimitedNames = this.elementLimitedSlots.map(
-      elementLimitedSlot => {
-        if (!elementLimitedSlot.quartzId) return 'N/A*'
+    for (const elementLimitedSlot of this.elementLimitedSlots) {
+      let name = 'N/A'
+      if (elementLimitedSlot.quartzId) {
         const quartz = getQuartzById(elementLimitedSlot.quartzId)
-        return (quartz ? quartz.name_i18n[language] : 'N/A') + '*'
-      },
-    )
-    return `${regularNames.join(', ')}${
-      elementLimitedNames.length > 0 ? ', ' : ''
-    }${elementLimitedNames.join(', ')}`
+        name = quartz?.name_i18n[language] ?? 'N/A'
+      }
+      regularNames.splice(elementLimitedSlot.position, 0, name + '*')
+    }
+    return regularNames.join(', ')
   }
 
   toShardSkillNames(): string {

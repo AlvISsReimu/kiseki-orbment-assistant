@@ -1,4 +1,3 @@
-import { Element } from '../enums/element.js'
 import { Language } from '../enums/language.js'
 import { QuartzLineType } from '../enums/quartzLineType.js'
 import { getQuartzById, getRandomQuartzId } from './quartz.js'
@@ -10,7 +9,6 @@ import {
   WeaponLine,
 } from './quartzLine.js'
 import type { ScoreMaps } from './score.js'
-import { createElementLimitedSlot } from './slot.js'
 
 export class Core {
   weaponLine: WeaponLine
@@ -139,32 +137,4 @@ export class Core {
     const randomIndex = Math.floor(Math.random() * allLines.length)
     return allLines[randomIndex]
   }
-}
-
-export const createExampleCore = (): Core => {
-  return new Core(
-    new WeaponLine(4, [], [createElementLimitedSlot(Element.Time)]),
-    new ShieldLine(3, [], []),
-    new DriveLine(4, [], [createElementLimitedSlot(Element.Mirage)]),
-    new ExtraLine(4, [], [createElementLimitedSlot(Element.Mirage)]),
-  )
-}
-
-export const createExampleCore2 = (): Core => {
-  return new Core(
-    new WeaponLine(4, [], [createElementLimitedSlot(Element.Earth)]),
-    new ShieldLine(4, [], [createElementLimitedSlot(Element.Earth)]),
-    new DriveLine(4, [], [createElementLimitedSlot(Element.Space)]),
-    new ExtraLine(3, [], []),
-
-    // new WeaponLine(4, [], [createElementLimitedSlot(Element.Space)]),
-    // new ShieldLine(4, [], []),
-    // new DriveLine(4, [], [createElementLimitedSlot(Element.Mirage)]),
-    // new ExtraLine(4, [], [createElementLimitedSlot(Element.Mirage)])
-
-    // new WeaponLine(3, [], []),
-    // new ShieldLine(4, [], [createElementLimitedSlot(Element.Water)]),
-    // new DriveLine(4, [], [createElementLimitedSlot(Element.Mirage)]),
-    // new ExtraLine(4, [], [createElementLimitedSlot(Element.Mirage)])
-  )
 }

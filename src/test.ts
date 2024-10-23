@@ -1,8 +1,16 @@
 import 'source-map-support/register.js'
-import { Core, createExampleCore2 } from './model/core.js'
+import { Element } from './enums/element.js'
+import { Core } from './model/core.js'
 import { getQuartzIdByNameJP } from './model/quartz.js'
+import {
+  DriveLine,
+  ExtraLine,
+  ShieldLine,
+  WeaponLine,
+} from './model/quartzLine.js'
 import { ScoreMaps } from './model/score.js'
 import { getShardSkillIdByNameJP } from './model/shardSkill.js'
+import { createElementLimitedSlot } from './model/slot.js'
 import { SimulatedAnnealing } from './simulatedAnnealing.js'
 
 const scoreMaps = {
@@ -53,8 +61,15 @@ const scoreMaps = {
   ]),
 } as ScoreMaps
 
+const emptyCore = new Core(
+  new WeaponLine(4, [], [createElementLimitedSlot(Element.Earth, 2)]),
+  new ShieldLine(4, [], [createElementLimitedSlot(Element.Earth, 1)]),
+  new DriveLine(4, [], [createElementLimitedSlot(Element.Space, 2)]),
+  new ExtraLine(3, [], []),
+)
+
 const sa = new SimulatedAnnealing<Core>({
-  init: () => createExampleCore2(),
+  init: () => emptyCore,
   neighbor: (current: Core) => {
     const cloned = current.deepCopy()
     cloned.addOrReplaceRandomQuartz()
