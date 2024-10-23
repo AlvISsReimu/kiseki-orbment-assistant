@@ -5,7 +5,6 @@ import { QuartzLineType } from '../enums/quartzLineType.js'
 
 export class Quartz {
   id: number
-  name_jp?: string
   name_i18n: { [key: string]: string }
   element: Element
   elementalValues: Map<Element, number>

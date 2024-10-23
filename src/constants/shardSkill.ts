@@ -50,42 +50,49 @@ export const WEAPON_LINE_SHARD_SKILLS = [
     name_jp: 'アースインパクトII',
     lineType: QuartzLineType.Weapon,
     elementalValues: new Map([[Element.Earth, 8]]),
+    baseShardSkillId: 0,
   },
   {
     id: 8,
     name_jp: 'アクアインパクトII',
     lineType: QuartzLineType.Weapon,
     elementalValues: new Map([[Element.Water, 8]]),
+    baseShardSkillId: 1,
   },
   {
     id: 9,
     name_jp: 'フレアインパクトII',
     lineType: QuartzLineType.Weapon,
     elementalValues: new Map([[Element.Fire, 8]]),
+    baseShardSkillId: 2,
   },
   {
     id: 10,
     name_jp: 'ゲイルインパクトII',
     lineType: QuartzLineType.Weapon,
     elementalValues: new Map([[Element.Wind, 8]]),
+    baseShardSkillId: 3,
   },
   {
     id: 11,
     name_jp: 'クロノインパクトII',
     lineType: QuartzLineType.Weapon,
     elementalValues: new Map([[Element.Time, 8]]),
+    baseShardSkillId: 4,
   },
   {
     id: 12,
     name_jp: 'ゴルトインパクトII',
     lineType: QuartzLineType.Weapon,
     elementalValues: new Map([[Element.Space, 8]]),
+    baseShardSkillId: 5,
   },
   {
     id: 13,
     name_jp: 'カオスインパクトII',
     lineType: QuartzLineType.Weapon,
     elementalValues: new Map([[Element.Mirage, 8]]),
+    baseShardSkillId: 6,
   },
   {
     id: 14,
@@ -104,6 +111,7 @@ export const WEAPON_LINE_SHARD_SKILLS = [
       [Element.Space, 10],
       [Element.Fire, 5],
     ]),
+    baseShardSkillId: 14,
   },
   {
     id: 16,
@@ -122,6 +130,7 @@ export const WEAPON_LINE_SHARD_SKILLS = [
       [Element.Time, 5],
       [Element.Earth, 10],
     ]),
+    baseShardSkillId: 16,
   },
   {
     id: 18,
@@ -140,6 +149,7 @@ export const WEAPON_LINE_SHARD_SKILLS = [
       [Element.Mirage, 10],
       [Element.Space, 5],
     ]),
+    baseShardSkillId: 18,
   },
   {
     id: 20,
@@ -158,6 +168,7 @@ export const WEAPON_LINE_SHARD_SKILLS = [
       [Element.Wind, 5],
       [Element.Water, 10],
     ]),
+    baseShardSkillId: 20,
   },
   {
     id: 22,
@@ -176,6 +187,7 @@ export const WEAPON_LINE_SHARD_SKILLS = [
       [Element.Time, 12],
       [Element.Earth, 6],
     ]),
+    baseShardSkillId: 22,
   },
   {
     id: 24,
@@ -194,6 +206,7 @@ export const WEAPON_LINE_SHARD_SKILLS = [
       [Element.Fire, 12],
       [Element.Water, 6],
     ]),
+    baseShardSkillId: 24,
   },
   {
     id: 26,
@@ -212,8 +225,10 @@ export const WEAPON_LINE_SHARD_SKILLS = [
       [Element.Mirage, 6],
       [Element.Wind, 12],
     ]),
+    baseShardSkillId: 26,
   },
 ] as ShardSkill[]
+
 export const SHIELD_LINE_SHARD_SKILLS = [
   {
     id: 28,
@@ -262,42 +277,49 @@ export const SHIELD_LINE_SHARD_SKILLS = [
     name_jp: 'アースレジストII',
     lineType: QuartzLineType.Shield,
     elementalValues: new Map([[Element.Earth, 8]]),
+    baseShardSkillId: 28,
   },
   {
     id: 36,
     name_jp: 'アクアレジストII',
     lineType: QuartzLineType.Shield,
     elementalValues: new Map([[Element.Water, 8]]),
+    baseShardSkillId: 29,
   },
   {
     id: 37,
     name_jp: 'フレアレジストII',
     lineType: QuartzLineType.Shield,
     elementalValues: new Map([[Element.Fire, 8]]),
+    baseShardSkillId: 30,
   },
   {
     id: 38,
     name_jp: 'ゲイルレジストII',
     lineType: QuartzLineType.Shield,
     elementalValues: new Map([[Element.Wind, 8]]),
+    baseShardSkillId: 31,
   },
   {
     id: 39,
     name_jp: 'ダークレジストII',
     lineType: QuartzLineType.Shield,
     elementalValues: new Map([[Element.Time, 8]]),
+    baseShardSkillId: 32,
   },
   {
     id: 40,
     name_jp: 'ゴルトレジストII',
     lineType: QuartzLineType.Shield,
     elementalValues: new Map([[Element.Space, 8]]),
+    baseShardSkillId: 33,
   },
   {
     id: 41,
     name_jp: 'カオスレジストII',
     lineType: QuartzLineType.Shield,
     elementalValues: new Map([[Element.Mirage, 8]]),
+    baseShardSkillId: 34,
   },
   {
     id: 42,
@@ -316,6 +338,7 @@ export const SHIELD_LINE_SHARD_SKILLS = [
       [Element.Space, 5],
       [Element.Water, 10],
     ]),
+    baseShardSkillId: 42,
   },
   {
     id: 44,
@@ -334,6 +357,7 @@ export const SHIELD_LINE_SHARD_SKILLS = [
       [Element.Wind, 5],
       [Element.Fire, 10],
     ]),
+    baseShardSkillId: 44,
   },
   {
     id: 46,
@@ -352,6 +376,7 @@ export const SHIELD_LINE_SHARD_SKILLS = [
       [Element.Mirage, 5],
       [Element.Fire, 10],
     ]),
+    baseShardSkillId: 46,
   },
   {
     id: 48,
@@ -370,6 +395,7 @@ export const SHIELD_LINE_SHARD_SKILLS = [
       [Element.Time, 5],
       [Element.Earth, 10],
     ]),
+    baseShardSkillId: 48,
   },
   {
     id: 50,
@@ -388,6 +414,7 @@ export const SHIELD_LINE_SHARD_SKILLS = [
       [Element.Mirage, 12],
       [Element.Earth, 6],
     ]),
+    baseShardSkillId: 50,
   },
   {
     id: 52,
@@ -406,6 +433,7 @@ export const SHIELD_LINE_SHARD_SKILLS = [
       [Element.Time, 12],
       [Element.Wind, 6],
     ]),
+    baseShardSkillId: 52,
   },
   {
     id: 54,
@@ -424,8 +452,10 @@ export const SHIELD_LINE_SHARD_SKILLS = [
       [Element.Space, 12],
       [Element.Water, 6],
     ]),
+    baseShardSkillId: 54,
   },
 ] as ShardSkill[]
+
 export const DRIVE_LINE_SHARD_SKILLS = [
   {
     id: 56,
@@ -474,42 +504,49 @@ export const DRIVE_LINE_SHARD_SKILLS = [
     name_jp: 'アースブーストII',
     lineType: QuartzLineType.Drive,
     elementalValues: new Map([[Element.Earth, 8]]),
+    baseShardSkillId: 56,
   },
   {
     id: 64,
     name_jp: 'アクアブーストII',
     lineType: QuartzLineType.Drive,
     elementalValues: new Map([[Element.Water, 8]]),
+    baseShardSkillId: 57,
   },
   {
     id: 65,
     name_jp: 'フレアブーストII',
     lineType: QuartzLineType.Drive,
     elementalValues: new Map([[Element.Fire, 8]]),
+    baseShardSkillId: 58,
   },
   {
     id: 66,
     name_jp: 'ゲイルブーストII',
     lineType: QuartzLineType.Drive,
     elementalValues: new Map([[Element.Wind, 8]]),
+    baseShardSkillId: 59,
   },
   {
     id: 67,
     name_jp: 'クロノブーストII',
     lineType: QuartzLineType.Drive,
     elementalValues: new Map([[Element.Time, 8]]),
+    baseShardSkillId: 60,
   },
   {
     id: 68,
     name_jp: 'ゴルトブーストII',
     lineType: QuartzLineType.Drive,
     elementalValues: new Map([[Element.Space, 8]]),
+    baseShardSkillId: 61,
   },
   {
     id: 69,
     name_jp: 'カオスブーストII',
     lineType: QuartzLineType.Drive,
     elementalValues: new Map([[Element.Mirage, 8]]),
+    baseShardSkillId: 62,
   },
   {
     id: 70,
@@ -528,6 +565,7 @@ export const DRIVE_LINE_SHARD_SKILLS = [
       [Element.Mirage, 5],
       [Element.Wind, 10],
     ]),
+    baseShardSkillId: 70,
   },
   {
     id: 72,
@@ -546,6 +584,7 @@ export const DRIVE_LINE_SHARD_SKILLS = [
       [Element.Space, 5],
       [Element.Earth, 10],
     ]),
+    baseShardSkillId: 72,
   },
   {
     id: 74,
@@ -564,6 +603,7 @@ export const DRIVE_LINE_SHARD_SKILLS = [
       [Element.Time, 10],
       [Element.Fire, 5],
     ]),
+    baseShardSkillId: 74,
   },
   {
     id: 76,
@@ -582,6 +622,7 @@ export const DRIVE_LINE_SHARD_SKILLS = [
       [Element.Time, 10],
       [Element.Water, 5],
     ]),
+    baseShardSkillId: 76,
   },
   {
     id: 78,
@@ -600,6 +641,7 @@ export const DRIVE_LINE_SHARD_SKILLS = [
       [Element.Mirage, 12],
       [Element.Wind, 6],
     ]),
+    baseShardSkillId: 78,
   },
   {
     id: 80,
@@ -618,6 +660,7 @@ export const DRIVE_LINE_SHARD_SKILLS = [
       [Element.Water, 12],
       [Element.Earth, 6],
     ]),
+    baseShardSkillId: 80,
   },
   {
     id: 82,
@@ -636,8 +679,10 @@ export const DRIVE_LINE_SHARD_SKILLS = [
       [Element.Space, 12],
       [Element.Fire, 6],
     ]),
+    baseShardSkillId: 82,
   },
 ] as ShardSkill[]
+
 export const EXTRA_LINE_SHARD_SKILLS = [
   {
     id: 84,
@@ -686,42 +731,49 @@ export const EXTRA_LINE_SHARD_SKILLS = [
     name_jp: 'ガードスターターII',
     lineType: QuartzLineType.Extra,
     elementalValues: new Map([[Element.Earth, 10]]),
+    baseShardSkillId: 84,
   },
   {
     id: 92,
     name_jp: 'エナジースターターII',
     lineType: QuartzLineType.Extra,
     elementalValues: new Map([[Element.Water, 10]]),
+    baseShardSkillId: 85,
   },
   {
     id: 93,
     name_jp: 'パワースターターII',
     lineType: QuartzLineType.Extra,
     elementalValues: new Map([[Element.Fire, 10]]),
+    baseShardSkillId: 86,
   },
   {
     id: 94,
     name_jp: 'ギフトスターターII',
     lineType: QuartzLineType.Extra,
     elementalValues: new Map([[Element.Wind, 10]]),
+    baseShardSkillId: 87,
   },
   {
     id: 95,
     name_jp: 'クイックスターターII',
     lineType: QuartzLineType.Extra,
     elementalValues: new Map([[Element.Time, 10]]),
+    baseShardSkillId: 88,
   },
   {
     id: 96,
     name_jp: 'アーツスターターII',
     lineType: QuartzLineType.Extra,
     elementalValues: new Map([[Element.Space, 10]]),
+    baseShardSkillId: 89,
   },
   {
     id: 97,
     name_jp: 'ファントムスターターII',
     lineType: QuartzLineType.Extra,
     elementalValues: new Map([[Element.Mirage, 10]]),
+    baseShardSkillId: 90,
   },
   {
     id: 98,
@@ -746,6 +798,7 @@ export const EXTRA_LINE_SHARD_SKILLS = [
       [Element.Mirage, 6],
       [Element.Time, 10],
     ]),
+    baseShardSkillId: 99,
   },
   {
     id: 101,
@@ -764,6 +817,7 @@ export const EXTRA_LINE_SHARD_SKILLS = [
       [Element.Space, 10],
       [Element.Time, 6],
     ]),
+    baseShardSkillId: 101,
   },
   {
     id: 103,
@@ -803,6 +857,7 @@ export const EXTRA_LINE_SHARD_SKILLS = [
     name_jp: 'エナジーチャージャーII',
     lineType: QuartzLineType.Extra,
     elementalValues: new Map([[Element.Water, 12]]),
+    baseShardSkillId: 106,
   },
   {
     id: 108,
@@ -821,6 +876,7 @@ export const EXTRA_LINE_SHARD_SKILLS = [
       [Element.Wind, 6],
       [Element.Fire, 12],
     ]),
+    baseShardSkillId: 108,
   },
   {
     id: 110,
@@ -839,6 +895,7 @@ export const EXTRA_LINE_SHARD_SKILLS = [
       [Element.Wind, 12],
       [Element.Earth, 6],
     ]),
+    baseShardSkillId: 110,
   },
   {
     id: 112,
@@ -857,6 +914,7 @@ export const EXTRA_LINE_SHARD_SKILLS = [
       [Element.Fire, 6],
       [Element.Earth, 12],
     ]),
+    baseShardSkillId: 112,
   },
   {
     id: 114,
@@ -875,6 +933,7 @@ export const EXTRA_LINE_SHARD_SKILLS = [
       [Element.Mirage, 12],
       [Element.Water, 6],
     ]),
+    baseShardSkillId: 114,
   },
 ] as ShardSkill[]
 

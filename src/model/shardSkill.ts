@@ -10,6 +10,7 @@ export class ShardSkill {
   name_jp: string
   lineType: QuartzLineType
   elementalValues: Map<Element, number>
+  baseShardSkillId?: number
 }
 
 export const getShardSkillById = (id: number): ShardSkill | null => {

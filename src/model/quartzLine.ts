@@ -9,7 +9,7 @@ import type { Language } from '../enums/language.js'
 import { QuartzLineType } from '../enums/quartzLineType.js'
 import { getQuartzById } from './quartz.js'
 import { ScoreMaps } from './score.js'
-import { type ShardSkill } from './shardSkill.js'
+import { ShardSkill } from './shardSkill.js'
 import { ElementLimitedSlot } from './slot.js'
 
 export abstract class QuartzLine {
@@ -112,7 +112,7 @@ export abstract class QuartzLine {
   getCurrentShardSkills(): ShardSkill[] {
     const allShardSkills = this.getAllShardSkills()
     const sumElementalValues = this.calcSumElementalValues()
-    return allShardSkills.filter(shardSkill => {
+    const filteredSkills = allShardSkills.filter(shardSkill => {
       for (const elementValue of shardSkill.elementalValues) {
         const element = elementValue[0]
         const value = elementValue[1]
@@ -125,6 +125,12 @@ export abstract class QuartzLine {
       }
       return true
     })
+    const baseShardSkillIds = filteredSkills
+      .filter(shardSkill => shardSkill.baseShardSkillId !== undefined)
+      .map(shardSkill => shardSkill.baseShardSkillId)
+    return filteredSkills.filter(
+      shardSkill => !baseShardSkillIds.includes(shardSkill.id),
+    )
   }
 
   hasQuartz(quartzId: number): boolean {

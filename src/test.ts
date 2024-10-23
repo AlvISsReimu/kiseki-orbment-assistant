@@ -36,20 +36,20 @@ const scoreMaps = {
   shardSkillScores: new Map<number, number>([
     [getShardSkillIdByNameJP('Aライズガード'), 3],
     [getShardSkillIdByNameJP('アクアブースト'), 3],
-    [getShardSkillIdByNameJP('アクアブーストII'), 4],
+    [getShardSkillIdByNameJP('アクアブーストII'), 7],
     [getShardSkillIdByNameJP('カオスブースト'), 3],
-    [getShardSkillIdByNameJP('カオスブーストII'), 4],
+    [getShardSkillIdByNameJP('カオスブーストII'), 7],
     [getShardSkillIdByNameJP('マインドクラッカー'), 3],
-    [getShardSkillIdByNameJP('マインドクラッカー改'), 2],
+    [getShardSkillIdByNameJP('マインドクラッカー改'), 5],
     [getShardSkillIdByNameJP('スピリットクラッカー'), 3],
-    [getShardSkillIdByNameJP('スピリットクラッカー改'), 2],
+    [getShardSkillIdByNameJP('スピリットクラッカー改'), 5],
     [getShardSkillIdByNameJP('アークフェザー'), 10],
-    [getShardSkillIdByNameJP('アークフェザー改'), 5],
+    [getShardSkillIdByNameJP('アークフェザー改'), 15],
     [getShardSkillIdByNameJP('カタラクトゲイン'), 7],
-    [getShardSkillIdByNameJP('カタラクトゲインII'), 3],
+    [getShardSkillIdByNameJP('カタラクトゲインII'), 10],
     [getShardSkillIdByNameJP('オートクイック'), 5],
     [getShardSkillIdByNameJP('ヘブンリーラック'), 7],
-    [getShardSkillIdByNameJP('ヘブンリーラックII'), 3],
+    [getShardSkillIdByNameJP('ヘブンリーラックII'), 10],
   ]),
 } as ScoreMaps
 
@@ -71,5 +71,5 @@ const { results, score } = sa.run()
 
 console.log(`score: ${score}, result size: ${results.length}`)
 for (let i = 0; i < results.length; i++) {
-  console.log(`result ${i}: ${results[i].toString()}`)
+  console.log(`result ${i}:\n${results[i].toString()}`)
 }
