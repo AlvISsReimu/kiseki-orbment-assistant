@@ -1,20 +1,20 @@
-import { Element } from "./element.js";
+import { Element } from '../enums/element.js'
 
 export class ElementLimitedSlot {
-  element: Element;
-  quartzId: number | null;
+  element: Element
+  quartzId: number | null
   constructor(element: Element, quartzId: number | null) {
-    this.element = element;
-    this.quartzId = quartzId;
+    this.element = element
+    this.quartzId = quartzId
   }
 
   deepCopy(): ElementLimitedSlot {
-    return new ElementLimitedSlot(this.element, this.quartzId);
+    return new ElementLimitedSlot(this.element, this.quartzId)
   }
 }
 
 export const createElementLimitedSlot = (
-  element: Element
+  element: Element,
 ): ElementLimitedSlot => {
-  return new ElementLimitedSlot(element, null);
-};
+  return new ElementLimitedSlot(element, null)
+}
