@@ -181,9 +181,11 @@ export abstract class QuartzLine {
     return regularNames.join(', ')
   }
 
-  toShardSkillNames(): string {
+  toShardSkillNames(language: Language): string {
     const shardSkills = this.getCurrentShardSkills()
-    return shardSkills.map(shardSkill => shardSkill.name_jp).join(', ')
+    return shardSkills
+      .map(shardSkill => shardSkill.name_i18n[language])
+      .join(', ')
   }
 
   toElementValues(): string {

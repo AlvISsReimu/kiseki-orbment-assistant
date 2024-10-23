@@ -1,5 +1,6 @@
 import 'source-map-support/register.js'
 import { Element } from './enums/element.js'
+import { Language } from './enums/language.js'
 import { Core } from './model/core.js'
 import { getQuartzIdByNameJP } from './model/quartz.js'
 import {
@@ -81,5 +82,5 @@ const { results, score } = sa.run()
 
 console.log(`score: ${score}, result size: ${results.length}`)
 for (let i = 0; i < results.length; i++) {
-  console.log(`result ${i}:\n${results[i].toString()}`)
+  console.log(`result ${i}:\n${results[i].toString(Language.ZH_CN)}`)
 }

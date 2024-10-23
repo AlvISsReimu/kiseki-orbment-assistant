@@ -101,23 +101,23 @@ export class Core {
     return true
   }
 
-  toString(): string {
+  toString(language: Language): string {
     return (
       `[${this.weaponLine.toQuartzNames(
-        Language.ZH_CN,
-      )}] (${this.weaponLine.toElementValues()}) (${this.weaponLine.toShardSkillNames()})` +
+        language,
+      )}] (${this.weaponLine.toElementValues()}) (${this.weaponLine.toShardSkillNames(language)})` +
       '\n' +
       `[${this.shieldLine.toQuartzNames(
-        Language.ZH_CN,
-      )}] (${this.shieldLine.toElementValues()}) (${this.shieldLine.toShardSkillNames()})` +
+        language,
+      )}] (${this.shieldLine.toElementValues()}) (${this.shieldLine.toShardSkillNames(language)})` +
       '\n' +
       `[${this.driveLine.toQuartzNames(
-        Language.ZH_CN,
-      )}] (${this.driveLine.toElementValues()}) (${this.driveLine.toShardSkillNames()})` +
+        language,
+      )}] (${this.driveLine.toElementValues()}) (${this.driveLine.toShardSkillNames(language)})` +
       '\n' +
       `[${this.extraLine.toQuartzNames(
-        Language.ZH_CN,
-      )}] (${this.extraLine.toElementValues()}) (${this.extraLine.toShardSkillNames()})`
+        language,
+      )}] (${this.extraLine.toElementValues()}) (${this.extraLine.toShardSkillNames(language)})`
     )
   }
 
