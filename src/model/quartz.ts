@@ -10,8 +10,7 @@ export class Quartz {
 }
 
 export const getQuartzById = (id: number): Quartz | null => {
-  const quartz = ALL_QUARTZ_MAP.get(id);
-  return quartz ?? null;
+  return ALL_QUARTZ_MAP.get(id) ?? null;
 };
 
 export const getQuartzIdByNameJP = (name_jp: string): number | null => {
