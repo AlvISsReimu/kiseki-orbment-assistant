@@ -5,9 +5,9 @@ interface SimulatedAnnealingOptions<T> {
   maxNoChangeIteration?: number
   endTemperature?: number
   balance?: number
+  acceptanceProbability?: (delta: number, temperature: number) => number
   init: () => T
   neighbor: (current: T) => T
-  acceptanceProbability: (delta: number, temperature: number) => number
   fitness: (current: T) => number
 }
 
@@ -22,9 +22,9 @@ export class SimulatedAnnealing<T extends Equatable> {
   private _maxNoChangeIteration: number | null
   private _endTemperature: number
   private _balance: number
+  private _acceptanceProbability: (delta: number, temperature: number) => number
   private _init: () => T
   private _neighbor: (current: T) => T
-  private _acceptanceProbability: (delta: number, temperature: number) => number
   private _fitness: (current: T) => number
 
   constructor(options: SimulatedAnnealingOptions<T>) {
@@ -34,9 +34,13 @@ export class SimulatedAnnealing<T extends Equatable> {
     this._maxNoChangeIteration = options.maxNoChangeIteration ?? 50
     this._endTemperature = options.endTemperature ?? 1e-2
     this._balance = options.balance ?? 1000
+    this._acceptanceProbability =
+      options.acceptanceProbability ??
+      ((delta: number, temperature: number) => {
+        return delta > 0 ? 1 : Math.exp(delta / temperature)
+      })
     this._init = options.init
     this._neighbor = options.neighbor
-    this._acceptanceProbability = options.acceptanceProbability
     this._fitness = options.fitness
   }
 

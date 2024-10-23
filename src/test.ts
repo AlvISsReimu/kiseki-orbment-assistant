@@ -75,12 +75,7 @@ const sa = new SimulatedAnnealing<Core>({
     cloned.addOrReplaceRandomQuartz()
     return cloned
   },
-  acceptanceProbability: (delta: number, temperature: number) => {
-    return delta > 0 ? 1 : Math.exp(delta / temperature)
-  },
-  fitness: (current: Core) => {
-    return current.calcScore(scoreMaps)
-  },
+  fitness: (current: Core) => current.calcScore(scoreMaps),
 })
 const { results, score } = sa.run()
 
