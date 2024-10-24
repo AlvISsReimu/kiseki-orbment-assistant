@@ -11,11 +11,11 @@ interface SimulatedAnnealingOptions<T> {
   fitness: (current: T) => number
 }
 
-interface Equatable {
-  isEquivalent(other: this): boolean
+interface Hashable {
+  getHash(): string
 }
 
-export class SimulatedAnnealing<T extends Equatable> {
+export class SimulatedAnnealing<T extends Hashable> {
   private _initTemperature: number
   private _coolingRate: number
   private _maxIteration: number | null
@@ -29,11 +29,11 @@ export class SimulatedAnnealing<T extends Equatable> {
 
   constructor(options: SimulatedAnnealingOptions<T>) {
     this._initTemperature = options.initTemperature ?? 1000
-    this._coolingRate = options.coolingRate ?? 0.985
-    this._maxIteration = options.maxIteration ?? 10000
+    this._coolingRate = options.coolingRate ?? 0.99
+    this._maxIteration = options.maxIteration ?? 1200
     this._maxNoChangeIteration = options.maxNoChangeIteration ?? 25
     this._endTemperature = options.endTemperature ?? 1e-2
-    this._balance = options.balance ?? 568
+    this._balance = options.balance ?? 812
     this._acceptanceProbability =
       options.acceptanceProbability ??
       ((delta: number, temperature: number) => {
@@ -52,6 +52,7 @@ export class SimulatedAnnealing<T extends Equatable> {
     let result: T = this._init()
     let bestScore = 0
     let bestResults: T[] = []
+    const bestResultsHash: Set<string> = new Set()
 
     while (
       temperature > this._endTemperature &&
@@ -71,12 +72,16 @@ export class SimulatedAnnealing<T extends Equatable> {
 
           if (score === bestScore) {
             // only push if not already in the list
-            if (!bestResults.some(r => r.isEquivalent(result))) {
+            const resultHash = result.getHash()
+            if (!bestResultsHash.has(resultHash)) {
               bestResults.push(result)
+              bestResultsHash.add(resultHash)
             }
           } else if (score > bestScore) {
             bestScore = score
             bestResults = [result]
+            bestResultsHash.clear()
+            bestResultsHash.add(result.getHash())
           }
         }
       }

@@ -1,9 +1,10 @@
 import 'source-map-support/register.js'
+import { Language } from './enums/language'
 import { getCharacterById, getCharacterIdByNameJP } from './model/character.js'
 import { Core } from './model/core.js'
-import { getQuartzIdByNameJP } from './model/quartz.js'
+import { getQuartzIdByNameJP } from './model/quartz'
 import { ScoreMaps } from './model/score.js'
-import { getShardSkillIdByNameJP } from './model/shardSkill.js'
+import { getShardSkillIdByNameJP } from './model/shardSkill'
 import { SimulatedAnnealing } from './simulatedAnnealing.js'
 
 const scoreMaps = new ScoreMaps(
@@ -80,8 +81,9 @@ const sa = new SimulatedAnnealing<Core>({
 export const test = () => {
   const { results, score } = sa.run()
 
+  for (let i = 0; i < results.length; i++) {
+    console.log(`result ${i}:\n${results[i].toString(Language.ZH_CN)}`)
+  }
+
   return `score: ${score}, result size: ${results.length}`
 }
-// for (let i = 0; i < results.length; i++) {
-//   console.log(`result ${i}:\n${results[i].toString(Language.ZH_CN)}`)
-// }

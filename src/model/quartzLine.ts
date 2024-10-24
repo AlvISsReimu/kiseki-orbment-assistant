@@ -199,38 +199,6 @@ export abstract class QuartzLine {
     }, ${sumElementalValues[Element.Mirage] ?? 0}`
   }
 
-  equals(other: QuartzLine): boolean {
-    if (this === other) return true
-    if (other == null) return false
-    if (this.lineType !== other.lineType) return false
-    if (this.totalSlots !== other.totalSlots) return false
-    if (this.regularSlotQuartzIds.length !== other.regularSlotQuartzIds.length)
-      return false
-    // regularSlotQuartzIds is seen as a set, so the order doesn't matter.
-    const sortedThis = [...this.regularSlotQuartzIds].sort()
-    const sortedOther = [...other.regularSlotQuartzIds].sort()
-    for (let i = 0; i < sortedThis.length; i++) {
-      if (sortedThis[i] !== sortedOther[i]) return false
-    }
-    if (this.elementLimitedSlots.length !== other.elementLimitedSlots.length)
-      return false
-    // elementLimitedSlots is seen as a set, so the order doesn't matter.
-    const sortedThisElementLimitedSlots = this.elementLimitedSlots.sort(
-      (a, b) => a.element.localeCompare(b.element),
-    )
-    const sortedOtherElementLimitedSlots = other.elementLimitedSlots.sort(
-      (a, b) => a.element.localeCompare(b.element),
-    )
-    for (let i = 0; i < sortedThisElementLimitedSlots.length; i++) {
-      if (
-        sortedThisElementLimitedSlots[i].quartzId !==
-        sortedOtherElementLimitedSlots[i].quartzId
-      )
-        return false
-    }
-    return true
-  }
-
   abstract getAllShardSkills(): ShardSkill[]
   abstract deepCopy(): QuartzLine
 

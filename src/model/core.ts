@@ -1,5 +1,6 @@
 import { Language } from '../enums/language.js'
 import { QuartzLineType } from '../enums/quartzLineType.js'
+import { getHash } from '../utils/hash'
 import { getQuartzById, getRandomQuartzId } from './quartz.js'
 import {
   DriveLine,
@@ -83,25 +84,12 @@ export class Core {
       .reduce((acc, ids) => acc.concat(ids), [])
   }
 
-  isEquivalent(other: Core): boolean {
-    if (this === other) return true
-    if (other == null) return false
-
-    const thisQuartzIds = this.getFlattenedQuartzIds().sort()
-    const otherQuartzIds = other.getFlattenedQuartzIds().sort()
-    if (thisQuartzIds.length !== otherQuartzIds.length) return false
-    for (let i = 0; i < thisQuartzIds.length; i++) {
-      if (thisQuartzIds[i] !== otherQuartzIds[i]) return false
-    }
-
-    const thisShardSkillIds = this.getFlattenedShardSkillIds().sort()
-    const otherShardSkillIds = other.getFlattenedShardSkillIds().sort()
-    if (thisShardSkillIds.length !== otherShardSkillIds.length) return false
-    for (let i = 0; i < thisShardSkillIds.length; i++) {
-      if (thisShardSkillIds[i] !== otherShardSkillIds[i]) return false
-    }
-
-    return true
+  getHash(): string {
+    let str = ''
+    str += this.getFlattenedQuartzIds().sort().join(',')
+    str += '|'
+    str += this.getFlattenedShardSkillIds().sort().join(',')
+    return getHash(str)
   }
 
   toString(language: Language): string {
