@@ -76,9 +76,12 @@ const sa = new SimulatedAnnealing<Core>({
   },
   fitness: (current: Core) => current.calcScore(standardizedScoreMaps),
 })
-const { results, score } = sa.run()
 
-console.log(`score: ${score}, result size: ${results.length}`)
+export const test = () => {
+  const { results, score } = sa.run()
+
+  return `score: ${score}, result size: ${results.length}`
+}
 // for (let i = 0; i < results.length; i++) {
 //   console.log(`result ${i}:\n${results[i].toString(Language.ZH_CN)}`)
 // }
