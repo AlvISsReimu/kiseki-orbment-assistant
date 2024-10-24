@@ -2,9 +2,9 @@ import 'source-map-support/register.js'
 import { Language } from './enums/language'
 import { getCharacterById, getCharacterIdByNameJP } from './model/character.js'
 import { Core } from './model/core.js'
-import { getQuartzIdByNameJP } from './model/quartz'
+import { getQuartzById, getQuartzIdByNameJP } from './model/quartz'
 import { ScoreMaps } from './model/score.js'
-import { getShardSkillIdByNameJP } from './model/shardSkill'
+import { getShardSkillById, getShardSkillIdByNameJP } from './model/shardSkill'
 import { SimulatedAnnealing } from './simulatedAnnealing.js'
 
 const scoreMaps = new ScoreMaps(
@@ -79,10 +79,24 @@ const sa = new SimulatedAnnealing<Core>({
 })
 
 export const test = () => {
+  const language = Language.ZH_CN
   const { results, score } = sa.run()
 
   for (let i = 0; i < results.length; i++) {
-    console.log(`result ${i}:\n${results[i].toString(Language.ZH_CN)}`)
+    const core = results[i]
+    console.log(`result ${i + 1}:\n${core.toString(language)}`)
+    console.log('Missed quartz:')
+    console.log(
+      core
+        .getMissedQuartzIds(scoreMaps.quartzScores)
+        .map(id => getQuartzById(id).name_i18n[language]),
+    )
+    console.log('Missed shard skills:')
+    console.log(
+      core
+        .getMissedShardSkillIds(scoreMaps.shardSkillScores)
+        .map(id => getShardSkillById(id).name_i18n[language]),
+    )
   }
 
   return `score: ${score}, result size: ${results.length}`

@@ -92,6 +92,30 @@ export class Core {
     return getHash(str)
   }
 
+  /**
+   * Return quartz ids that show up in the score map but not in the core
+   * @param quartzScores
+   * @returns
+   */
+  getMissedQuartzIds(quartzScores: Map<number, number>): number[] {
+    const allQuartzIds = this.getFlattenedQuartzIds()
+    return Array.from(quartzScores.keys()).filter(
+      quartzId => !allQuartzIds.includes(quartzId),
+    )
+  }
+
+  /**
+   * Return shard skill ids that show up in the score map but not in the core
+   * @param shardSkillScores
+   * @returns
+   */
+  getMissedShardSkillIds(shardSkillScores: Map<number, number>): number[] {
+    const allShardSkillIds = this.getFlattenedShardSkillIds()
+    return Array.from(shardSkillScores.keys()).filter(
+      shardSkillId => !allShardSkillIds.includes(shardSkillId),
+    )
+  }
+
   toString(language: Language): string {
     return (
       `[${this.weaponLine.toQuartzNames(
