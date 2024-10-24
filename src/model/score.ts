@@ -1,10 +1,13 @@
+import type { QuartzId } from './quartz'
+import type { ShardSkillId } from './shardSkill'
+
 export class ScoreMaps {
-  quartzScores: Map<number, number>
-  shardSkillScores: Map<number, number>
+  quartzScores: Map<QuartzId, number>
+  shardSkillScores: Map<ShardSkillId, number>
 
   constructor(
-    quartzScores: Map<number, number>,
-    shardSkillScores: Map<number, number>,
+    quartzScores: Map<QuartzId, number>,
+    shardSkillScores: Map<ShardSkillId, number>,
   ) {
     this.quartzScores = quartzScores
     this.shardSkillScores = shardSkillScores
@@ -13,12 +16,12 @@ export class ScoreMaps {
   standardize(): ScoreMaps {
     const totalScore = this._sumTotalScore()
 
-    const quartzScores = new Map<number, number>()
+    const quartzScores = new Map<QuartzId, number>()
     this.quartzScores.forEach((score, quartzId) => {
       quartzScores.set(quartzId, (score * 100.0) / totalScore)
     })
 
-    const shardSkillScores = new Map<number, number>()
+    const shardSkillScores = new Map<ShardSkillId, number>()
     this.shardSkillScores.forEach((score, shardSkillId) => {
       shardSkillScores.set(shardSkillId, (score * 100.0) / totalScore)
     })

@@ -2,13 +2,21 @@ import 'source-map-support/register.js'
 import { Language } from './enums/language'
 import { getCharacterById, getCharacterIdByNameJP } from './model/character.js'
 import { Core } from './model/core.js'
-import { getQuartzById, getQuartzIdByNameJP } from './model/quartz'
+import {
+  getQuartzById,
+  getQuartzIdByNameJP,
+  type QuartzId,
+} from './model/quartz'
 import { ScoreMaps } from './model/score.js'
-import { getShardSkillById, getShardSkillIdByNameJP } from './model/shardSkill'
+import {
+  getShardSkillById,
+  getShardSkillIdByNameJP,
+  type ShardSkillId,
+} from './model/shardSkill'
 import { SimulatedAnnealing } from './simulatedAnnealing.js'
 
 const scoreMaps = new ScoreMaps(
-  new Map<number, number>([
+  new Map<QuartzId, number>([
     [getQuartzIdByNameJP('ゴリアテ'), 3],
     [getQuartzIdByNameJP('デイダラボッチ'), 5],
     [getQuartzIdByNameJP('水霊の詩'), 3],
@@ -35,7 +43,7 @@ const scoreMaps = new ScoreMaps(
     [getQuartzIdByNameJP('月霊の詩'), 3],
     [getQuartzIdByNameJP('朧月の詩'), 7],
   ]),
-  new Map<number, number>([
+  new Map<ShardSkillId, number>([
     [getShardSkillIdByNameJP('Aライズガード'), 10],
     [getShardSkillIdByNameJP('アクアブースト'), 3],
     [getShardSkillIdByNameJP('アクアブーストII'), 7],
@@ -66,7 +74,7 @@ const bannedQuartzIds = [
   // getQuartzIdByNameJP('行動力3'),
   // getQuartzIdByNameJP('カリオペ'),
   // getQuartzIdByNameJP('锻神'),
-] as number[]
+] as QuartzId[]
 
 const sa = new SimulatedAnnealing<Core>({
   init: () => core,

@@ -1,11 +1,12 @@
 import { Element } from '../enums/element.js'
+import type { QuartzId } from './quartz'
 
 export class ElementLimitedSlot {
   element: Element
   position: number
-  quartzId?: number
+  quartzId?: QuartzId
 
-  constructor(element: Element, position: number, quartzId?: number) {
+  constructor(element: Element, position: number, quartzId?: QuartzId) {
     this.element = element
     this.position = position
     this.quartzId = quartzId

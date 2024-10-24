@@ -1,7 +1,7 @@
 import { Language } from '../enums/language.js'
 import { QuartzLineType } from '../enums/quartzLineType.js'
 import { getHash } from '../utils/hash'
-import { getQuartzById, getRandomQuartzId } from './quartz.js'
+import { getQuartzById, getRandomQuartzId, type QuartzId } from './quartz.js'
 import {
   DriveLine,
   ExtraLine,
@@ -10,6 +10,7 @@ import {
   WeaponLine,
 } from './quartzLine.js'
 import type { ScoreMaps } from './score.js'
+import type { ShardSkillId } from './shardSkill'
 
 export class Core {
   weaponLine: WeaponLine
@@ -29,7 +30,7 @@ export class Core {
     this.extraLine = extraLine
   }
 
-  addOrReplaceRandomQuartz(blacklistIds?: number[]): void {
+  addOrReplaceRandomQuartz(blacklistIds?: QuartzId[]): void {
     let randomQuartzId = getRandomQuartzId(blacklistIds)
     const flattenQuartzIds = this.getFlattenedQuartzIds()
     const removeRes = this.removeQuartz(randomQuartzId)
@@ -45,7 +46,7 @@ export class Core {
     randomLine.addOrReplaceQuartz(randomQuartzId)
   }
 
-  removeQuartz(quartzId: number): boolean {
+  removeQuartz(quartzId: QuartzId): boolean {
     for (const line of this._allLines()) {
       if (line.removeQuartz(quartzId)) {
         return true
@@ -71,13 +72,13 @@ export class Core {
     )
   }
 
-  getFlattenedQuartzIds(): number[] {
+  getFlattenedQuartzIds(): QuartzId[] {
     return this._allLines()
       .map(line => line.getFlattenedQuartzIds())
       .reduce((acc, ids) => acc.concat(ids), [])
   }
 
-  getFlattenedShardSkillIds(): number[] {
+  getFlattenedShardSkillIds(): ShardSkillId[] {
     return this._allLines()
       .map(line => line.analyzeCurrentShardSkills())
       .map(shardSkills => shardSkills.map(shardSkill => shardSkill.id))
@@ -97,7 +98,7 @@ export class Core {
    * @param quartzScores
    * @returns
    */
-  getMissedQuartzIds(quartzScores: Map<number, number>): number[] {
+  getMissedQuartzIds(quartzScores: Map<QuartzId, number>): QuartzId[] {
     const allQuartzIds = this.getFlattenedQuartzIds()
     return Array.from(quartzScores.keys()).filter(
       quartzId => !allQuartzIds.includes(quartzId),
@@ -109,7 +110,9 @@ export class Core {
    * @param shardSkillScores
    * @returns
    */
-  getMissedShardSkillIds(shardSkillScores: Map<number, number>): number[] {
+  getMissedShardSkillIds(
+    shardSkillScores: Map<ShardSkillId, number>,
+  ): ShardSkillId[] {
     const allShardSkillIds = this.getFlattenedShardSkillIds()
     return Array.from(shardSkillScores.keys()).filter(
       shardSkillId => !allShardSkillIds.includes(shardSkillId),

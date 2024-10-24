@@ -7,7 +7,7 @@ import {
 import { Element } from '../enums/element.js'
 import type { Language } from '../enums/language.js'
 import { QuartzLineType } from '../enums/quartzLineType.js'
-import { getQuartzById } from './quartz.js'
+import { getQuartzById, type QuartzId } from './quartz.js'
 import { ScoreMaps } from './score.js'
 import { ShardSkill } from './shardSkill.js'
 import { ElementLimitedSlot } from './slot.js'
@@ -63,7 +63,7 @@ export abstract class QuartzLine {
     return res
   }
 
-  addOrReplaceQuartz(quartzId: number): void {
+  addOrReplaceQuartz(quartzId: QuartzId): void {
     const quartz = getQuartzById(quartzId)
     if (!quartz) return
 
@@ -92,7 +92,7 @@ export abstract class QuartzLine {
     }
   }
 
-  removeQuartz(quartzId: number): boolean {
+  removeQuartz(quartzId: QuartzId): boolean {
     const index = this.regularSlotQuartzIds.indexOf(quartzId)
     if (index !== -1) {
       this.regularSlotQuartzIds.splice(index, 1)
@@ -133,7 +133,7 @@ export abstract class QuartzLine {
     )
   }
 
-  hasQuartz(quartzId: number): boolean {
+  hasQuartz(quartzId: QuartzId): boolean {
     return (
       this.regularSlotQuartzIds.includes(quartzId) ||
       this.elementLimitedSlots.some(
@@ -142,7 +142,7 @@ export abstract class QuartzLine {
     )
   }
 
-  getFlattenedQuartzIds(): number[] {
+  getFlattenedQuartzIds(): QuartzId[] {
     const res = [...this.regularSlotQuartzIds]
     for (const elementLimitedSlot of this.elementLimitedSlots) {
       if (elementLimitedSlot.quartzId) {
@@ -216,7 +216,7 @@ export abstract class QuartzLine {
 export class WeaponLine extends QuartzLine {
   constructor(
     totalSlots: number,
-    regularSlotQuartzIds: number[],
+    regularSlotQuartzIds: QuartzId[],
     elementLimitedSlots: ElementLimitedSlot[],
   ) {
     super(
@@ -245,7 +245,7 @@ export class WeaponLine extends QuartzLine {
 export class ShieldLine extends QuartzLine {
   constructor(
     totalSlots: number,
-    regularSlotQuartzIds: number[],
+    regularSlotQuartzIds: QuartzId[],
     elementLimitedSlots: ElementLimitedSlot[],
   ) {
     super(
@@ -274,7 +274,7 @@ export class ShieldLine extends QuartzLine {
 export class DriveLine extends QuartzLine {
   constructor(
     totalSlots: number,
-    regularSlotQuartzIds: number[],
+    regularSlotQuartzIds: QuartzId[],
     elementLimitedSlots: ElementLimitedSlot[],
   ) {
     super(
@@ -303,7 +303,7 @@ export class DriveLine extends QuartzLine {
 export class ExtraLine extends QuartzLine {
   constructor(
     totalSlots: number,
-    regularSlotQuartzIds: number[],
+    regularSlotQuartzIds: QuartzId[],
     elementLimitedSlots: ElementLimitedSlot[],
   ) {
     super(

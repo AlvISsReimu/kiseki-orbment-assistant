@@ -1,7 +1,7 @@
 import { Element } from '../enums/element.js'
 import { Language } from '../enums/language.js'
 import { QuartzLineType } from '../enums/quartzLineType.js'
-import type { ShardSkill } from '../model/shardSkill.js'
+import type { ShardSkill, ShardSkillId } from '../model/shardSkill.js'
 
 export const WEAPON_LINE_SHARD_SKILLS = [
   {
@@ -1410,6 +1410,6 @@ export const ALL_SHARD_SKILLS = [
   ...EXTRA_LINE_SHARD_SKILLS,
 ] as ShardSkill[]
 
-export const ALL_SHARD_SKILLS_MAP = new Map<number, ShardSkill>(
+export const ALL_SHARD_SKILLS_MAP = new Map<ShardSkillId, ShardSkill>(
   ALL_SHARD_SKILLS.map(shardSkill => [shardSkill.id, shardSkill]),
 )

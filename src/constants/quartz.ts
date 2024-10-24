@@ -1,7 +1,7 @@
 import { Element } from '../enums/element.js'
 import { Language } from '../enums/language.js'
 import { QuartzLineType } from '../enums/quartzLineType.js'
-import type { Quartz } from '../model/quartz.js'
+import type { Quartz, QuartzId } from '../model/quartz.js'
 
 export const EARTH_QUARTZ = [
   {
@@ -1442,6 +1442,6 @@ export const ALL_QUARTZ = [
   ...MIRAGE_QUARTZ,
 ] as Quartz[]
 
-export const ALL_QUARTZ_MAP = new Map<number, Quartz>(
+export const ALL_QUARTZ_MAP = new Map<QuartzId, Quartz>(
   ALL_QUARTZ.map(quartz => [quartz.id, quartz]),
 )
