@@ -5,6 +5,7 @@ interface SimulatedAnnealingOptions<T> {
   maxNoChangeIteration?: number
   endTemperature?: number
   balance?: number
+  resultSizeLimit?: number
   acceptanceProbability?: (delta: number, temperature: number) => number
   init: () => T
   neighbor: (current: T) => T
@@ -22,6 +23,7 @@ export class SimulatedAnnealing<T extends Hashable> {
   private _maxNoChangeIteration: number | null
   private _endTemperature: number
   private _balance: number
+  private _resultSizeLimit: number
   private _acceptanceProbability: (delta: number, temperature: number) => number
   private _init: () => T
   private _neighbor: (current: T) => T
@@ -34,6 +36,7 @@ export class SimulatedAnnealing<T extends Hashable> {
     this._maxNoChangeIteration = options.maxNoChangeIteration ?? 25
     this._endTemperature = options.endTemperature ?? 1e-2
     this._balance = options.balance ?? 812
+    this._resultSizeLimit = options.resultSizeLimit ?? 50
     this._acceptanceProbability =
       options.acceptanceProbability ??
       ((delta: number, temperature: number) => {
@@ -76,12 +79,19 @@ export class SimulatedAnnealing<T extends Hashable> {
             if (!bestResultsHash.has(resultHash)) {
               bestResults.push(result)
               bestResultsHash.add(resultHash)
+              if (bestResults.length > this._resultSizeLimit) {
+                const deleted = bestResults.shift()
+                bestResultsHash.delete(deleted!.getHash())
+              }
             }
           } else if (score > bestScore) {
             bestScore = score
-            bestResults = [result]
+            bestResults = []
             bestResultsHash.clear()
-            bestResultsHash.add(result.getHash())
+            if (this._resultSizeLimit > 0) {
+              bestResults.push(result)
+              bestResultsHash.add(result.getHash())
+            }
           }
         }
       }
