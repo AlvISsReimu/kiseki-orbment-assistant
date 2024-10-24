@@ -28,12 +28,15 @@ export class Core {
     this.extraLine = extraLine
   }
 
-  addOrReplaceRandomQuartz(): void {
-    let randomQuartzId = getRandomQuartzId(null)
+  addOrReplaceRandomQuartz(blacklistIds?: number[]): void {
+    let randomQuartzId = getRandomQuartzId(blacklistIds)
     const flattenQuartzIds = this.getFlattenedQuartzIds()
     const removeRes = this.removeQuartz(randomQuartzId)
     if (removeRes) {
-      randomQuartzId = getRandomQuartzId(flattenQuartzIds)
+      randomQuartzId = getRandomQuartzId([
+        ...(blacklistIds || []),
+        ...flattenQuartzIds,
+      ])
     }
 
     const quartz = getQuartzById(randomQuartzId)

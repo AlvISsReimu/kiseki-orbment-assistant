@@ -1,21 +1,13 @@
 import 'source-map-support/register.js'
-import { Element } from './enums/element.js'
-import { Language } from './enums/language.js'
+import { getCharacterById, getCharacterIdByNameJP } from './model/character.js'
 import { Core } from './model/core.js'
 import { getQuartzIdByNameJP } from './model/quartz.js'
-import {
-  DriveLine,
-  ExtraLine,
-  ShieldLine,
-  WeaponLine,
-} from './model/quartzLine.js'
 import { ScoreMaps } from './model/score.js'
 import { getShardSkillIdByNameJP } from './model/shardSkill.js'
-import { createElementLimitedSlot } from './model/slot.js'
 import { SimulatedAnnealing } from './simulatedAnnealing.js'
 
-const scoreMaps = {
-  quartzScores: new Map<number, number>([
+const scoreMaps = new ScoreMaps(
+  new Map<number, number>([
     [getQuartzIdByNameJP('ゴリアテ'), 3],
     [getQuartzIdByNameJP('デイダラボッチ'), 5],
     [getQuartzIdByNameJP('水霊の詩'), 3],
@@ -42,7 +34,7 @@ const scoreMaps = {
     [getQuartzIdByNameJP('月霊の詩'), 3],
     [getQuartzIdByNameJP('朧月の詩'), 7],
   ]),
-  shardSkillScores: new Map<number, number>([
+  new Map<number, number>([
     [getShardSkillIdByNameJP('Aライズガード'), 10],
     [getShardSkillIdByNameJP('アクアブースト'), 3],
     [getShardSkillIdByNameJP('アクアブーストII'), 7],
@@ -60,27 +52,33 @@ const scoreMaps = {
     [getShardSkillIdByNameJP('ヘブンリーラック'), 7],
     [getShardSkillIdByNameJP('ヘブンリーラックII'), 10],
   ]),
-} as ScoreMaps
-
-const emptyCore = new Core(
-  new WeaponLine(4, [], [createElementLimitedSlot(Element.Earth, 2)]),
-  new ShieldLine(4, [], [createElementLimitedSlot(Element.Earth, 1)]),
-  new DriveLine(4, [], [createElementLimitedSlot(Element.Space, 2)]),
-  new ExtraLine(3, [], []),
 )
+const standardizedScoreMaps = scoreMaps.standardize()
+
+const characterId = getCharacterIdByNameJP('フェリ')
+const character = getCharacterById(characterId)
+const core = character.core
+
+const bannedQuartzIds = [
+  // getQuartzIdByNameJP('銀耀珠'),
+  // getQuartzIdByNameJP('精神3'),
+  // getQuartzIdByNameJP('行動力3'),
+  // getQuartzIdByNameJP('カリオペ'),
+  // getQuartzIdByNameJP('锻神'),
+] as number[]
 
 const sa = new SimulatedAnnealing<Core>({
-  init: () => emptyCore,
+  init: () => core,
   neighbor: (current: Core) => {
     const cloned = current.deepCopy()
-    cloned.addOrReplaceRandomQuartz()
+    cloned.addOrReplaceRandomQuartz(bannedQuartzIds)
     return cloned
   },
-  fitness: (current: Core) => current.calcScore(scoreMaps),
+  fitness: (current: Core) => current.calcScore(standardizedScoreMaps),
 })
 const { results, score } = sa.run()
 
 console.log(`score: ${score}, result size: ${results.length}`)
-for (let i = 0; i < results.length; i++) {
-  console.log(`result ${i}:\n${results[i].toString(Language.ZH_CN)}`)
-}
+// for (let i = 0; i < results.length; i++) {
+//   console.log(`result ${i}:\n${results[i].toString(Language.ZH_CN)}`)
+// }

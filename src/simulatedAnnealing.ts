@@ -28,12 +28,12 @@ export class SimulatedAnnealing<T extends Equatable> {
   private _fitness: (current: T) => number
 
   constructor(options: SimulatedAnnealingOptions<T>) {
-    this._initTemperature = options.initTemperature ?? 10000
-    this._coolingRate = options.coolingRate ?? 0.99
-    this._maxIteration = options.maxIteration ?? 3000
-    this._maxNoChangeIteration = options.maxNoChangeIteration ?? 50
+    this._initTemperature = options.initTemperature ?? 1000
+    this._coolingRate = options.coolingRate ?? 0.985
+    this._maxIteration = options.maxIteration ?? 10000
+    this._maxNoChangeIteration = options.maxNoChangeIteration ?? 25
     this._endTemperature = options.endTemperature ?? 1e-2
-    this._balance = options.balance ?? 1000
+    this._balance = options.balance ?? 568
     this._acceptanceProbability =
       options.acceptanceProbability ??
       ((delta: number, temperature: number) => {
@@ -81,7 +81,7 @@ export class SimulatedAnnealing<T extends Equatable> {
         }
       }
 
-      console.log(`iteration ${iteration}, score ${score}, T ${temperature}`)
+      // console.log(`iteration ${iteration}, score ${score}, T ${temperature}`)
 
       temperature *= this._coolingRate
       iteration++

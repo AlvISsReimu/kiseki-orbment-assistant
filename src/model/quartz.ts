@@ -24,7 +24,7 @@ export const getQuartzIdByNameJP = (name_jp: string): number | null => {
   return null
 }
 
-export const getRandomQuartzId = (blacklistIds: number[] | null): number => {
+export const getRandomQuartzId = (blacklistIds?: number[]): number => {
   let index: number
   let max = ALL_QUARTZ.length
   do {
