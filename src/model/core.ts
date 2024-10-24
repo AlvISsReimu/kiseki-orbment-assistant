@@ -79,7 +79,7 @@ export class Core {
 
   getFlattenedShardSkillIds(): number[] {
     return this._allLines()
-      .map(line => line.getCurrentShardSkills())
+      .map(line => line.analyzeCurrentShardSkills())
       .map(shardSkills => shardSkills.map(shardSkill => shardSkill.id))
       .reduce((acc, ids) => acc.concat(ids), [])
   }

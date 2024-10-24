@@ -109,8 +109,8 @@ export abstract class QuartzLine {
     return false
   }
 
-  getCurrentShardSkills(): ShardSkill[] {
-    const allShardSkills = this.getAllShardSkills()
+  analyzeCurrentShardSkills(): ShardSkill[] {
+    const allShardSkills = this.getAllAvailableShardSkills()
     const sumElementalValues = this.calcSumElementalValues()
     const filteredSkills = allShardSkills.filter(shardSkill => {
       for (const elementValue of shardSkill.elementalValues) {
@@ -153,7 +153,7 @@ export abstract class QuartzLine {
   }
 
   calcScore(scoreMaps: ScoreMaps): number {
-    const shardSkillScores = this.getCurrentShardSkills()
+    const shardSkillScores = this.analyzeCurrentShardSkills()
       .map(shardSkill => shardSkill.id)
       .map(id => scoreMaps.shardSkillScores.get(id))
       .filter(score => score)
@@ -182,7 +182,7 @@ export abstract class QuartzLine {
   }
 
   toShardSkillNames(language: Language): string {
-    const shardSkills = this.getCurrentShardSkills()
+    const shardSkills = this.analyzeCurrentShardSkills()
     return shardSkills
       .map(shardSkill => shardSkill.name_i18n[language])
       .join(', ')
@@ -199,7 +199,7 @@ export abstract class QuartzLine {
     }, ${sumElementalValues[Element.Mirage] ?? 0}`
   }
 
-  abstract getAllShardSkills(): ShardSkill[]
+  abstract getAllAvailableShardSkills(): ShardSkill[]
   abstract deepCopy(): QuartzLine
 
   private _hasElementLimitedSlot(element: Element): boolean {
@@ -227,13 +227,8 @@ export class WeaponLine extends QuartzLine {
     )
   }
 
-  getAllShardSkills(): ShardSkill[] {
-    const shardSkills = WEAPON_LINE_SHARD_SKILLS
-    const startIndex = 0
-    for (let i = 0; i < shardSkills.length; i++) {
-      shardSkills[i].id = startIndex + i
-    }
-    return shardSkills
+  getAllAvailableShardSkills(): ShardSkill[] {
+    return WEAPON_LINE_SHARD_SKILLS
   }
 
   deepCopy(): QuartzLine {
@@ -261,13 +256,8 @@ export class ShieldLine extends QuartzLine {
     )
   }
 
-  getAllShardSkills(): ShardSkill[] {
-    const shardSkills = SHIELD_LINE_SHARD_SKILLS
-    const startIndex = 28
-    for (let i = 0; i < shardSkills.length; i++) {
-      shardSkills[i].id = startIndex + i
-    }
-    return shardSkills
+  getAllAvailableShardSkills(): ShardSkill[] {
+    return SHIELD_LINE_SHARD_SKILLS
   }
 
   deepCopy(): QuartzLine {
@@ -295,13 +285,8 @@ export class DriveLine extends QuartzLine {
     )
   }
 
-  getAllShardSkills(): ShardSkill[] {
-    const shardSkills = DRIVE_LINE_SHARD_SKILLS
-    const startIndex = 56
-    for (let i = 0; i < shardSkills.length; i++) {
-      shardSkills[i].id = startIndex + i
-    }
-    return shardSkills
+  getAllAvailableShardSkills(): ShardSkill[] {
+    return DRIVE_LINE_SHARD_SKILLS
   }
 
   deepCopy(): QuartzLine {
@@ -329,13 +314,8 @@ export class ExtraLine extends QuartzLine {
     )
   }
 
-  getAllShardSkills(): ShardSkill[] {
-    const shardSkills = EXTRA_LINE_SHARD_SKILLS
-    const startIndex = 84
-    for (let i = 0; i < shardSkills.length; i++) {
-      shardSkills[i].id = startIndex + i
-    }
-    return shardSkills
+  getAllAvailableShardSkills(): ShardSkill[] {
+    return EXTRA_LINE_SHARD_SKILLS
   }
 
   deepCopy(): QuartzLine {
