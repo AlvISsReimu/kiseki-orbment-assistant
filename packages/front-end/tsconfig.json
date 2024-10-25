@@ -33,10 +33,10 @@
     "skipLibCheck": true,
     "rootDir": "../../",
     "paths": {
-      "@shared/*": ["../../src/*"],
+      "@shared/*": ["../../shared/*"],
     },
     "types": ["node"]
   },
-  "include": ["**/*", "../../src/**/*"],
+  "include": ["**/*", "../../shared/**/*"],
   "exclude": ["node_modules", "dist"]
 }
