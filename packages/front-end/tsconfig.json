@@ -33,7 +33,7 @@
     "skipLibCheck": true,
     "rootDir": "../../",
     "paths": {
-      "@shared/*": ["../../shared/*"],
+      "@shared/*": ["../../shared/*"]
     },
     "types": ["node"]
   },
