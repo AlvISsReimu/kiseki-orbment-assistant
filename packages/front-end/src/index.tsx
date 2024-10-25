@@ -3,7 +3,6 @@ import LightModeIcon from '@mui/icons-material/LightMode'
 import {
   CssBaseline,
   FormControl,
-  Input,
   InputLabel,
   MenuItem,
   Select,
@@ -12,7 +11,8 @@ import {
   ToggleButtonGroup,
   type SelectChangeEvent,
 } from '@mui/material'
-import { Language } from '@shared/enums/language'
+import { LanguageCode } from '@shared/enums/languageCode'
+import { getNameByLanguageCode } from '@shared/model/language'
 import { darkTheme, lightTheme } from '@shared/themes'
 import { translation } from '@shared/utils/translation'
 import { useContext, useEffect, useMemo } from 'react'
@@ -37,7 +37,7 @@ const Main = () => {
   }
 
   const selectLanguage = (ev: SelectChangeEvent) => {
-    gc.setLanguage(ev.target.value as Language)
+    gc.setLanguage(ev.target.value as LanguageCode)
   }
 
   const translations = translation.global
@@ -66,14 +66,14 @@ const Main = () => {
               label={translations.language[gc.language]}
               onChange={selectLanguage}
             >
-              <MenuItem value={Language.ZH_CN}>
-                {translations.chinese[gc.language]}
+              <MenuItem value={LanguageCode.ZH_CN}>
+                {getNameByLanguageCode(LanguageCode.ZH_CN)}
               </MenuItem>
-              <MenuItem value={Language.JA}>
-                {translations.japanese[gc.language]}
+              <MenuItem value={LanguageCode.JA}>
+                {getNameByLanguageCode(LanguageCode.JA)}
               </MenuItem>
-              <MenuItem value={Language.EN}>
-                {translations.english[gc.language]}
+              <MenuItem value={LanguageCode.EN}>
+                {getNameByLanguageCode(LanguageCode.EN)}
               </MenuItem>
             </Select>
           </FormControl>

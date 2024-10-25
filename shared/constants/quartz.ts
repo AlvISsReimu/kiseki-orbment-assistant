@@ -1,5 +1,5 @@
 import { Element } from '../enums/element.js'
-import { Language } from '../enums/language.js'
+import { LanguageCode } from '../enums/languageCode.js'
 import { QuartzLineType } from '../enums/quartzLineType.js'
 import type { Quartz, QuartzId } from '../model/quartz.js'
 
@@ -7,9 +7,9 @@ export const EARTH_QUARTZ = [
   {
     id: 0,
     name_i18n: {
-      [Language.ZH_CN]: '防御1',
-      [Language.JA]: '防御1',
-      [Language.EN]: 'Defense 1',
+      [LanguageCode.ZH_CN]: '防御1',
+      [LanguageCode.JA]: '防御1',
+      [LanguageCode.EN]: 'Defense 1',
     },
     element: Element.Earth,
     elementalValues: new Map([[Element.Earth, 2]]),
@@ -17,9 +17,9 @@ export const EARTH_QUARTZ = [
   {
     id: 1,
     name_i18n: {
-      [Language.ZH_CN]: '防御2',
-      [Language.JA]: '防御2',
-      [Language.EN]: 'Defense 2',
+      [LanguageCode.ZH_CN]: '防御2',
+      [LanguageCode.JA]: '防御2',
+      [LanguageCode.EN]: 'Defense 2',
     },
     element: Element.Earth,
     elementalValues: new Map([[Element.Earth, 4]]),
@@ -27,9 +27,9 @@ export const EARTH_QUARTZ = [
   {
     id: 2,
     name_i18n: {
-      [Language.ZH_CN]: '防御3',
-      [Language.JA]: '防御3',
-      [Language.EN]: 'Defense 3',
+      [LanguageCode.ZH_CN]: '防御3',
+      [LanguageCode.JA]: '防御3',
+      [LanguageCode.EN]: 'Defense 3',
     },
     element: Element.Earth,
     elementalValues: new Map([[Element.Earth, 6]]),
@@ -37,9 +37,9 @@ export const EARTH_QUARTZ = [
   {
     id: 3,
     name_i18n: {
-      [Language.ZH_CN]: 'EP1',
-      [Language.JA]: 'EP1',
-      [Language.EN]: 'EP 1',
+      [LanguageCode.ZH_CN]: 'EP1',
+      [LanguageCode.JA]: 'EP1',
+      [LanguageCode.EN]: 'EP 1',
     },
     element: Element.Earth,
     elementalValues: new Map([[Element.Earth, 2]]),
@@ -48,9 +48,9 @@ export const EARTH_QUARTZ = [
   {
     id: 4,
     name_i18n: {
-      [Language.ZH_CN]: 'EP2',
-      [Language.JA]: 'EP2',
-      [Language.EN]: 'EP 2',
+      [LanguageCode.ZH_CN]: 'EP2',
+      [LanguageCode.JA]: 'EP2',
+      [LanguageCode.EN]: 'EP 2',
     },
     element: Element.Earth,
     elementalValues: new Map([[Element.Earth, 4]]),
@@ -58,9 +58,9 @@ export const EARTH_QUARTZ = [
   {
     id: 5,
     name_i18n: {
-      [Language.ZH_CN]: 'EP3',
-      [Language.JA]: 'EP3',
-      [Language.EN]: 'EP 3',
+      [LanguageCode.ZH_CN]: 'EP3',
+      [LanguageCode.JA]: 'EP3',
+      [LanguageCode.EN]: 'EP 3',
     },
     element: Element.Earth,
     elementalValues: new Map([[Element.Earth, 6]]),
@@ -68,9 +68,9 @@ export const EARTH_QUARTZ = [
   {
     id: 6,
     name_i18n: {
-      [Language.ZH_CN]: '琥耀珠',
-      [Language.JA]: '琥耀珠',
-      [Language.EN]: 'Amberl Gem',
+      [LanguageCode.ZH_CN]: '琥耀珠',
+      [LanguageCode.JA]: '琥耀珠',
+      [LanguageCode.EN]: 'Amberl Gem',
     },
     element: Element.Earth,
     elementalValues: new Map([[Element.Earth, 8]]),
@@ -78,9 +78,9 @@ export const EARTH_QUARTZ = [
   {
     id: 7,
     name_i18n: {
-      [Language.ZH_CN]: '腐蚀之刃',
-      [Language.JA]: '腐蝕の刃',
-      [Language.EN]: 'Rot',
+      [LanguageCode.ZH_CN]: '腐蚀之刃',
+      [LanguageCode.JA]: '腐蝕の刃',
+      [LanguageCode.EN]: 'Rot',
     },
     element: Element.Earth,
     elementalValues: new Map([[Element.Earth, 3]]),
@@ -89,9 +89,9 @@ export const EARTH_QUARTZ = [
   {
     id: 8,
     name_i18n: {
-      [Language.ZH_CN]: '腐蚀之刃II',
-      [Language.JA]: '腐蝕の刃II',
-      [Language.EN]: 'Rot II',
+      [LanguageCode.ZH_CN]: '腐蚀之刃II',
+      [LanguageCode.JA]: '腐蝕の刃II',
+      [LanguageCode.EN]: 'Rot II',
     },
     element: Element.Earth,
     elementalValues: new Map([[Element.Earth, 5]]),
@@ -100,9 +100,9 @@ export const EARTH_QUARTZ = [
   {
     id: 9,
     name_i18n: {
-      [Language.ZH_CN]: '地灵之诗',
-      [Language.JA]: '地霊の詩',
-      [Language.EN]: 'Earthen Verse',
+      [LanguageCode.ZH_CN]: '地灵之诗',
+      [LanguageCode.JA]: '地霊の詩',
+      [LanguageCode.EN]: 'Earthen Verse',
     },
     element: Element.Earth,
     elementalValues: new Map([[Element.Earth, 3]]),
@@ -111,9 +111,9 @@ export const EARTH_QUARTZ = [
   {
     id: 10,
     name_i18n: {
-      [Language.ZH_CN]: '大地之诗',
-      [Language.JA]: '大地の詩',
-      [Language.EN]: 'Gaia Verse',
+      [LanguageCode.ZH_CN]: '大地之诗',
+      [LanguageCode.JA]: '大地の詩',
+      [LanguageCode.EN]: 'Gaia Verse',
     },
     element: Element.Earth,
     elementalValues: new Map([[Element.Earth, 5]]),
@@ -122,9 +122,9 @@ export const EARTH_QUARTZ = [
   {
     id: 11,
     name_i18n: {
-      [Language.ZH_CN]: '黄晶之轮',
-      [Language.JA]: '黄晶の輪',
-      [Language.EN]: 'Topaz Ring',
+      [LanguageCode.ZH_CN]: '黄晶之轮',
+      [LanguageCode.JA]: '黄晶の輪',
+      [LanguageCode.EN]: 'Topaz Ring',
     },
     element: Element.Earth,
     elementalValues: new Map([[Element.Earth, 3]]),
@@ -133,9 +133,9 @@ export const EARTH_QUARTZ = [
   {
     id: 12,
     name_i18n: {
-      [Language.ZH_CN]: '刚玉之轮',
-      [Language.JA]: '鋼玉の輪',
-      [Language.EN]: 'Corundum Ring',
+      [LanguageCode.ZH_CN]: '刚玉之轮',
+      [LanguageCode.JA]: '鋼玉の輪',
+      [LanguageCode.EN]: 'Corundum Ring',
     },
     element: Element.Earth,
     elementalValues: new Map([[Element.Earth, 5]]),
@@ -144,9 +144,9 @@ export const EARTH_QUARTZ = [
   {
     id: 13,
     name_i18n: {
-      [Language.ZH_CN]: '耀脉',
-      [Language.JA]: '耀脈',
-      [Language.EN]: 'Septium Vein',
+      [LanguageCode.ZH_CN]: '耀脉',
+      [LanguageCode.JA]: '耀脈',
+      [LanguageCode.EN]: 'Septium Vein',
     },
     element: Element.Earth,
     elementalValues: new Map([
@@ -157,9 +157,9 @@ export const EARTH_QUARTZ = [
   {
     id: 14,
     name_i18n: {
-      [Language.ZH_CN]: '秘脉',
-      [Language.JA]: '秘脈',
-      [Language.EN]: '秘脈',
+      [LanguageCode.ZH_CN]: '秘脉',
+      [LanguageCode.JA]: '秘脈',
+      [LanguageCode.EN]: '秘脈',
     },
     element: Element.Earth,
     elementalValues: new Map([
@@ -170,9 +170,9 @@ export const EARTH_QUARTZ = [
   {
     id: 15,
     name_i18n: {
-      [Language.ZH_CN]: '巨人',
-      [Language.JA]: 'ゴリアテ',
-      [Language.EN]: 'Goliath',
+      [LanguageCode.ZH_CN]: '巨人',
+      [LanguageCode.JA]: 'ゴリアテ',
+      [LanguageCode.EN]: 'Goliath',
     },
     element: Element.Earth,
     elementalValues: new Map([
@@ -183,9 +183,9 @@ export const EARTH_QUARTZ = [
   {
     id: 16,
     name_i18n: {
-      [Language.ZH_CN]: '安克夏',
-      [Language.JA]: 'アンクシャ',
-      [Language.EN]: 'Ankusha',
+      [LanguageCode.ZH_CN]: '安克夏',
+      [LanguageCode.JA]: 'アンクシャ',
+      [LanguageCode.EN]: 'Ankusha',
     },
     element: Element.Earth,
     elementalValues: new Map([
@@ -196,9 +196,9 @@ export const EARTH_QUARTZ = [
   {
     id: 17,
     name_i18n: {
-      [Language.ZH_CN]: '锻神',
-      [Language.JA]: 'デイダラボッチ',
-      [Language.EN]: 'Daidarabotchi',
+      [LanguageCode.ZH_CN]: '锻神',
+      [LanguageCode.JA]: 'デイダラボッチ',
+      [LanguageCode.EN]: 'Daidarabotchi',
     },
     element: Element.Earth,
     elementalValues: new Map([
@@ -212,9 +212,9 @@ export const WATER_QUARTZ = [
   {
     id: 18,
     name_i18n: {
-      [Language.ZH_CN]: 'HP1',
-      [Language.JA]: 'HP1',
-      [Language.EN]: 'HP 1',
+      [LanguageCode.ZH_CN]: 'HP1',
+      [LanguageCode.JA]: 'HP1',
+      [LanguageCode.EN]: 'HP 1',
     },
     element: Element.Water,
     elementalValues: new Map([[Element.Water, 2]]),
@@ -222,9 +222,9 @@ export const WATER_QUARTZ = [
   {
     id: 19,
     name_i18n: {
-      [Language.ZH_CN]: 'HP2',
-      [Language.JA]: 'HP2',
-      [Language.EN]: 'HP 2',
+      [LanguageCode.ZH_CN]: 'HP2',
+      [LanguageCode.JA]: 'HP2',
+      [LanguageCode.EN]: 'HP 2',
     },
     element: Element.Water,
     elementalValues: new Map([[Element.Water, 4]]),
@@ -232,9 +232,9 @@ export const WATER_QUARTZ = [
   {
     id: 20,
     name_i18n: {
-      [Language.ZH_CN]: 'HP3',
-      [Language.JA]: 'HP3',
-      [Language.EN]: 'HP 3',
+      [LanguageCode.ZH_CN]: 'HP3',
+      [LanguageCode.JA]: 'HP3',
+      [LanguageCode.EN]: 'HP 3',
     },
     element: Element.Water,
     elementalValues: new Map([[Element.Water, 6]]),
@@ -242,9 +242,9 @@ export const WATER_QUARTZ = [
   {
     id: 21,
     name_i18n: {
-      [Language.ZH_CN]: '魔防1',
-      [Language.JA]: '魔防1',
-      [Language.EN]: 'Shield 1',
+      [LanguageCode.ZH_CN]: '魔防1',
+      [LanguageCode.JA]: '魔防1',
+      [LanguageCode.EN]: 'Shield 1',
     },
     element: Element.Water,
     elementalValues: new Map([[Element.Water, 2]]),
@@ -252,9 +252,9 @@ export const WATER_QUARTZ = [
   {
     id: 22,
     name_i18n: {
-      [Language.ZH_CN]: '魔防2',
-      [Language.JA]: '魔防2',
-      [Language.EN]: 'Shield 2',
+      [LanguageCode.ZH_CN]: '魔防2',
+      [LanguageCode.JA]: '魔防2',
+      [LanguageCode.EN]: 'Shield 2',
     },
     element: Element.Water,
     elementalValues: new Map([[Element.Water, 4]]),
@@ -262,9 +262,9 @@ export const WATER_QUARTZ = [
   {
     id: 23,
     name_i18n: {
-      [Language.ZH_CN]: '魔防3',
-      [Language.JA]: '魔防3',
-      [Language.EN]: 'Shield 3',
+      [LanguageCode.ZH_CN]: '魔防3',
+      [LanguageCode.JA]: '魔防3',
+      [LanguageCode.EN]: 'Shield 3',
     },
     element: Element.Water,
     elementalValues: new Map([[Element.Water, 6]]),
@@ -272,9 +272,9 @@ export const WATER_QUARTZ = [
   {
     id: 24,
     name_i18n: {
-      [Language.ZH_CN]: '苍耀珠',
-      [Language.JA]: '蒼耀珠',
-      [Language.EN]: 'Sapphirl Gem',
+      [LanguageCode.ZH_CN]: '苍耀珠',
+      [LanguageCode.JA]: '蒼耀珠',
+      [LanguageCode.EN]: 'Sapphirl Gem',
     },
     element: Element.Water,
     elementalValues: new Map([[Element.Water, 8]]),
@@ -282,9 +282,9 @@ export const WATER_QUARTZ = [
   {
     id: 25,
     name_i18n: {
-      [Language.ZH_CN]: '冻结之刃',
-      [Language.JA]: '凍結の刃',
-      [Language.EN]: 'Freeze',
+      [LanguageCode.ZH_CN]: '冻结之刃',
+      [LanguageCode.JA]: '凍結の刃',
+      [LanguageCode.EN]: 'Freeze',
     },
     element: Element.Water,
     elementalValues: new Map([[Element.Water, 3]]),
@@ -293,9 +293,9 @@ export const WATER_QUARTZ = [
   {
     id: 26,
     name_i18n: {
-      [Language.ZH_CN]: '冻结之刃II',
-      [Language.JA]: '凍結の刃II',
-      [Language.EN]: 'Freeze II',
+      [LanguageCode.ZH_CN]: '冻结之刃II',
+      [LanguageCode.JA]: '凍結の刃II',
+      [LanguageCode.EN]: 'Freeze II',
     },
     element: Element.Water,
     elementalValues: new Map([[Element.Water, 5]]),
@@ -304,9 +304,9 @@ export const WATER_QUARTZ = [
   {
     id: 27,
     name_i18n: {
-      [Language.ZH_CN]: '水灵之诗',
-      [Language.JA]: '水霊の詩',
-      [Language.EN]: 'Aqua Verse',
+      [LanguageCode.ZH_CN]: '水灵之诗',
+      [LanguageCode.JA]: '水霊の詩',
+      [LanguageCode.EN]: 'Aqua Verse',
     },
     element: Element.Water,
     elementalValues: new Map([[Element.Water, 3]]),
@@ -315,9 +315,9 @@ export const WATER_QUARTZ = [
   {
     id: 28,
     name_i18n: {
-      [Language.ZH_CN]: '苍冰之诗',
-      [Language.JA]: '蒼氷の詩',
-      [Language.EN]: 'Crystal Verse',
+      [LanguageCode.ZH_CN]: '苍冰之诗',
+      [LanguageCode.JA]: '蒼氷の詩',
+      [LanguageCode.EN]: 'Crystal Verse',
     },
     element: Element.Water,
     elementalValues: new Map([[Element.Water, 5]]),
@@ -326,9 +326,9 @@ export const WATER_QUARTZ = [
   {
     id: 29,
     name_i18n: {
-      [Language.ZH_CN]: '青晶之轮',
-      [Language.JA]: '青晶の輪',
-      [Language.EN]: 'Cobalt Ring',
+      [LanguageCode.ZH_CN]: '青晶之轮',
+      [LanguageCode.JA]: '青晶の輪',
+      [LanguageCode.EN]: 'Cobalt Ring',
     },
     element: Element.Water,
     elementalValues: new Map([[Element.Water, 3]]),
@@ -337,9 +337,9 @@ export const WATER_QUARTZ = [
   {
     id: 30,
     name_i18n: {
-      [Language.ZH_CN]: '蓝玉之轮',
-      [Language.JA]: '藍玉の輪',
-      [Language.EN]: 'Indigo Ring',
+      [LanguageCode.ZH_CN]: '蓝玉之轮',
+      [LanguageCode.JA]: '藍玉の輪',
+      [LanguageCode.EN]: 'Indigo Ring',
     },
     element: Element.Water,
     elementalValues: new Map([[Element.Water, 5]]),
@@ -348,9 +348,9 @@ export const WATER_QUARTZ = [
   {
     id: 31,
     name_i18n: {
-      [Language.ZH_CN]: '气息',
-      [Language.JA]: '息吹',
-      [Language.EN]: '息吹',
+      [LanguageCode.ZH_CN]: '气息',
+      [LanguageCode.JA]: '息吹',
+      [LanguageCode.EN]: '息吹',
     },
     element: Element.Water,
     elementalValues: new Map([
@@ -361,9 +361,9 @@ export const WATER_QUARTZ = [
   {
     id: 32,
     name_i18n: {
-      [Language.ZH_CN]: '慈爱',
-      [Language.JA]: '慈愛',
-      [Language.EN]: 'Mercy',
+      [LanguageCode.ZH_CN]: '慈爱',
+      [LanguageCode.JA]: '慈愛',
+      [LanguageCode.EN]: 'Mercy',
     },
     element: Element.Water,
     elementalValues: new Map([
@@ -374,9 +374,9 @@ export const WATER_QUARTZ = [
   {
     id: 33,
     name_i18n: {
-      [Language.ZH_CN]: '卡利俄佩',
-      [Language.JA]: 'カリオペ',
-      [Language.EN]: 'Calliope',
+      [LanguageCode.ZH_CN]: '卡利俄佩',
+      [LanguageCode.JA]: 'カリオペ',
+      [LanguageCode.EN]: 'Calliope',
     },
     element: Element.Water,
     elementalValues: new Map([
@@ -387,9 +387,9 @@ export const WATER_QUARTZ = [
   {
     id: 34,
     name_i18n: {
-      [Language.ZH_CN]: '佛罗伦特',
-      [Language.JA]: 'フロレント',
-      [Language.EN]: 'Florent',
+      [LanguageCode.ZH_CN]: '佛罗伦特',
+      [LanguageCode.JA]: 'フロレント',
+      [LanguageCode.EN]: 'Florent',
     },
     element: Element.Water,
     elementalValues: new Map([
@@ -400,9 +400,9 @@ export const WATER_QUARTZ = [
   {
     id: 35,
     name_i18n: {
-      [Language.ZH_CN]: '木花朔耶',
-      [Language.JA]: 'コノハナサクヤ',
-      [Language.EN]: 'Konohana Sakuya',
+      [LanguageCode.ZH_CN]: '木花朔耶',
+      [LanguageCode.JA]: 'コノハナサクヤ',
+      [LanguageCode.EN]: 'Konohana Sakuya',
     },
     element: Element.Water,
     elementalValues: new Map([
@@ -416,9 +416,9 @@ export const FIRE_QUARTZ = [
   {
     id: 36,
     name_i18n: {
-      [Language.ZH_CN]: '攻击1',
-      [Language.JA]: '攻撃1',
-      [Language.EN]: 'Attack 1',
+      [LanguageCode.ZH_CN]: '攻击1',
+      [LanguageCode.JA]: '攻撃1',
+      [LanguageCode.EN]: 'Attack 1',
     },
     element: Element.Fire,
     elementalValues: new Map([[Element.Fire, 2]]),
@@ -426,9 +426,9 @@ export const FIRE_QUARTZ = [
   {
     id: 37,
     name_i18n: {
-      [Language.ZH_CN]: '攻击2',
-      [Language.JA]: '攻撃2',
-      [Language.EN]: 'Attack 2',
+      [LanguageCode.ZH_CN]: '攻击2',
+      [LanguageCode.JA]: '攻撃2',
+      [LanguageCode.EN]: 'Attack 2',
     },
     element: Element.Fire,
     elementalValues: new Map([[Element.Fire, 4]]),
@@ -436,9 +436,9 @@ export const FIRE_QUARTZ = [
   {
     id: 38,
     name_i18n: {
-      [Language.ZH_CN]: '攻击3',
-      [Language.JA]: '攻撃3',
-      [Language.EN]: 'Attack 3',
+      [LanguageCode.ZH_CN]: '攻击3',
+      [LanguageCode.JA]: '攻撃3',
+      [LanguageCode.EN]: 'Attack 3',
     },
     element: Element.Fire,
     elementalValues: new Map([[Element.Fire, 6]]),
@@ -446,9 +446,9 @@ export const FIRE_QUARTZ = [
   {
     id: 39,
     name_i18n: {
-      [Language.ZH_CN]: '破坏1',
-      [Language.JA]: '破壊1',
-      [Language.EN]: 'Break 1',
+      [LanguageCode.ZH_CN]: '破坏1',
+      [LanguageCode.JA]: '破壊1',
+      [LanguageCode.EN]: 'Break 1',
     },
     element: Element.Fire,
     elementalValues: new Map([[Element.Fire, 2]]),
@@ -456,9 +456,9 @@ export const FIRE_QUARTZ = [
   {
     id: 40,
     name_i18n: {
-      [Language.ZH_CN]: '破坏2',
-      [Language.JA]: '破壊2',
-      [Language.EN]: 'Break 2',
+      [LanguageCode.ZH_CN]: '破坏2',
+      [LanguageCode.JA]: '破壊2',
+      [LanguageCode.EN]: 'Break 2',
     },
     element: Element.Fire,
     elementalValues: new Map([[Element.Fire, 4]]),
@@ -466,9 +466,9 @@ export const FIRE_QUARTZ = [
   {
     id: 41,
     name_i18n: {
-      [Language.ZH_CN]: '破坏3',
-      [Language.JA]: '破壊3',
-      [Language.EN]: 'Break 3',
+      [LanguageCode.ZH_CN]: '破坏3',
+      [LanguageCode.JA]: '破壊3',
+      [LanguageCode.EN]: 'Break 3',
     },
     element: Element.Fire,
     elementalValues: new Map([[Element.Fire, 6]]),
@@ -476,9 +476,9 @@ export const FIRE_QUARTZ = [
   {
     id: 42,
     name_i18n: {
-      [Language.ZH_CN]: '红耀珠',
-      [Language.JA]: '紅耀珠',
-      [Language.EN]: 'Carnelia Gem',
+      [LanguageCode.ZH_CN]: '红耀珠',
+      [LanguageCode.JA]: '紅耀珠',
+      [LanguageCode.EN]: 'Carnelia Gem',
     },
     element: Element.Fire,
     elementalValues: new Map([[Element.Fire, 8]]),
@@ -486,9 +486,9 @@ export const FIRE_QUARTZ = [
   {
     id: 43,
     name_i18n: {
-      [Language.ZH_CN]: '炎伤之刃',
-      [Language.JA]: '炎傷の刃',
-      [Language.EN]: 'Burn',
+      [LanguageCode.ZH_CN]: '炎伤之刃',
+      [LanguageCode.JA]: '炎傷の刃',
+      [LanguageCode.EN]: 'Burn',
     },
     element: Element.Fire,
     elementalValues: new Map([[Element.Fire, 3]]),
@@ -497,9 +497,9 @@ export const FIRE_QUARTZ = [
   {
     id: 44,
     name_i18n: {
-      [Language.ZH_CN]: '炎伤之刃II',
-      [Language.JA]: '炎傷の刃II',
-      [Language.EN]: 'Burn II',
+      [LanguageCode.ZH_CN]: '炎伤之刃II',
+      [LanguageCode.JA]: '炎傷の刃II',
+      [LanguageCode.EN]: 'Burn II',
     },
     element: Element.Fire,
     elementalValues: new Map([[Element.Fire, 5]]),
@@ -508,9 +508,9 @@ export const FIRE_QUARTZ = [
   {
     id: 45,
     name_i18n: {
-      [Language.ZH_CN]: '火灵之诗',
-      [Language.JA]: '火霊の詩',
-      [Language.EN]: 'Burning Verse',
+      [LanguageCode.ZH_CN]: '火灵之诗',
+      [LanguageCode.JA]: '火霊の詩',
+      [LanguageCode.EN]: 'Burning Verse',
     },
     element: Element.Fire,
     elementalValues: new Map([[Element.Fire, 3]]),
@@ -519,9 +519,9 @@ export const FIRE_QUARTZ = [
   {
     id: 46,
     name_i18n: {
-      [Language.ZH_CN]: '业火之诗',
-      [Language.JA]: '業火の詩',
-      [Language.EN]: 'Hellfire Verse',
+      [LanguageCode.ZH_CN]: '业火之诗',
+      [LanguageCode.JA]: '業火の詩',
+      [LanguageCode.EN]: 'Hellfire Verse',
     },
     element: Element.Fire,
     elementalValues: new Map([[Element.Fire, 5]]),
@@ -530,9 +530,9 @@ export const FIRE_QUARTZ = [
   {
     id: 47,
     name_i18n: {
-      [Language.ZH_CN]: '赤晶之轮',
-      [Language.JA]: '赤晶の輪',
-      [Language.EN]: 'Ruby Ring',
+      [LanguageCode.ZH_CN]: '赤晶之轮',
+      [LanguageCode.JA]: '赤晶の輪',
+      [LanguageCode.EN]: 'Ruby Ring',
     },
     element: Element.Fire,
     elementalValues: new Map([[Element.Fire, 3]]),
@@ -541,9 +541,9 @@ export const FIRE_QUARTZ = [
   {
     id: 48,
     name_i18n: {
-      [Language.ZH_CN]: '红玉之轮',
-      [Language.JA]: '紅玉の輪',
-      [Language.EN]: 'Crimson Ring',
+      [LanguageCode.ZH_CN]: '红玉之轮',
+      [LanguageCode.JA]: '紅玉の輪',
+      [LanguageCode.EN]: 'Crimson Ring',
     },
     element: Element.Fire,
     elementalValues: new Map([[Element.Fire, 5]]),
@@ -552,9 +552,9 @@ export const FIRE_QUARTZ = [
   {
     id: 49,
     name_i18n: {
-      [Language.ZH_CN]: '烈火',
-      [Language.JA]: '烈火',
-      [Language.EN]: '烈火',
+      [LanguageCode.ZH_CN]: '烈火',
+      [LanguageCode.JA]: '烈火',
+      [LanguageCode.EN]: '烈火',
     },
     element: Element.Fire,
     elementalValues: new Map([
@@ -565,9 +565,9 @@ export const FIRE_QUARTZ = [
   {
     id: 50,
     name_i18n: {
-      [Language.ZH_CN]: '猛炎',
-      [Language.JA]: '猛炎',
-      [Language.EN]: '猛炎',
+      [LanguageCode.ZH_CN]: '猛炎',
+      [LanguageCode.JA]: '猛炎',
+      [LanguageCode.EN]: '猛炎',
     },
     element: Element.Fire,
     elementalValues: new Map([
@@ -578,9 +578,9 @@ export const FIRE_QUARTZ = [
   {
     id: 51,
     name_i18n: {
-      [Language.ZH_CN]: '史矛格',
-      [Language.JA]: 'スマウグ',
-      [Language.EN]: 'Smaug',
+      [LanguageCode.ZH_CN]: '史矛格',
+      [LanguageCode.JA]: 'スマウグ',
+      [LanguageCode.EN]: 'Smaug',
     },
     element: Element.Fire,
     elementalValues: new Map([
@@ -591,9 +591,9 @@ export const FIRE_QUARTZ = [
   {
     id: 52,
     name_i18n: {
-      [Language.ZH_CN]: '英杰',
-      [Language.JA]: 'ベオウルフ',
-      [Language.EN]: 'Beowulf',
+      [LanguageCode.ZH_CN]: '英杰',
+      [LanguageCode.JA]: 'ベオウルフ',
+      [LanguageCode.EN]: 'Beowulf',
     },
     element: Element.Fire,
     elementalValues: new Map([
@@ -604,9 +604,9 @@ export const FIRE_QUARTZ = [
   {
     id: 53,
     name_i18n: {
-      [Language.ZH_CN]: '普罗米修斯',
-      [Language.JA]: 'プロメテウス',
-      [Language.EN]: 'Prometheus',
+      [LanguageCode.ZH_CN]: '普罗米修斯',
+      [LanguageCode.JA]: 'プロメテウス',
+      [LanguageCode.EN]: 'Prometheus',
     },
     element: Element.Fire,
     elementalValues: new Map([
@@ -620,9 +620,9 @@ export const WIND_QUARTZ = [
   {
     id: 54,
     name_i18n: {
-      [Language.ZH_CN]: '回避1',
-      [Language.JA]: '回避1',
-      [Language.EN]: 'Evade 1',
+      [LanguageCode.ZH_CN]: '回避1',
+      [LanguageCode.JA]: '回避1',
+      [LanguageCode.EN]: 'Evade 1',
     },
     element: Element.Wind,
     elementalValues: new Map([[Element.Wind, 2]]),
@@ -630,9 +630,9 @@ export const WIND_QUARTZ = [
   {
     id: 55,
     name_i18n: {
-      [Language.ZH_CN]: '回避2',
-      [Language.JA]: '回避2',
-      [Language.EN]: 'Evade 2',
+      [LanguageCode.ZH_CN]: '回避2',
+      [LanguageCode.JA]: '回避2',
+      [LanguageCode.EN]: 'Evade 2',
     },
     element: Element.Wind,
     elementalValues: new Map([[Element.Wind, 4]]),
@@ -640,9 +640,9 @@ export const WIND_QUARTZ = [
   {
     id: 56,
     name_i18n: {
-      [Language.ZH_CN]: '回避3',
-      [Language.JA]: '回避3',
-      [Language.EN]: 'Evade 3',
+      [LanguageCode.ZH_CN]: '回避3',
+      [LanguageCode.JA]: '回避3',
+      [LanguageCode.EN]: 'Evade 3',
     },
     element: Element.Wind,
     elementalValues: new Map([[Element.Wind, 6]]),
@@ -650,9 +650,9 @@ export const WIND_QUARTZ = [
   {
     id: 57,
     name_i18n: {
-      [Language.ZH_CN]: '必杀1',
-      [Language.JA]: '必殺1',
-      [Language.EN]: 'Strike 1',
+      [LanguageCode.ZH_CN]: '必杀1',
+      [LanguageCode.JA]: '必殺1',
+      [LanguageCode.EN]: 'Strike 1',
     },
     element: Element.Wind,
     elementalValues: new Map([[Element.Wind, 2]]),
@@ -660,9 +660,9 @@ export const WIND_QUARTZ = [
   {
     id: 58,
     name_i18n: {
-      [Language.ZH_CN]: '必杀2',
-      [Language.JA]: '必殺2',
-      [Language.EN]: 'Strike 2',
+      [LanguageCode.ZH_CN]: '必杀2',
+      [LanguageCode.JA]: '必殺2',
+      [LanguageCode.EN]: 'Strike 2',
     },
     element: Element.Wind,
     elementalValues: new Map([[Element.Wind, 4]]),
@@ -670,9 +670,9 @@ export const WIND_QUARTZ = [
   {
     id: 59,
     name_i18n: {
-      [Language.ZH_CN]: '必杀3',
-      [Language.JA]: '必殺3',
-      [Language.EN]: 'Strike 3',
+      [LanguageCode.ZH_CN]: '必杀3',
+      [LanguageCode.JA]: '必殺3',
+      [LanguageCode.EN]: 'Strike 3',
     },
     element: Element.Wind,
     elementalValues: new Map([[Element.Wind, 6]]),
@@ -680,9 +680,9 @@ export const WIND_QUARTZ = [
   {
     id: 60,
     name_i18n: {
-      [Language.ZH_CN]: '翠耀珠',
-      [Language.JA]: '翠耀珠',
-      [Language.EN]: 'Esmelas Gem',
+      [LanguageCode.ZH_CN]: '翠耀珠',
+      [LanguageCode.JA]: '翠耀珠',
+      [LanguageCode.EN]: 'Esmelas Gem',
     },
     element: Element.Wind,
     elementalValues: new Map([[Element.Wind, 8]]),
@@ -690,9 +690,9 @@ export const WIND_QUARTZ = [
   {
     id: 61,
     name_i18n: {
-      [Language.ZH_CN]: '封技之刃',
-      [Language.JA]: '封技の刃',
-      [Language.EN]: 'Seal',
+      [LanguageCode.ZH_CN]: '封技之刃',
+      [LanguageCode.JA]: '封技の刃',
+      [LanguageCode.EN]: 'Seal',
     },
     element: Element.Wind,
     elementalValues: new Map([[Element.Wind, 3]]),
@@ -701,9 +701,9 @@ export const WIND_QUARTZ = [
   {
     id: 62,
     name_i18n: {
-      [Language.ZH_CN]: '封技之刃II',
-      [Language.JA]: '封技の刃II',
-      [Language.EN]: 'Seal II',
+      [LanguageCode.ZH_CN]: '封技之刃II',
+      [LanguageCode.JA]: '封技の刃II',
+      [LanguageCode.EN]: 'Seal II',
     },
     element: Element.Wind,
     elementalValues: new Map([[Element.Wind, 5]]),
@@ -712,9 +712,9 @@ export const WIND_QUARTZ = [
   {
     id: 63,
     name_i18n: {
-      [Language.ZH_CN]: '风灵之诗',
-      [Language.JA]: '風霊の詩',
-      [Language.EN]: 'Airy Verse',
+      [LanguageCode.ZH_CN]: '风灵之诗',
+      [LanguageCode.JA]: '風霊の詩',
+      [LanguageCode.EN]: 'Airy Verse',
     },
     element: Element.Wind,
     elementalValues: new Map([[Element.Wind, 3]]),
@@ -723,9 +723,9 @@ export const WIND_QUARTZ = [
   {
     id: 64,
     name_i18n: {
-      [Language.ZH_CN]: '威风之诗',
-      [Language.JA]: '威風の詩',
-      [Language.EN]: 'Tempest Verse',
+      [LanguageCode.ZH_CN]: '威风之诗',
+      [LanguageCode.JA]: '威風の詩',
+      [LanguageCode.EN]: 'Tempest Verse',
     },
     element: Element.Wind,
     elementalValues: new Map([[Element.Wind, 5]]),
@@ -734,9 +734,9 @@ export const WIND_QUARTZ = [
   {
     id: 65,
     name_i18n: {
-      [Language.ZH_CN]: '绿晶之轮',
-      [Language.JA]: '緑晶の輪',
-      [Language.EN]: 'Emerald Ring',
+      [LanguageCode.ZH_CN]: '绿晶之轮',
+      [LanguageCode.JA]: '緑晶の輪',
+      [LanguageCode.EN]: 'Emerald Ring',
     },
     element: Element.Wind,
     elementalValues: new Map([[Element.Wind, 3]]),
@@ -745,9 +745,9 @@ export const WIND_QUARTZ = [
   {
     id: 66,
     name_i18n: {
-      [Language.ZH_CN]: '翠玉之轮',
-      [Language.JA]: '翠玉の輪',
-      [Language.EN]: 'Jade Ring',
+      [LanguageCode.ZH_CN]: '翠玉之轮',
+      [LanguageCode.JA]: '翠玉の輪',
+      [LanguageCode.EN]: 'Jade Ring',
     },
     element: Element.Wind,
     elementalValues: new Map([[Element.Wind, 5]]),
@@ -756,9 +756,9 @@ export const WIND_QUARTZ = [
   {
     id: 67,
     name_i18n: {
-      [Language.ZH_CN]: '异香',
-      [Language.JA]: '美臭',
-      [Language.EN]: 'Scent',
+      [LanguageCode.ZH_CN]: '异香',
+      [LanguageCode.JA]: '美臭',
+      [LanguageCode.EN]: 'Scent',
     },
     element: Element.Wind,
     elementalValues: new Map([
@@ -769,9 +769,9 @@ export const WIND_QUARTZ = [
   {
     id: 68,
     name_i18n: {
-      [Language.ZH_CN]: '不屈',
-      [Language.JA]: '不屈',
-      [Language.EN]: '不屈',
+      [LanguageCode.ZH_CN]: '不屈',
+      [LanguageCode.JA]: '不屈',
+      [LanguageCode.EN]: '不屈',
     },
     element: Element.Wind,
     elementalValues: new Map([
@@ -782,9 +782,9 @@ export const WIND_QUARTZ = [
   {
     id: 69,
     name_i18n: {
-      [Language.ZH_CN]: '凯兰崔尔',
-      [Language.JA]: 'ガラドリエル',
-      [Language.EN]: 'Galadriel',
+      [LanguageCode.ZH_CN]: '凯兰崔尔',
+      [LanguageCode.JA]: 'ガラドリエル',
+      [LanguageCode.EN]: 'Galadriel',
     },
     element: Element.Wind,
     elementalValues: new Map([
@@ -795,9 +795,9 @@ export const WIND_QUARTZ = [
   {
     id: 70,
     name_i18n: {
-      [Language.ZH_CN]: '草薙',
-      [Language.JA]: 'クサナギ',
-      [Language.EN]: 'Kusanagi',
+      [LanguageCode.ZH_CN]: '草薙',
+      [LanguageCode.JA]: 'クサナギ',
+      [LanguageCode.EN]: 'Kusanagi',
     },
     element: Element.Wind,
     elementalValues: new Map([
@@ -808,9 +808,9 @@ export const WIND_QUARTZ = [
   {
     id: 71,
     name_i18n: {
-      [Language.ZH_CN]: '猿神',
-      [Language.JA]: 'ハヌマーン',
-      [Language.EN]: 'Hanuman',
+      [LanguageCode.ZH_CN]: '猿神',
+      [LanguageCode.JA]: 'ハヌマーン',
+      [LanguageCode.EN]: 'Hanuman',
     },
     element: Element.Wind,
     elementalValues: new Map([
@@ -824,9 +824,9 @@ export const TIME_QUARTZ = [
   {
     id: 72,
     name_i18n: {
-      [Language.ZH_CN]: '行动力1',
-      [Language.JA]: '行動力1',
-      [Language.EN]: 'Action 1',
+      [LanguageCode.ZH_CN]: '行动力1',
+      [LanguageCode.JA]: '行動力1',
+      [LanguageCode.EN]: 'Action 1',
     },
     element: Element.Time,
     elementalValues: new Map([[Element.Time, 2]]),
@@ -834,9 +834,9 @@ export const TIME_QUARTZ = [
   {
     id: 73,
     name_i18n: {
-      [Language.ZH_CN]: '行动力2',
-      [Language.JA]: '行動力2',
-      [Language.EN]: 'Action 2',
+      [LanguageCode.ZH_CN]: '行动力2',
+      [LanguageCode.JA]: '行動力2',
+      [LanguageCode.EN]: 'Action 2',
     },
     element: Element.Time,
     elementalValues: new Map([[Element.Time, 4]]),
@@ -844,9 +844,9 @@ export const TIME_QUARTZ = [
   {
     id: 74,
     name_i18n: {
-      [Language.ZH_CN]: '行动力3',
-      [Language.JA]: '行動力3',
-      [Language.EN]: 'Action 3',
+      [LanguageCode.ZH_CN]: '行动力3',
+      [LanguageCode.JA]: '行動力3',
+      [LanguageCode.EN]: 'Action 3',
     },
     element: Element.Time,
     elementalValues: new Map([[Element.Time, 6]]),
@@ -854,9 +854,9 @@ export const TIME_QUARTZ = [
   {
     id: 75,
     name_i18n: {
-      [Language.ZH_CN]: '驱动1',
-      [Language.JA]: '駆動1',
-      [Language.EN]: 'Cast 1',
+      [LanguageCode.ZH_CN]: '驱动1',
+      [LanguageCode.JA]: '駆動1',
+      [LanguageCode.EN]: 'Cast 1',
     },
     element: Element.Time,
     elementalValues: new Map([[Element.Time, 2]]),
@@ -864,9 +864,9 @@ export const TIME_QUARTZ = [
   {
     id: 76,
     name_i18n: {
-      [Language.ZH_CN]: '驱动2',
-      [Language.JA]: '駆動2',
-      [Language.EN]: 'Cast 2',
+      [LanguageCode.ZH_CN]: '驱动2',
+      [LanguageCode.JA]: '駆動2',
+      [LanguageCode.EN]: 'Cast 2',
     },
     element: Element.Time,
     elementalValues: new Map([[Element.Time, 4]]),
@@ -874,9 +874,9 @@ export const TIME_QUARTZ = [
   {
     id: 77,
     name_i18n: {
-      [Language.ZH_CN]: '驱动3',
-      [Language.JA]: '駆動3',
-      [Language.EN]: 'Cast 3',
+      [LanguageCode.ZH_CN]: '驱动3',
+      [LanguageCode.JA]: '駆動3',
+      [LanguageCode.EN]: 'Cast 3',
     },
     element: Element.Time,
     elementalValues: new Map([[Element.Time, 6]]),
@@ -884,9 +884,9 @@ export const TIME_QUARTZ = [
   {
     id: 78,
     name_i18n: {
-      [Language.ZH_CN]: '黑耀珠',
-      [Language.JA]: '黒耀珠',
-      [Language.EN]: 'Nohval Gem',
+      [LanguageCode.ZH_CN]: '黑耀珠',
+      [LanguageCode.JA]: '黒耀珠',
+      [LanguageCode.EN]: 'Nohval Gem',
     },
     element: Element.Time,
     elementalValues: new Map([[Element.Time, 8]]),
@@ -894,9 +894,9 @@ export const TIME_QUARTZ = [
   {
     id: 79,
     name_i18n: {
-      [Language.ZH_CN]: '黑暗之刃',
-      [Language.JA]: '冥暗の刃',
-      [Language.EN]: 'Blind',
+      [LanguageCode.ZH_CN]: '黑暗之刃',
+      [LanguageCode.JA]: '冥暗の刃',
+      [LanguageCode.EN]: 'Blind',
     },
     element: Element.Time,
     elementalValues: new Map([[Element.Time, 3]]),
@@ -905,9 +905,9 @@ export const TIME_QUARTZ = [
   {
     id: 80,
     name_i18n: {
-      [Language.ZH_CN]: '黑暗之刃II',
-      [Language.JA]: '冥暗の刃II',
-      [Language.EN]: 'Blind II',
+      [LanguageCode.ZH_CN]: '黑暗之刃II',
+      [LanguageCode.JA]: '冥暗の刃II',
+      [LanguageCode.EN]: 'Blind II',
     },
     element: Element.Time,
     elementalValues: new Map([[Element.Time, 5]]),
@@ -916,9 +916,9 @@ export const TIME_QUARTZ = [
   {
     id: 81,
     name_i18n: {
-      [Language.ZH_CN]: '星灵之诗',
-      [Language.JA]: '星霊の詩',
-      [Language.EN]: 'Stellar Verse',
+      [LanguageCode.ZH_CN]: '星灵之诗',
+      [LanguageCode.JA]: '星霊の詩',
+      [LanguageCode.EN]: 'Stellar Verse',
     },
     element: Element.Time,
     elementalValues: new Map([[Element.Time, 3]]),
@@ -927,9 +927,9 @@ export const TIME_QUARTZ = [
   {
     id: 82,
     name_i18n: {
-      [Language.ZH_CN]: '晓星之诗',
-      [Language.JA]: '暁星の詩',
-      [Language.EN]: 'Dawnstar Verse',
+      [LanguageCode.ZH_CN]: '晓星之诗',
+      [LanguageCode.JA]: '暁星の詩',
+      [LanguageCode.EN]: 'Dawnstar Verse',
     },
     element: Element.Time,
     elementalValues: new Map([[Element.Time, 5]]),
@@ -938,9 +938,9 @@ export const TIME_QUARTZ = [
   {
     id: 83,
     name_i18n: {
-      [Language.ZH_CN]: '紫晶之轮',
-      [Language.JA]: '紫晶の輪',
-      [Language.EN]: 'Amethyst Ring',
+      [LanguageCode.ZH_CN]: '紫晶之轮',
+      [LanguageCode.JA]: '紫晶の輪',
+      [LanguageCode.EN]: 'Amethyst Ring',
     },
     element: Element.Time,
     elementalValues: new Map([[Element.Time, 3]]),
@@ -949,9 +949,9 @@ export const TIME_QUARTZ = [
   {
     id: 84,
     name_i18n: {
-      [Language.ZH_CN]: '黑银之轮',
-      [Language.JA]: '黒銀の輪',
-      [Language.EN]: 'Onyx Ring',
+      [LanguageCode.ZH_CN]: '黑银之轮',
+      [LanguageCode.JA]: '黒銀の輪',
+      [LanguageCode.EN]: 'Onyx Ring',
     },
     element: Element.Time,
     elementalValues: new Map([[Element.Time, 5]]),
@@ -960,9 +960,9 @@ export const TIME_QUARTZ = [
   {
     id: 85,
     name_i18n: {
-      [Language.ZH_CN]: '幸运',
-      [Language.JA]: '幸運',
-      [Language.EN]: 'Fortune',
+      [LanguageCode.ZH_CN]: '幸运',
+      [LanguageCode.JA]: '幸運',
+      [LanguageCode.EN]: 'Fortune',
     },
     element: Element.Time,
     elementalValues: new Map([
@@ -973,9 +973,9 @@ export const TIME_QUARTZ = [
   {
     id: 86,
     name_i18n: {
-      [Language.ZH_CN]: '豪运',
-      [Language.JA]: '豪運',
-      [Language.EN]: '豪運',
+      [LanguageCode.ZH_CN]: '豪运',
+      [LanguageCode.JA]: '豪運',
+      [LanguageCode.EN]: '豪運',
     },
     element: Element.Time,
     elementalValues: new Map([
@@ -986,9 +986,9 @@ export const TIME_QUARTZ = [
   {
     id: 87,
     name_i18n: {
-      [Language.ZH_CN]: '影豹',
-      [Language.JA]: 'バンダースナッチ',
-      [Language.EN]: 'Bandersnatch',
+      [LanguageCode.ZH_CN]: '影豹',
+      [LanguageCode.JA]: 'バンダースナッチ',
+      [LanguageCode.EN]: 'Bandersnatch',
     },
     element: Element.Time,
     elementalValues: new Map([
@@ -999,9 +999,9 @@ export const TIME_QUARTZ = [
   {
     id: 88,
     name_i18n: {
-      [Language.ZH_CN]: '神矛',
-      [Language.JA]: 'グングニル',
-      [Language.EN]: 'Gungnir',
+      [LanguageCode.ZH_CN]: '神矛',
+      [LanguageCode.JA]: 'グングニル',
+      [LanguageCode.EN]: 'Gungnir',
     },
     element: Element.Time,
     elementalValues: new Map([
@@ -1012,9 +1012,9 @@ export const TIME_QUARTZ = [
   {
     id: 89,
     name_i18n: {
-      [Language.ZH_CN]: '赫卡忒',
-      [Language.JA]: 'ヘカテー',
-      [Language.EN]: 'Hecate',
+      [LanguageCode.ZH_CN]: '赫卡忒',
+      [LanguageCode.JA]: 'ヘカテー',
+      [LanguageCode.EN]: 'Hecate',
     },
     element: Element.Time,
     elementalValues: new Map([
@@ -1028,9 +1028,9 @@ export const SPACE_QUARTZ = [
   {
     id: 90,
     name_i18n: {
-      [Language.ZH_CN]: '省EP1',
-      [Language.JA]: '省EP1',
-      [Language.EN]: 'EP Cut 1',
+      [LanguageCode.ZH_CN]: '省EP1',
+      [LanguageCode.JA]: '省EP1',
+      [LanguageCode.EN]: 'EP Cut 1',
     },
     element: Element.Space,
     elementalValues: new Map([[Element.Space, 2]]),
@@ -1038,9 +1038,9 @@ export const SPACE_QUARTZ = [
   {
     id: 91,
     name_i18n: {
-      [Language.ZH_CN]: '省EP2',
-      [Language.JA]: '省EP2',
-      [Language.EN]: 'EP Cut 2',
+      [LanguageCode.ZH_CN]: '省EP2',
+      [LanguageCode.JA]: '省EP2',
+      [LanguageCode.EN]: 'EP Cut 2',
     },
     element: Element.Space,
     elementalValues: new Map([[Element.Space, 4]]),
@@ -1048,9 +1048,9 @@ export const SPACE_QUARTZ = [
   {
     id: 92,
     name_i18n: {
-      [Language.ZH_CN]: '省EP3',
-      [Language.JA]: '省EP3',
-      [Language.EN]: 'EP Cut 3',
+      [LanguageCode.ZH_CN]: '省EP3',
+      [LanguageCode.JA]: '省EP3',
+      [LanguageCode.EN]: 'EP Cut 3',
     },
     element: Element.Space,
     elementalValues: new Map([[Element.Space, 6]]),
@@ -1058,9 +1058,9 @@ export const SPACE_QUARTZ = [
   {
     id: 93,
     name_i18n: {
-      [Language.ZH_CN]: '命中1',
-      [Language.JA]: '命中1',
-      [Language.EN]: 'Hit 1',
+      [LanguageCode.ZH_CN]: '命中1',
+      [LanguageCode.JA]: '命中1',
+      [LanguageCode.EN]: 'Hit 1',
     },
     element: Element.Space,
     elementalValues: new Map([[Element.Space, 2]]),
@@ -1068,9 +1068,9 @@ export const SPACE_QUARTZ = [
   {
     id: 94,
     name_i18n: {
-      [Language.ZH_CN]: '命中2',
-      [Language.JA]: '命中2',
-      [Language.EN]: 'Hit 2',
+      [LanguageCode.ZH_CN]: '命中2',
+      [LanguageCode.JA]: '命中2',
+      [LanguageCode.EN]: 'Hit 2',
     },
     element: Element.Space,
     elementalValues: new Map([[Element.Space, 4]]),
@@ -1078,9 +1078,9 @@ export const SPACE_QUARTZ = [
   {
     id: 95,
     name_i18n: {
-      [Language.ZH_CN]: '命中3',
-      [Language.JA]: '命中3',
-      [Language.EN]: 'Hit 3',
+      [LanguageCode.ZH_CN]: '命中3',
+      [LanguageCode.JA]: '命中3',
+      [LanguageCode.EN]: 'Hit 3',
     },
     element: Element.Space,
     elementalValues: new Map([[Element.Space, 6]]),
@@ -1088,9 +1088,9 @@ export const SPACE_QUARTZ = [
   {
     id: 96,
     name_i18n: {
-      [Language.ZH_CN]: '金耀珠',
-      [Language.JA]: '金耀珠',
-      [Language.EN]: 'Goldia Gem',
+      [LanguageCode.ZH_CN]: '金耀珠',
+      [LanguageCode.JA]: '金耀珠',
+      [LanguageCode.EN]: 'Goldia Gem',
     },
     element: Element.Space,
     elementalValues: new Map([[Element.Space, 8]]),
@@ -1098,9 +1098,9 @@ export const SPACE_QUARTZ = [
   {
     id: 97,
     name_i18n: {
-      [Language.ZH_CN]: '封魔之刃',
-      [Language.JA]: '封魔の刃',
-      [Language.EN]: 'Mute',
+      [LanguageCode.ZH_CN]: '封魔之刃',
+      [LanguageCode.JA]: '封魔の刃',
+      [LanguageCode.EN]: 'Mute',
     },
     element: Element.Space,
     elementalValues: new Map([[Element.Space, 3]]),
@@ -1109,9 +1109,9 @@ export const SPACE_QUARTZ = [
   {
     id: 98,
     name_i18n: {
-      [Language.ZH_CN]: '封魔之刃II',
-      [Language.JA]: '封魔の刃II',
-      [Language.EN]: 'Mute II',
+      [LanguageCode.ZH_CN]: '封魔之刃II',
+      [LanguageCode.JA]: '封魔の刃II',
+      [LanguageCode.EN]: 'Mute II',
     },
     element: Element.Space,
     elementalValues: new Map([[Element.Space, 5]]),
@@ -1120,9 +1120,9 @@ export const SPACE_QUARTZ = [
   {
     id: 99,
     name_i18n: {
-      [Language.ZH_CN]: '阳灵之诗',
-      [Language.JA]: '陽霊の詩',
-      [Language.EN]: 'Solar Verse',
+      [LanguageCode.ZH_CN]: '阳灵之诗',
+      [LanguageCode.JA]: '陽霊の詩',
+      [LanguageCode.EN]: 'Solar Verse',
     },
     element: Element.Space,
     elementalValues: new Map([[Element.Space, 3]]),
@@ -1131,9 +1131,9 @@ export const SPACE_QUARTZ = [
   {
     id: 100,
     name_i18n: {
-      [Language.ZH_CN]: '极光之诗',
-      [Language.JA]: '極光の詩',
-      [Language.EN]: 'Aurora Verse',
+      [LanguageCode.ZH_CN]: '极光之诗',
+      [LanguageCode.JA]: '極光の詩',
+      [LanguageCode.EN]: 'Aurora Verse',
     },
     element: Element.Space,
     elementalValues: new Map([[Element.Space, 5]]),
@@ -1142,9 +1142,9 @@ export const SPACE_QUARTZ = [
   {
     id: 101,
     name_i18n: {
-      [Language.ZH_CN]: '金晶之轮',
-      [Language.JA]: '金晶の輪',
-      [Language.EN]: 'Citrine Ring',
+      [LanguageCode.ZH_CN]: '金晶之轮',
+      [LanguageCode.JA]: '金晶の輪',
+      [LanguageCode.EN]: 'Citrine Ring',
     },
     element: Element.Space,
     elementalValues: new Map([[Element.Space, 3]]),
@@ -1153,9 +1153,9 @@ export const SPACE_QUARTZ = [
   {
     id: 102,
     name_i18n: {
-      [Language.ZH_CN]: '黄金之轮',
-      [Language.JA]: '黄金の輪',
-      [Language.EN]: 'Golden Ring',
+      [LanguageCode.ZH_CN]: '黄金之轮',
+      [LanguageCode.JA]: '黄金の輪',
+      [LanguageCode.EN]: 'Golden Ring',
     },
     element: Element.Space,
     elementalValues: new Map([[Element.Space, 5]]),
@@ -1164,9 +1164,9 @@ export const SPACE_QUARTZ = [
   {
     id: 103,
     name_i18n: {
-      [Language.ZH_CN]: '天启',
-      [Language.JA]: '天啓',
-      [Language.EN]: 'Revelation',
+      [LanguageCode.ZH_CN]: '天启',
+      [LanguageCode.JA]: '天啓',
+      [LanguageCode.EN]: 'Revelation',
     },
     element: Element.Space,
     elementalValues: new Map([
@@ -1177,9 +1177,9 @@ export const SPACE_QUARTZ = [
   {
     id: 104,
     name_i18n: {
-      [Language.ZH_CN]: '神谕',
-      [Language.JA]: '神託',
-      [Language.EN]: '神託',
+      [LanguageCode.ZH_CN]: '神谕',
+      [LanguageCode.JA]: '神託',
+      [LanguageCode.EN]: '神託',
     },
     element: Element.Space,
     elementalValues: new Map([
@@ -1190,9 +1190,9 @@ export const SPACE_QUARTZ = [
   {
     id: 105,
     name_i18n: {
-      [Language.ZH_CN]: '三月兔',
-      [Language.JA]: 'マーチヘア',
-      [Language.EN]: 'March Hare',
+      [LanguageCode.ZH_CN]: '三月兔',
+      [LanguageCode.JA]: 'マーチヘア',
+      [LanguageCode.EN]: 'March Hare',
     },
     element: Element.Space,
     elementalValues: new Map([
@@ -1203,9 +1203,9 @@ export const SPACE_QUARTZ = [
   {
     id: 106,
     name_i18n: {
-      [Language.ZH_CN]: '蛇杖',
-      [Language.JA]: 'カドゥケウス',
-      [Language.EN]: 'Caduceus',
+      [LanguageCode.ZH_CN]: '蛇杖',
+      [LanguageCode.JA]: 'カドゥケウス',
+      [LanguageCode.EN]: 'Caduceus',
     },
     element: Element.Space,
     elementalValues: new Map([
@@ -1216,9 +1216,9 @@ export const SPACE_QUARTZ = [
   {
     id: 107,
     name_i18n: {
-      [Language.ZH_CN]: '库罗索',
-      [Language.JA]: 'クロートー',
-      [Language.EN]: 'Clotho',
+      [LanguageCode.ZH_CN]: '库罗索',
+      [LanguageCode.JA]: 'クロートー',
+      [LanguageCode.EN]: 'Clotho',
     },
     element: Element.Space,
     elementalValues: new Map([
@@ -1232,9 +1232,9 @@ export const MIRAGE_QUARTZ = [
   {
     id: 108,
     name_i18n: {
-      [Language.ZH_CN]: '精神1',
-      [Language.JA]: '精神1',
-      [Language.EN]: 'Mind 1',
+      [LanguageCode.ZH_CN]: '精神1',
+      [LanguageCode.JA]: '精神1',
+      [LanguageCode.EN]: 'Mind 1',
     },
     element: Element.Mirage,
     elementalValues: new Map([[Element.Mirage, 2]]),
@@ -1242,9 +1242,9 @@ export const MIRAGE_QUARTZ = [
   {
     id: 109,
     name_i18n: {
-      [Language.ZH_CN]: '精神2',
-      [Language.JA]: '精神2',
-      [Language.EN]: 'Mind 2',
+      [LanguageCode.ZH_CN]: '精神2',
+      [LanguageCode.JA]: '精神2',
+      [LanguageCode.EN]: 'Mind 2',
     },
     element: Element.Mirage,
     elementalValues: new Map([[Element.Mirage, 4]]),
@@ -1252,9 +1252,9 @@ export const MIRAGE_QUARTZ = [
   {
     id: 110,
     name_i18n: {
-      [Language.ZH_CN]: '精神3',
-      [Language.JA]: '精神3',
-      [Language.EN]: 'Mind 3',
+      [LanguageCode.ZH_CN]: '精神3',
+      [LanguageCode.JA]: '精神3',
+      [LanguageCode.EN]: 'Mind 3',
     },
     element: Element.Mirage,
     elementalValues: new Map([[Element.Mirage, 6]]),
@@ -1262,9 +1262,9 @@ export const MIRAGE_QUARTZ = [
   {
     id: 111,
     name_i18n: {
-      [Language.ZH_CN]: '妨碍1',
-      [Language.JA]: '妨害1',
-      [Language.EN]: 'Impede 1',
+      [LanguageCode.ZH_CN]: '妨碍1',
+      [LanguageCode.JA]: '妨害1',
+      [LanguageCode.EN]: 'Impede 1',
     },
     element: Element.Mirage,
     elementalValues: new Map([[Element.Mirage, 2]]),
@@ -1272,9 +1272,9 @@ export const MIRAGE_QUARTZ = [
   {
     id: 112,
     name_i18n: {
-      [Language.ZH_CN]: '妨碍2',
-      [Language.JA]: '妨害2',
-      [Language.EN]: 'Impede 2',
+      [LanguageCode.ZH_CN]: '妨碍2',
+      [LanguageCode.JA]: '妨害2',
+      [LanguageCode.EN]: 'Impede 2',
     },
     element: Element.Mirage,
     elementalValues: new Map([[Element.Mirage, 4]]),
@@ -1282,9 +1282,9 @@ export const MIRAGE_QUARTZ = [
   {
     id: 113,
     name_i18n: {
-      [Language.ZH_CN]: '妨碍3',
-      [Language.JA]: '妨害3',
-      [Language.EN]: 'Impede 3',
+      [LanguageCode.ZH_CN]: '妨碍3',
+      [LanguageCode.JA]: '妨害3',
+      [LanguageCode.EN]: 'Impede 3',
     },
     element: Element.Mirage,
     elementalValues: new Map([[Element.Mirage, 6]]),
@@ -1292,9 +1292,9 @@ export const MIRAGE_QUARTZ = [
   {
     id: 114,
     name_i18n: {
-      [Language.ZH_CN]: '银耀珠',
-      [Language.JA]: '銀耀珠',
-      [Language.EN]: 'Argem Gem',
+      [LanguageCode.ZH_CN]: '银耀珠',
+      [LanguageCode.JA]: '銀耀珠',
+      [LanguageCode.EN]: 'Argem Gem',
     },
     element: Element.Mirage,
     elementalValues: new Map([[Element.Mirage, 8]]),
@@ -1302,9 +1302,9 @@ export const MIRAGE_QUARTZ = [
   {
     id: 115,
     name_i18n: {
-      [Language.ZH_CN]: '恐惧之刃',
-      [Language.JA]: '恐怖の刃',
-      [Language.EN]: 'Fear',
+      [LanguageCode.ZH_CN]: '恐惧之刃',
+      [LanguageCode.JA]: '恐怖の刃',
+      [LanguageCode.EN]: 'Fear',
     },
     element: Element.Mirage,
     elementalValues: new Map([[Element.Mirage, 3]]),
@@ -1313,9 +1313,9 @@ export const MIRAGE_QUARTZ = [
   {
     id: 116,
     name_i18n: {
-      [Language.ZH_CN]: '恐惧之刃II',
-      [Language.JA]: '恐怖の刃II',
-      [Language.EN]: 'Fear II',
+      [LanguageCode.ZH_CN]: '恐惧之刃II',
+      [LanguageCode.JA]: '恐怖の刃II',
+      [LanguageCode.EN]: 'Fear II',
     },
     element: Element.Mirage,
     elementalValues: new Map([[Element.Mirage, 5]]),
@@ -1324,9 +1324,9 @@ export const MIRAGE_QUARTZ = [
   {
     id: 117,
     name_i18n: {
-      [Language.ZH_CN]: '月灵之诗',
-      [Language.JA]: '月霊の詩',
-      [Language.EN]: 'Lunar Verse',
+      [LanguageCode.ZH_CN]: '月灵之诗',
+      [LanguageCode.JA]: '月霊の詩',
+      [LanguageCode.EN]: 'Lunar Verse',
     },
     element: Element.Mirage,
     elementalValues: new Map([[Element.Mirage, 3]]),
@@ -1335,9 +1335,9 @@ export const MIRAGE_QUARTZ = [
   {
     id: 118,
     name_i18n: {
-      [Language.ZH_CN]: '胧月之诗',
-      [Language.JA]: '朧月の詩',
-      [Language.EN]: 'Misty Verse',
+      [LanguageCode.ZH_CN]: '胧月之诗',
+      [LanguageCode.JA]: '朧月の詩',
+      [LanguageCode.EN]: 'Misty Verse',
     },
     element: Element.Mirage,
     elementalValues: new Map([[Element.Mirage, 5]]),
@@ -1346,9 +1346,9 @@ export const MIRAGE_QUARTZ = [
   {
     id: 119,
     name_i18n: {
-      [Language.ZH_CN]: '银晶之轮',
-      [Language.JA]: '銀晶の輪',
-      [Language.EN]: 'Diamond Ring',
+      [LanguageCode.ZH_CN]: '银晶之轮',
+      [LanguageCode.JA]: '銀晶の輪',
+      [LanguageCode.EN]: 'Diamond Ring',
     },
     element: Element.Mirage,
     elementalValues: new Map([[Element.Mirage, 3]]),
@@ -1357,9 +1357,9 @@ export const MIRAGE_QUARTZ = [
   {
     id: 120,
     name_i18n: {
-      [Language.ZH_CN]: '白银之轮',
-      [Language.JA]: '白銀の輪',
-      [Language.EN]: 'Silver Ring',
+      [LanguageCode.ZH_CN]: '白银之轮',
+      [LanguageCode.JA]: '白銀の輪',
+      [LanguageCode.EN]: 'Silver Ring',
     },
     element: Element.Mirage,
     elementalValues: new Map([[Element.Mirage, 5]]),
@@ -1368,9 +1368,9 @@ export const MIRAGE_QUARTZ = [
   {
     id: 121,
     name_i18n: {
-      [Language.ZH_CN]: '空蝉',
-      [Language.JA]: '空蝉',
-      [Language.EN]: 'Decoy',
+      [LanguageCode.ZH_CN]: '空蝉',
+      [LanguageCode.JA]: '空蝉',
+      [LanguageCode.EN]: 'Decoy',
     },
     element: Element.Mirage,
     elementalValues: new Map([
@@ -1381,9 +1381,9 @@ export const MIRAGE_QUARTZ = [
   {
     id: 122,
     name_i18n: {
-      [Language.ZH_CN]: '隐士',
-      [Language.JA]: '隠者',
-      [Language.EN]: '隠者',
+      [LanguageCode.ZH_CN]: '隐士',
+      [LanguageCode.JA]: '隠者',
+      [LanguageCode.EN]: '隠者',
     },
     element: Element.Mirage,
     elementalValues: new Map([
@@ -1394,9 +1394,9 @@ export const MIRAGE_QUARTZ = [
   {
     id: 123,
     name_i18n: {
-      [Language.ZH_CN]: '幻兽',
-      [Language.JA]: 'ジャバウォッキー',
-      [Language.EN]: 'Jabberwocky',
+      [LanguageCode.ZH_CN]: '幻兽',
+      [LanguageCode.JA]: 'ジャバウォッキー',
+      [LanguageCode.EN]: 'Jabberwocky',
     },
     element: Element.Mirage,
     elementalValues: new Map([
@@ -1407,9 +1407,9 @@ export const MIRAGE_QUARTZ = [
   {
     id: 124,
     name_i18n: {
-      [Language.ZH_CN]: '杜兰达尔',
-      [Language.JA]: 'デュランダル',
-      [Language.EN]: 'Durandal',
+      [LanguageCode.ZH_CN]: '杜兰达尔',
+      [LanguageCode.JA]: 'デュランダル',
+      [LanguageCode.EN]: 'Durandal',
     },
     element: Element.Mirage,
     elementalValues: new Map([
@@ -1420,9 +1420,9 @@ export const MIRAGE_QUARTZ = [
   {
     id: 125,
     name_i18n: {
-      [Language.ZH_CN]: '亚斯特莱尔',
-      [Language.JA]: 'アストライオス',
-      [Language.EN]: 'Astraeus',
+      [LanguageCode.ZH_CN]: '亚斯特莱尔',
+      [LanguageCode.JA]: 'アストライオス',
+      [LanguageCode.EN]: 'Astraeus',
     },
     element: Element.Mirage,
     elementalValues: new Map([

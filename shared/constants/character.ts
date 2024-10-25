@@ -1,5 +1,5 @@
 import { Element } from '../enums/element.js'
-import { Language } from '../enums/language.js'
+import { LanguageCode } from '../enums/languageCode.js'
 import type { Character } from '../model/character.js'
 import { Core } from '../model/core.js'
 import {
@@ -14,9 +14,9 @@ export const ALL_CHARACTERS: Character[] = [
   {
     id: 0,
     name_i18n: {
-      [Language.ZH_CN]: '范恩',
-      [Language.JA]: 'ヴァン',
-      [Language.EN]: 'Van',
+      [LanguageCode.ZH_CN]: '范恩',
+      [LanguageCode.JA]: 'ヴァン',
+      [LanguageCode.EN]: 'Van',
     },
     core: new Core(
       new WeaponLine(4, [], [createElementLimitedSlot(Element.Time, 1)]),
@@ -28,9 +28,9 @@ export const ALL_CHARACTERS: Character[] = [
   {
     id: 1,
     name_i18n: {
-      [Language.ZH_CN]: '亚妮艾丝',
-      [Language.JA]: 'アニエス',
-      [Language.EN]: 'Agnès',
+      [LanguageCode.ZH_CN]: '亚妮艾丝',
+      [LanguageCode.JA]: 'アニエス',
+      [LanguageCode.EN]: 'Agnès',
     },
     core: new Core(
       new WeaponLine(3, [], []),
@@ -42,9 +42,9 @@ export const ALL_CHARACTERS: Character[] = [
   {
     id: 2,
     name_i18n: {
-      [Language.ZH_CN]: '菲莉',
-      [Language.JA]: 'フェリ',
-      [Language.EN]: 'Feri',
+      [LanguageCode.ZH_CN]: '菲莉',
+      [LanguageCode.JA]: 'フェリ',
+      [LanguageCode.EN]: 'Feri',
     },
     core: new Core(
       new WeaponLine(4, [], [createElementLimitedSlot(Element.Fire, 1)]),

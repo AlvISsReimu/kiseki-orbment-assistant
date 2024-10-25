@@ -1,4 +1,4 @@
-import { Language } from '../enums/language.js'
+import { LanguageCode } from '../enums/languageCode.js'
 import { QuartzLineType } from '../enums/quartzLineType.js'
 import { getHash } from '../utils/hash'
 import { getQuartzById, getRandomQuartzId, type QuartzId } from './quartz.js'
@@ -153,23 +153,23 @@ export class Core {
     )
   }
 
-  toString(language: Language): string {
+  toString(languageCode: LanguageCode): string {
     return (
       `[${this.weaponLine.toQuartzNames(
-        language,
-      )}] (${this.weaponLine.toElementValues()}) (${this.weaponLine.toShardSkillNames(language)})` +
+        languageCode,
+      )}] (${this.weaponLine.toElementValues()}) (${this.weaponLine.toShardSkillNames(languageCode)})` +
       '\n' +
       `[${this.shieldLine.toQuartzNames(
-        language,
-      )}] (${this.shieldLine.toElementValues()}) (${this.shieldLine.toShardSkillNames(language)})` +
+        languageCode,
+      )}] (${this.shieldLine.toElementValues()}) (${this.shieldLine.toShardSkillNames(languageCode)})` +
       '\n' +
       `[${this.driveLine.toQuartzNames(
-        language,
-      )}] (${this.driveLine.toElementValues()}) (${this.driveLine.toShardSkillNames(language)})` +
+        languageCode,
+      )}] (${this.driveLine.toElementValues()}) (${this.driveLine.toShardSkillNames(languageCode)})` +
       '\n' +
       `[${this.extraLine.toQuartzNames(
-        language,
-      )}] (${this.extraLine.toElementValues()}) (${this.extraLine.toShardSkillNames(language)})`
+        languageCode,
+      )}] (${this.extraLine.toElementValues()}) (${this.extraLine.toShardSkillNames(languageCode)})`
     )
   }
 

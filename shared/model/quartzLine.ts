@@ -5,7 +5,7 @@ import {
   WEAPON_LINE_SHARD_SKILLS,
 } from '../constants/shardSkill.js'
 import { Element } from '../enums/element.js'
-import type { Language } from '../enums/language.js'
+import type { LanguageCode } from '../enums/languageCode.js'
 import { QuartzLineType } from '../enums/quartzLineType.js'
 import { getQuartzById, type QuartzId } from './quartz.js'
 import { ScoreMaps } from './score.js'
@@ -212,19 +212,19 @@ export abstract class QuartzLine {
 
   /**
    * Return the names of all quartz in the line in the specified language.
-   * @param language
+   * @param languageCode
    * @returns The names of all quartz in the line, separated by commas.
    */
-  toQuartzNames(language: Language): string {
+  toQuartzNames(languageCode: LanguageCode): string {
     const regularNames = this.regularSlotQuartzIds.map(quartzId => {
       const quartz = getQuartzById(quartzId)
-      return quartz ? quartz.name_i18n[language] : 'N/A'
+      return quartz ? quartz.name_i18n[languageCode] : 'N/A'
     })
     for (const elementLimitedSlot of this.elementLimitedSlots) {
       let name = 'N/A'
       if (elementLimitedSlot.quartzId) {
         const quartz = getQuartzById(elementLimitedSlot.quartzId)
-        name = quartz?.name_i18n[language] ?? 'N/A'
+        name = quartz?.name_i18n[languageCode] ?? 'N/A'
       }
       regularNames.splice(elementLimitedSlot.position, 0, name + '*')
     }
@@ -233,13 +233,13 @@ export abstract class QuartzLine {
 
   /**
    * Return the names of all shard skills that can be activated by the current quartz combination in the line.
-   * @param language
+   * @param languageCode
    * @returns The names of all shard skills that can be activated by the current quartz combination in the line, separated by commas.
    */
-  toShardSkillNames(language: Language): string {
+  toShardSkillNames(languageCode: LanguageCode): string {
     const shardSkills = this.analyzeCurrentShardSkills()
     return shardSkills
-      .map(shardSkill => shardSkill.name_i18n[language])
+      .map(shardSkill => shardSkill.name_i18n[languageCode])
       .join(', ')
   }
 

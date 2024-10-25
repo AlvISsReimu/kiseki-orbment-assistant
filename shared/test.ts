@@ -1,5 +1,5 @@
 import 'source-map-support/register.js'
-import { Language } from './enums/language'
+import { LanguageCode } from './enums/languageCode'
 import { getCharacterIdByNameJP } from './model/character.js'
 import {
   getQuartzById,
@@ -73,7 +73,7 @@ const bannedQuartzIds = [
 ] as QuartzId[]
 
 export const test = () => {
-  const language = Language.ZH_CN
+  const languageCode = LanguageCode.ZH_CN
 
   const result = calcOptimalOrbmentSetup({
     characterId,
@@ -93,18 +93,18 @@ export const test = () => {
 
   for (let i = 0; i < bestResults.length; i++) {
     const core = bestResults[i]
-    console.log(`result ${i + 1}:\n${core.toString(language)}`)
+    console.log(`result ${i + 1}:\n${core.toString(languageCode)}`)
     console.log('Missed quartz:')
     console.log(
       core
         .getMissedQuartzIds(scoreMaps.quartzScores)
-        .map(id => getQuartzById(id).name_i18n[language]),
+        .map(id => getQuartzById(id).name_i18n[languageCode]),
     )
     console.log('Missed shard skills:')
     console.log(
       core
         .getMissedShardSkillIds(scoreMaps.shardSkillScores)
-        .map(id => getShardSkillById(id).name_i18n[language]),
+        .map(id => getShardSkillById(id).name_i18n[languageCode]),
     )
   }
 }

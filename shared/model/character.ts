@@ -1,5 +1,5 @@
 import { ALL_CHARACTERS } from '../constants/character.js'
-import { Language } from '../enums/language.js'
+import { LanguageCode } from '../enums/languageCode.js'
 import type { Core } from './core.js'
 
 export type CharacterId = number
@@ -24,7 +24,7 @@ export const getCharacterById = (id: CharacterId): Character | null => {
 // TODO: a temp function for testing
 export const getCharacterIdByNameJP = (name_jp: string): CharacterId | null => {
   for (let i = 0; i < ALL_CHARACTERS.length; i++) {
-    if (ALL_CHARACTERS[i].name_i18n[Language.JA] === name_jp) {
+    if (ALL_CHARACTERS[i].name_i18n[LanguageCode.JA] === name_jp) {
       return i
     }
   }

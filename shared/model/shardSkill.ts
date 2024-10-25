@@ -3,7 +3,7 @@ import {
   ALL_SHARD_SKILLS_MAP,
 } from '../constants/shardSkill.js'
 import { Element } from '../enums/element.js'
-import { Language } from '../enums/language.js'
+import { LanguageCode } from '../enums/languageCode.js'
 import { QuartzLineType } from '../enums/quartzLineType.js'
 
 export type ShardSkillId = number
@@ -32,7 +32,7 @@ export const getShardSkillIdByNameJP = (
   name_jp: string,
 ): ShardSkillId | null => {
   for (let i = 0; i < ALL_SHARD_SKILLS.length; i++) {
-    if (ALL_SHARD_SKILLS[i].name_i18n[Language.JA] === name_jp) {
+    if (ALL_SHARD_SKILLS[i].name_i18n[LanguageCode.JA] === name_jp) {
       return i
     }
   }

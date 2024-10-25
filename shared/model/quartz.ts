@@ -1,6 +1,6 @@
 import { ALL_QUARTZ, ALL_QUARTZ_MAP } from '../constants/quartz.js'
 import { Element } from '../enums/element.js'
-import { Language } from '../enums/language.js'
+import { LanguageCode } from '../enums/languageCode.js'
 import { QuartzLineType } from '../enums/quartzLineType.js'
 
 export type QuartzId = number
@@ -28,7 +28,7 @@ export const getQuartzById = (id: QuartzId): Quartz | null => {
 // TODO: a temp function for testing
 export const getQuartzIdByNameJP = (name_jp: string): QuartzId | null => {
   for (let i = 0; i < ALL_QUARTZ.length; i++) {
-    if (ALL_QUARTZ[i].name_i18n[Language.JA] === name_jp) {
+    if (ALL_QUARTZ[i].name_i18n[LanguageCode.JA] === name_jp) {
       return i
     }
   }
