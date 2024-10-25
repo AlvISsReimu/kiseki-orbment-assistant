@@ -10,7 +10,7 @@ import {
   WeaponLine,
 } from './quartzLine.js'
 import type { ScoreMaps } from './score.js'
-import type { ShardSkillId } from './shardSkill'
+import { getShardSkillById, type ShardSkillId } from './shardSkill'
 
 export class Core {
   weaponLine: WeaponLine
@@ -140,7 +140,8 @@ export class Core {
   }
 
   /**
-   * Return shard skill ids that show up in the score map but not in the core
+   * Return shard skill ids that show up in the score map but not in the core.
+   * If an advanced shard skill exists in the core, its basic shard skill is not considered as missed.
    * @param shardSkillScores
    * @returns
    */
@@ -148,8 +149,16 @@ export class Core {
     shardSkillScores: Map<ShardSkillId, number>,
   ): ShardSkillId[] {
     const allShardSkillIds = this.getFlattenedShardSkillIds()
+    const allBaseShardSkillIds = allShardSkillIds
+      .map(shardSkillId => getShardSkillById(shardSkillId).baseShardSkillId)
+      .filter(id => id !== undefined) as ShardSkillId[]
+    const shardSkillsSet = new Set([
+      ...allShardSkillIds,
+      ...allBaseShardSkillIds,
+    ])
+
     return Array.from(shardSkillScores.keys()).filter(
-      shardSkillId => !allShardSkillIds.includes(shardSkillId),
+      shardSkillId => !shardSkillsSet.has(shardSkillId),
     )
   }
 
