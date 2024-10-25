@@ -1,5 +1,5 @@
 import { ALL_QUARTZ, ALL_QUARTZ_MAP } from '../constants/quartz.js'
-import { Element } from '../enums/element.js'
+import { ElementType } from '../enums/elementType.js'
 import { LanguageCode } from '../enums/languageCode.js'
 import { QuartzLineType } from '../enums/quartzLineType.js'
 
@@ -7,8 +7,8 @@ export type QuartzId = number
 export class Quartz {
   id: QuartzId
   name_i18n: { [key: string]: string }
-  element: Element
-  elementalValues: Map<Element, number>
+  element: ElementType
+  elementalValues: Map<ElementType, number>
   /*
    * The line types that the quartz can be added to.
    * If not specified, the quartz can be added to any line type.

@@ -4,7 +4,7 @@ import {
   SHIELD_LINE_SHARD_SKILLS,
   WEAPON_LINE_SHARD_SKILLS,
 } from '../constants/shardSkill.js'
-import { Element } from '../enums/element.js'
+import { ElementType } from '../enums/elementType.js'
 import type { LanguageCode } from '../enums/languageCode.js'
 import { QuartzLineType } from '../enums/quartzLineType.js'
 import { getQuartzById, type QuartzId } from './quartz.js'
@@ -43,8 +43,8 @@ export abstract class QuartzLine {
    * The elemental value of a quartz is doubled if it is in an element limited slot.
    * @returns
    */
-  calcSumElementalValues(): Map<Element, number> {
-    const res = new Map<Element, number>()
+  calcSumElementalValues(): Map<ElementType, number> {
+    const res = new Map<ElementType, number>()
 
     for (const quartzId of this.regularSlotQuartzIds) {
       const quartz = getQuartzById(quartzId)
@@ -249,13 +249,13 @@ export abstract class QuartzLine {
    */
   toElementValues(): string {
     const sumElementalValues = this.calcSumElementalValues()
-    return `${sumElementalValues[Element.Earth] ?? 0}, ${
-      sumElementalValues[Element.Water] ?? 0
-    }, ${sumElementalValues[Element.Fire] ?? 0}, ${
-      sumElementalValues[Element.Wind] ?? 0
-    }, ${sumElementalValues[Element.Time] ?? 0}, ${
-      sumElementalValues[Element.Space] ?? 0
-    }, ${sumElementalValues[Element.Mirage] ?? 0}`
+    return `${sumElementalValues[ElementType.Earth] ?? 0}, ${
+      sumElementalValues[ElementType.Water] ?? 0
+    }, ${sumElementalValues[ElementType.Fire] ?? 0}, ${
+      sumElementalValues[ElementType.Wind] ?? 0
+    }, ${sumElementalValues[ElementType.Time] ?? 0}, ${
+      sumElementalValues[ElementType.Space] ?? 0
+    }, ${sumElementalValues[ElementType.Mirage] ?? 0}`
   }
 
   /**
@@ -271,7 +271,7 @@ export abstract class QuartzLine {
    * @param element
    * @returns
    */
-  private _hasElementLimitedSlot(element: Element): boolean {
+  private _hasElementLimitedSlot(element: ElementType): boolean {
     return this.elementLimitedSlots.some(
       elementLimitedSlot => elementLimitedSlot.element === element,
     )

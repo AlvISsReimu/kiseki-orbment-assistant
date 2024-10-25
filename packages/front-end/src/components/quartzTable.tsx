@@ -8,12 +8,13 @@ import {
   TableRow,
 } from '@mui/material'
 import { ALL_QUARTZ } from '@shared/constants/quartz'
-import { Element } from '@shared/enums/element'
+import { ElementType } from '@shared/enums/elementType'
+import { getNameByElementType } from '@shared/model/element'
 import type { Quartz } from '@shared/model/quartz'
 import { useContext } from 'react'
 import { globalContext } from '../contexts/globalContext'
 
-const headers = Object.values(Element)
+const headers = Object.values(ElementType)
 const data: Quartz[][] = (() => {
   const currentRow = new Array(headers.length).fill(0)
   const data = []
@@ -37,7 +38,7 @@ export const QuartzTable = () => {
           <TableRow>
             {headers.map((header, index) => (
               <TableCell key={index} style={{ textAlign: 'center' }}>
-                {header}
+                {getNameByElementType(header, gc.language)}
               </TableCell>
             ))}
           </TableRow>

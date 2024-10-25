@@ -1,8 +1,8 @@
-import { Element } from '../enums/element.js'
+import { ElementType } from '../enums/elementType.js'
 import type { QuartzId } from './quartz'
 
 export class ElementLimitedSlot {
-  element: Element
+  element: ElementType
   /*
    * The index of the slot in the line. Starts from 0.
    */
@@ -12,7 +12,7 @@ export class ElementLimitedSlot {
    */
   quartzId?: QuartzId
 
-  constructor(element: Element, position: number, quartzId?: QuartzId) {
+  constructor(element: ElementType, position: number, quartzId?: QuartzId) {
     this.element = element
     this.position = position
     this.quartzId = quartzId
@@ -30,7 +30,7 @@ export class ElementLimitedSlot {
  * @returns
  */
 export const createElementLimitedSlot = (
-  element: Element,
+  element: ElementType,
   position: number,
 ): ElementLimitedSlot => {
   return new ElementLimitedSlot(element, position)

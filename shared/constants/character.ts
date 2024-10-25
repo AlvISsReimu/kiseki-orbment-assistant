@@ -1,4 +1,4 @@
-import { Element } from '../enums/element.js'
+import { ElementType } from '../enums/elementType.js'
 import { LanguageCode } from '../enums/languageCode.js'
 import type { Character } from '../model/character.js'
 import { Core } from '../model/core.js'
@@ -19,10 +19,10 @@ export const ALL_CHARACTERS: Character[] = [
       [LanguageCode.EN]: 'Van',
     },
     core: new Core(
-      new WeaponLine(4, [], [createElementLimitedSlot(Element.Time, 1)]),
-      new ShieldLine(4, [], [createElementLimitedSlot(Element.Time, 2)]),
+      new WeaponLine(4, [], [createElementLimitedSlot(ElementType.Time, 1)]),
+      new ShieldLine(4, [], [createElementLimitedSlot(ElementType.Time, 2)]),
       new DriveLine(3, [], []),
-      new ExtraLine(4, [], [createElementLimitedSlot(Element.Earth, 2)]),
+      new ExtraLine(4, [], [createElementLimitedSlot(ElementType.Earth, 2)]),
     ),
   },
   {
@@ -34,9 +34,9 @@ export const ALL_CHARACTERS: Character[] = [
     },
     core: new Core(
       new WeaponLine(3, [], []),
-      new ShieldLine(4, [], [createElementLimitedSlot(Element.Space, 2)]),
-      new DriveLine(4, [], [createElementLimitedSlot(Element.Water, 1)]),
-      new ExtraLine(4, [], [createElementLimitedSlot(Element.Space, 2)]),
+      new ShieldLine(4, [], [createElementLimitedSlot(ElementType.Space, 2)]),
+      new DriveLine(4, [], [createElementLimitedSlot(ElementType.Water, 1)]),
+      new ExtraLine(4, [], [createElementLimitedSlot(ElementType.Space, 2)]),
     ),
   },
   {
@@ -47,10 +47,10 @@ export const ALL_CHARACTERS: Character[] = [
       [LanguageCode.EN]: 'Feri',
     },
     core: new Core(
-      new WeaponLine(4, [], [createElementLimitedSlot(Element.Fire, 1)]),
+      new WeaponLine(4, [], [createElementLimitedSlot(ElementType.Fire, 1)]),
       new ShieldLine(3, [], []),
-      new DriveLine(4, [], [createElementLimitedSlot(Element.Mirage, 1)]),
-      new ExtraLine(4, [], [createElementLimitedSlot(Element.Fire, 2)]),
+      new DriveLine(4, [], [createElementLimitedSlot(ElementType.Mirage, 1)]),
+      new ExtraLine(4, [], [createElementLimitedSlot(ElementType.Fire, 2)]),
     ),
   },
 ] as Character[]

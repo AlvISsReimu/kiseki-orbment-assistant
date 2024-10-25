@@ -1,4 +1,4 @@
-import { Element } from '../enums/element.js'
+import { ElementType } from '../enums/elementType.js'
 import { LanguageCode } from '../enums/languageCode.js'
 import { QuartzLineType } from '../enums/quartzLineType.js'
 import type { ShardSkill, ShardSkillId } from '../model/shardSkill.js'
@@ -13,7 +13,7 @@ export const WEAPON_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Earth Impact',
     },
     lineType: QuartzLineType.Weapon,
-    elementalValues: new Map([[Element.Earth, 2]]),
+    elementalValues: new Map([[ElementType.Earth, 2]]),
   },
   {
     id: 1,
@@ -23,7 +23,7 @@ export const WEAPON_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Aqua Impact',
     },
     lineType: QuartzLineType.Weapon,
-    elementalValues: new Map([[Element.Water, 2]]),
+    elementalValues: new Map([[ElementType.Water, 2]]),
   },
   {
     id: 2,
@@ -33,7 +33,7 @@ export const WEAPON_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Flare Impact',
     },
     lineType: QuartzLineType.Weapon,
-    elementalValues: new Map([[Element.Fire, 2]]),
+    elementalValues: new Map([[ElementType.Fire, 2]]),
   },
   {
     id: 3,
@@ -43,7 +43,7 @@ export const WEAPON_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Gale Impact',
     },
     lineType: QuartzLineType.Weapon,
-    elementalValues: new Map([[Element.Wind, 2]]),
+    elementalValues: new Map([[ElementType.Wind, 2]]),
   },
   {
     id: 4,
@@ -53,7 +53,7 @@ export const WEAPON_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Chrono Impact',
     },
     lineType: QuartzLineType.Weapon,
-    elementalValues: new Map([[Element.Time, 2]]),
+    elementalValues: new Map([[ElementType.Time, 2]]),
   },
   {
     id: 5,
@@ -63,7 +63,7 @@ export const WEAPON_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Cosmic Impact',
     },
     lineType: QuartzLineType.Weapon,
-    elementalValues: new Map([[Element.Space, 2]]),
+    elementalValues: new Map([[ElementType.Space, 2]]),
   },
   {
     id: 6,
@@ -73,7 +73,7 @@ export const WEAPON_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Chaos Impact',
     },
     lineType: QuartzLineType.Weapon,
-    elementalValues: new Map([[Element.Mirage, 2]]),
+    elementalValues: new Map([[ElementType.Mirage, 2]]),
   },
   {
     id: 7,
@@ -83,7 +83,7 @@ export const WEAPON_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Earth Impact II',
     },
     lineType: QuartzLineType.Weapon,
-    elementalValues: new Map([[Element.Earth, 8]]),
+    elementalValues: new Map([[ElementType.Earth, 8]]),
     baseShardSkillId: 0,
   },
   {
@@ -94,7 +94,7 @@ export const WEAPON_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Aqua Impact II',
     },
     lineType: QuartzLineType.Weapon,
-    elementalValues: new Map([[Element.Water, 8]]),
+    elementalValues: new Map([[ElementType.Water, 8]]),
     baseShardSkillId: 1,
   },
   {
@@ -105,7 +105,7 @@ export const WEAPON_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Flare Impact II',
     },
     lineType: QuartzLineType.Weapon,
-    elementalValues: new Map([[Element.Fire, 8]]),
+    elementalValues: new Map([[ElementType.Fire, 8]]),
     baseShardSkillId: 2,
   },
   {
@@ -116,7 +116,7 @@ export const WEAPON_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Gale Impact II',
     },
     lineType: QuartzLineType.Weapon,
-    elementalValues: new Map([[Element.Wind, 8]]),
+    elementalValues: new Map([[ElementType.Wind, 8]]),
     baseShardSkillId: 3,
   },
   {
@@ -127,7 +127,7 @@ export const WEAPON_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Chrono Impact II',
     },
     lineType: QuartzLineType.Weapon,
-    elementalValues: new Map([[Element.Time, 8]]),
+    elementalValues: new Map([[ElementType.Time, 8]]),
     baseShardSkillId: 4,
   },
   {
@@ -138,7 +138,7 @@ export const WEAPON_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Cosmic Impact II',
     },
     lineType: QuartzLineType.Weapon,
-    elementalValues: new Map([[Element.Space, 8]]),
+    elementalValues: new Map([[ElementType.Space, 8]]),
     baseShardSkillId: 5,
   },
   {
@@ -149,7 +149,7 @@ export const WEAPON_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Chaos Impact II',
     },
     lineType: QuartzLineType.Weapon,
-    elementalValues: new Map([[Element.Mirage, 8]]),
+    elementalValues: new Map([[ElementType.Mirage, 8]]),
     baseShardSkillId: 6,
   },
   {
@@ -161,8 +161,8 @@ export const WEAPON_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Weapon,
     elementalValues: new Map([
-      [Element.Fire, 3],
-      [Element.Space, 5],
+      [ElementType.Fire, 3],
+      [ElementType.Space, 5],
     ]),
   },
   {
@@ -174,8 +174,8 @@ export const WEAPON_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Weapon,
     elementalValues: new Map([
-      [Element.Fire, 5],
-      [Element.Space, 10],
+      [ElementType.Fire, 5],
+      [ElementType.Space, 10],
     ]),
     baseShardSkillId: 14,
   },
@@ -188,8 +188,8 @@ export const WEAPON_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Weapon,
     elementalValues: new Map([
-      [Element.Earth, 5],
-      [Element.Time, 3],
+      [ElementType.Earth, 5],
+      [ElementType.Time, 3],
     ]),
   },
   {
@@ -201,8 +201,8 @@ export const WEAPON_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Weapon,
     elementalValues: new Map([
-      [Element.Earth, 10],
-      [Element.Time, 5],
+      [ElementType.Earth, 10],
+      [ElementType.Time, 5],
     ]),
     baseShardSkillId: 16,
   },
@@ -215,8 +215,8 @@ export const WEAPON_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Weapon,
     elementalValues: new Map([
-      [Element.Space, 3],
-      [Element.Mirage, 5],
+      [ElementType.Space, 3],
+      [ElementType.Mirage, 5],
     ]),
   },
   {
@@ -228,8 +228,8 @@ export const WEAPON_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Weapon,
     elementalValues: new Map([
-      [Element.Space, 5],
-      [Element.Mirage, 10],
+      [ElementType.Space, 5],
+      [ElementType.Mirage, 10],
     ]),
     baseShardSkillId: 18,
   },
@@ -242,8 +242,8 @@ export const WEAPON_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Weapon,
     elementalValues: new Map([
-      [Element.Water, 5],
-      [Element.Wind, 3],
+      [ElementType.Water, 5],
+      [ElementType.Wind, 3],
     ]),
   },
   {
@@ -255,8 +255,8 @@ export const WEAPON_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Weapon,
     elementalValues: new Map([
-      [Element.Water, 10],
-      [Element.Wind, 5],
+      [ElementType.Water, 10],
+      [ElementType.Wind, 5],
     ]),
     baseShardSkillId: 20,
   },
@@ -269,8 +269,8 @@ export const WEAPON_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Weapon,
     elementalValues: new Map([
-      [Element.Earth, 3],
-      [Element.Time, 6],
+      [ElementType.Earth, 3],
+      [ElementType.Time, 6],
     ]),
   },
   {
@@ -282,8 +282,8 @@ export const WEAPON_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Weapon,
     elementalValues: new Map([
-      [Element.Earth, 6],
-      [Element.Time, 12],
+      [ElementType.Earth, 6],
+      [ElementType.Time, 12],
     ]),
     baseShardSkillId: 22,
   },
@@ -296,8 +296,8 @@ export const WEAPON_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Weapon,
     elementalValues: new Map([
-      [Element.Water, 3],
-      [Element.Fire, 6],
+      [ElementType.Water, 3],
+      [ElementType.Fire, 6],
     ]),
   },
   {
@@ -309,8 +309,8 @@ export const WEAPON_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Weapon,
     elementalValues: new Map([
-      [Element.Water, 6],
-      [Element.Fire, 12],
+      [ElementType.Water, 6],
+      [ElementType.Fire, 12],
     ]),
     baseShardSkillId: 24,
   },
@@ -323,8 +323,8 @@ export const WEAPON_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Weapon,
     elementalValues: new Map([
-      [Element.Wind, 6],
-      [Element.Mirage, 3],
+      [ElementType.Wind, 6],
+      [ElementType.Mirage, 3],
     ]),
   },
   {
@@ -336,8 +336,8 @@ export const WEAPON_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Weapon,
     elementalValues: new Map([
-      [Element.Wind, 12],
-      [Element.Mirage, 6],
+      [ElementType.Wind, 12],
+      [ElementType.Mirage, 6],
     ]),
     baseShardSkillId: 26,
   },
@@ -352,7 +352,7 @@ export const SHIELD_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Resist Rot',
     },
     lineType: QuartzLineType.Shield,
-    elementalValues: new Map([[Element.Earth, 2]]),
+    elementalValues: new Map([[ElementType.Earth, 2]]),
   },
   {
     id: 29,
@@ -362,7 +362,7 @@ export const SHIELD_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Resist Freeze',
     },
     lineType: QuartzLineType.Shield,
-    elementalValues: new Map([[Element.Water, 2]]),
+    elementalValues: new Map([[ElementType.Water, 2]]),
   },
   {
     id: 30,
@@ -372,7 +372,7 @@ export const SHIELD_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Resist Burn',
     },
     lineType: QuartzLineType.Shield,
-    elementalValues: new Map([[Element.Fire, 2]]),
+    elementalValues: new Map([[ElementType.Fire, 2]]),
   },
   {
     id: 31,
@@ -382,7 +382,7 @@ export const SHIELD_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Resist Seal',
     },
     lineType: QuartzLineType.Shield,
-    elementalValues: new Map([[Element.Wind, 2]]),
+    elementalValues: new Map([[ElementType.Wind, 2]]),
   },
   {
     id: 32,
@@ -392,7 +392,7 @@ export const SHIELD_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Resist Blind',
     },
     lineType: QuartzLineType.Shield,
-    elementalValues: new Map([[Element.Time, 2]]),
+    elementalValues: new Map([[ElementType.Time, 2]]),
   },
   {
     id: 33,
@@ -402,7 +402,7 @@ export const SHIELD_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Resist Mute',
     },
     lineType: QuartzLineType.Shield,
-    elementalValues: new Map([[Element.Space, 2]]),
+    elementalValues: new Map([[ElementType.Space, 2]]),
   },
   {
     id: 34,
@@ -412,7 +412,7 @@ export const SHIELD_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Resist Fear',
     },
     lineType: QuartzLineType.Shield,
-    elementalValues: new Map([[Element.Mirage, 2]]),
+    elementalValues: new Map([[ElementType.Mirage, 2]]),
   },
   {
     id: 35,
@@ -422,7 +422,7 @@ export const SHIELD_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Resist Rot II',
     },
     lineType: QuartzLineType.Shield,
-    elementalValues: new Map([[Element.Earth, 8]]),
+    elementalValues: new Map([[ElementType.Earth, 8]]),
     baseShardSkillId: 28,
   },
   {
@@ -433,7 +433,7 @@ export const SHIELD_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Resist Freeze II',
     },
     lineType: QuartzLineType.Shield,
-    elementalValues: new Map([[Element.Water, 8]]),
+    elementalValues: new Map([[ElementType.Water, 8]]),
     baseShardSkillId: 29,
   },
   {
@@ -444,7 +444,7 @@ export const SHIELD_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Resist Burn II',
     },
     lineType: QuartzLineType.Shield,
-    elementalValues: new Map([[Element.Fire, 8]]),
+    elementalValues: new Map([[ElementType.Fire, 8]]),
     baseShardSkillId: 30,
   },
   {
@@ -455,7 +455,7 @@ export const SHIELD_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Resist Seal II',
     },
     lineType: QuartzLineType.Shield,
-    elementalValues: new Map([[Element.Wind, 8]]),
+    elementalValues: new Map([[ElementType.Wind, 8]]),
     baseShardSkillId: 31,
   },
   {
@@ -466,7 +466,7 @@ export const SHIELD_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Resist Blind II',
     },
     lineType: QuartzLineType.Shield,
-    elementalValues: new Map([[Element.Time, 8]]),
+    elementalValues: new Map([[ElementType.Time, 8]]),
     baseShardSkillId: 32,
   },
   {
@@ -477,7 +477,7 @@ export const SHIELD_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Resist Mute II',
     },
     lineType: QuartzLineType.Shield,
-    elementalValues: new Map([[Element.Space, 8]]),
+    elementalValues: new Map([[ElementType.Space, 8]]),
     baseShardSkillId: 33,
   },
   {
@@ -488,7 +488,7 @@ export const SHIELD_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Resist Fear II',
     },
     lineType: QuartzLineType.Shield,
-    elementalValues: new Map([[Element.Mirage, 8]]),
+    elementalValues: new Map([[ElementType.Mirage, 8]]),
     baseShardSkillId: 34,
   },
   {
@@ -500,8 +500,8 @@ export const SHIELD_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Shield,
     elementalValues: new Map([
-      [Element.Water, 4],
-      [Element.Space, 2],
+      [ElementType.Water, 4],
+      [ElementType.Space, 2],
     ]),
   },
   {
@@ -513,8 +513,8 @@ export const SHIELD_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Shield,
     elementalValues: new Map([
-      [Element.Water, 10],
-      [Element.Space, 5],
+      [ElementType.Water, 10],
+      [ElementType.Space, 5],
     ]),
     baseShardSkillId: 42,
   },
@@ -527,8 +527,8 @@ export const SHIELD_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Shield,
     elementalValues: new Map([
-      [Element.Fire, 2],
-      [Element.Wind, 4],
+      [ElementType.Fire, 2],
+      [ElementType.Wind, 4],
     ]),
   },
   {
@@ -540,8 +540,8 @@ export const SHIELD_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Shield,
     elementalValues: new Map([
-      [Element.Fire, 5],
-      [Element.Wind, 10],
+      [ElementType.Fire, 5],
+      [ElementType.Wind, 10],
     ]),
     baseShardSkillId: 44,
   },
@@ -554,8 +554,8 @@ export const SHIELD_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Shield,
     elementalValues: new Map([
-      [Element.Fire, 4],
-      [Element.Mirage, 2],
+      [ElementType.Fire, 4],
+      [ElementType.Mirage, 2],
     ]),
   },
   {
@@ -567,8 +567,8 @@ export const SHIELD_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Shield,
     elementalValues: new Map([
-      [Element.Fire, 10],
-      [Element.Mirage, 5],
+      [ElementType.Fire, 10],
+      [ElementType.Mirage, 5],
     ]),
     baseShardSkillId: 46,
   },
@@ -581,8 +581,8 @@ export const SHIELD_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Shield,
     elementalValues: new Map([
-      [Element.Earth, 2],
-      [Element.Time, 1],
+      [ElementType.Earth, 2],
+      [ElementType.Time, 1],
     ]),
   },
   {
@@ -594,8 +594,8 @@ export const SHIELD_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Shield,
     elementalValues: new Map([
-      [Element.Earth, 10],
-      [Element.Time, 5],
+      [ElementType.Earth, 10],
+      [ElementType.Time, 5],
     ]),
     baseShardSkillId: 48,
   },
@@ -608,8 +608,8 @@ export const SHIELD_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Shield,
     elementalValues: new Map([
-      [Element.Earth, 3],
-      [Element.Mirage, 6],
+      [ElementType.Earth, 3],
+      [ElementType.Mirage, 6],
     ]),
   },
   {
@@ -621,8 +621,8 @@ export const SHIELD_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Shield,
     elementalValues: new Map([
-      [Element.Earth, 6],
-      [Element.Mirage, 12],
+      [ElementType.Earth, 6],
+      [ElementType.Mirage, 12],
     ]),
     baseShardSkillId: 50,
   },
@@ -635,8 +635,8 @@ export const SHIELD_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Shield,
     elementalValues: new Map([
-      [Element.Wind, 3],
-      [Element.Time, 6],
+      [ElementType.Wind, 3],
+      [ElementType.Time, 6],
     ]),
   },
   {
@@ -648,8 +648,8 @@ export const SHIELD_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Shield,
     elementalValues: new Map([
-      [Element.Wind, 6],
-      [Element.Time, 12],
+      [ElementType.Wind, 6],
+      [ElementType.Time, 12],
     ]),
     baseShardSkillId: 52,
   },
@@ -662,8 +662,8 @@ export const SHIELD_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Shield,
     elementalValues: new Map([
-      [Element.Water, 3],
-      [Element.Space, 6],
+      [ElementType.Water, 3],
+      [ElementType.Space, 6],
     ]),
   },
   {
@@ -675,8 +675,8 @@ export const SHIELD_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Shield,
     elementalValues: new Map([
-      [Element.Water, 6],
-      [Element.Space, 12],
+      [ElementType.Water, 6],
+      [ElementType.Space, 12],
     ]),
     baseShardSkillId: 54,
   },
@@ -691,7 +691,7 @@ export const DRIVE_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Earth Boost',
     },
     lineType: QuartzLineType.Drive,
-    elementalValues: new Map([[Element.Earth, 2]]),
+    elementalValues: new Map([[ElementType.Earth, 2]]),
   },
   {
     id: 57,
@@ -701,7 +701,7 @@ export const DRIVE_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Aqua Boost',
     },
     lineType: QuartzLineType.Drive,
-    elementalValues: new Map([[Element.Water, 2]]),
+    elementalValues: new Map([[ElementType.Water, 2]]),
   },
   {
     id: 58,
@@ -711,7 +711,7 @@ export const DRIVE_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Flare Boost',
     },
     lineType: QuartzLineType.Drive,
-    elementalValues: new Map([[Element.Fire, 2]]),
+    elementalValues: new Map([[ElementType.Fire, 2]]),
   },
   {
     id: 59,
@@ -721,7 +721,7 @@ export const DRIVE_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Gale Boost',
     },
     lineType: QuartzLineType.Drive,
-    elementalValues: new Map([[Element.Wind, 2]]),
+    elementalValues: new Map([[ElementType.Wind, 2]]),
   },
   {
     id: 60,
@@ -731,7 +731,7 @@ export const DRIVE_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Chrono Boost',
     },
     lineType: QuartzLineType.Drive,
-    elementalValues: new Map([[Element.Time, 2]]),
+    elementalValues: new Map([[ElementType.Time, 2]]),
   },
   {
     id: 61,
@@ -741,7 +741,7 @@ export const DRIVE_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Cosmic Boost',
     },
     lineType: QuartzLineType.Drive,
-    elementalValues: new Map([[Element.Space, 2]]),
+    elementalValues: new Map([[ElementType.Space, 2]]),
   },
   {
     id: 62,
@@ -751,7 +751,7 @@ export const DRIVE_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Chaos Boost',
     },
     lineType: QuartzLineType.Drive,
-    elementalValues: new Map([[Element.Mirage, 2]]),
+    elementalValues: new Map([[ElementType.Mirage, 2]]),
   },
   {
     id: 63,
@@ -761,7 +761,7 @@ export const DRIVE_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Earth Boost II',
     },
     lineType: QuartzLineType.Drive,
-    elementalValues: new Map([[Element.Earth, 8]]),
+    elementalValues: new Map([[ElementType.Earth, 8]]),
     baseShardSkillId: 56,
   },
   {
@@ -772,7 +772,7 @@ export const DRIVE_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Aqua Boost II',
     },
     lineType: QuartzLineType.Drive,
-    elementalValues: new Map([[Element.Water, 8]]),
+    elementalValues: new Map([[ElementType.Water, 8]]),
     baseShardSkillId: 57,
   },
   {
@@ -783,7 +783,7 @@ export const DRIVE_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Flare Boost II',
     },
     lineType: QuartzLineType.Drive,
-    elementalValues: new Map([[Element.Fire, 8]]),
+    elementalValues: new Map([[ElementType.Fire, 8]]),
     baseShardSkillId: 58,
   },
   {
@@ -794,7 +794,7 @@ export const DRIVE_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Gale Boost II',
     },
     lineType: QuartzLineType.Drive,
-    elementalValues: new Map([[Element.Wind, 8]]),
+    elementalValues: new Map([[ElementType.Wind, 8]]),
     baseShardSkillId: 59,
   },
   {
@@ -805,7 +805,7 @@ export const DRIVE_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Chrono Boost II',
     },
     lineType: QuartzLineType.Drive,
-    elementalValues: new Map([[Element.Time, 8]]),
+    elementalValues: new Map([[ElementType.Time, 8]]),
     baseShardSkillId: 60,
   },
   {
@@ -816,7 +816,7 @@ export const DRIVE_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Cosmic Boost II',
     },
     lineType: QuartzLineType.Drive,
-    elementalValues: new Map([[Element.Space, 8]]),
+    elementalValues: new Map([[ElementType.Space, 8]]),
     baseShardSkillId: 61,
   },
   {
@@ -827,7 +827,7 @@ export const DRIVE_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Chaos Boost II',
     },
     lineType: QuartzLineType.Drive,
-    elementalValues: new Map([[Element.Mirage, 8]]),
+    elementalValues: new Map([[ElementType.Mirage, 8]]),
     baseShardSkillId: 62,
   },
   {
@@ -839,8 +839,8 @@ export const DRIVE_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Drive,
     elementalValues: new Map([
-      [Element.Wind, 5],
-      [Element.Mirage, 3],
+      [ElementType.Wind, 5],
+      [ElementType.Mirage, 3],
     ]),
   },
   {
@@ -852,8 +852,8 @@ export const DRIVE_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Drive,
     elementalValues: new Map([
-      [Element.Wind, 10],
-      [Element.Mirage, 5],
+      [ElementType.Wind, 10],
+      [ElementType.Mirage, 5],
     ]),
     baseShardSkillId: 70,
   },
@@ -866,8 +866,8 @@ export const DRIVE_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Drive,
     elementalValues: new Map([
-      [Element.Earth, 5],
-      [Element.Space, 3],
+      [ElementType.Earth, 5],
+      [ElementType.Space, 3],
     ]),
   },
   {
@@ -879,8 +879,8 @@ export const DRIVE_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Drive,
     elementalValues: new Map([
-      [Element.Earth, 10],
-      [Element.Space, 5],
+      [ElementType.Earth, 10],
+      [ElementType.Space, 5],
     ]),
     baseShardSkillId: 72,
   },
@@ -893,8 +893,8 @@ export const DRIVE_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Drive,
     elementalValues: new Map([
-      [Element.Fire, 5],
-      [Element.Time, 3],
+      [ElementType.Fire, 5],
+      [ElementType.Time, 3],
     ]),
   },
   {
@@ -906,8 +906,8 @@ export const DRIVE_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Drive,
     elementalValues: new Map([
-      [Element.Fire, 10],
-      [Element.Time, 5],
+      [ElementType.Fire, 10],
+      [ElementType.Time, 5],
     ]),
     baseShardSkillId: 74,
   },
@@ -920,8 +920,8 @@ export const DRIVE_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Drive,
     elementalValues: new Map([
-      [Element.Water, 3],
-      [Element.Time, 5],
+      [ElementType.Water, 3],
+      [ElementType.Time, 5],
     ]),
   },
   {
@@ -933,8 +933,8 @@ export const DRIVE_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Drive,
     elementalValues: new Map([
-      [Element.Water, 5],
-      [Element.Time, 10],
+      [ElementType.Water, 5],
+      [ElementType.Time, 10],
     ]),
     baseShardSkillId: 76,
   },
@@ -947,8 +947,8 @@ export const DRIVE_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Drive,
     elementalValues: new Map([
-      [Element.Wind, 3],
-      [Element.Mirage, 6],
+      [ElementType.Wind, 3],
+      [ElementType.Mirage, 6],
     ]),
   },
   {
@@ -960,8 +960,8 @@ export const DRIVE_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Drive,
     elementalValues: new Map([
-      [Element.Wind, 6],
-      [Element.Mirage, 12],
+      [ElementType.Wind, 6],
+      [ElementType.Mirage, 12],
     ]),
     baseShardSkillId: 78,
   },
@@ -974,8 +974,8 @@ export const DRIVE_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Drive,
     elementalValues: new Map([
-      [Element.Earth, 3],
-      [Element.Water, 6],
+      [ElementType.Earth, 3],
+      [ElementType.Water, 6],
     ]),
   },
   {
@@ -987,8 +987,8 @@ export const DRIVE_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Drive,
     elementalValues: new Map([
-      [Element.Earth, 6],
-      [Element.Water, 12],
+      [ElementType.Earth, 6],
+      [ElementType.Water, 12],
     ]),
     baseShardSkillId: 80,
   },
@@ -1001,8 +1001,8 @@ export const DRIVE_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Drive,
     elementalValues: new Map([
-      [Element.Fire, 3],
-      [Element.Space, 6],
+      [ElementType.Fire, 3],
+      [ElementType.Space, 6],
     ]),
   },
   {
@@ -1014,8 +1014,8 @@ export const DRIVE_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Drive,
     elementalValues: new Map([
-      [Element.Fire, 6],
-      [Element.Space, 12],
+      [ElementType.Fire, 6],
+      [ElementType.Space, 12],
     ]),
     baseShardSkillId: 82,
   },
@@ -1030,7 +1030,7 @@ export const EXTRA_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Guarded Start',
     },
     lineType: QuartzLineType.Extra,
-    elementalValues: new Map([[Element.Earth, 4]]),
+    elementalValues: new Map([[ElementType.Earth, 4]]),
   },
   {
     id: 85,
@@ -1040,7 +1040,7 @@ export const EXTRA_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Healing Start',
     },
     lineType: QuartzLineType.Extra,
-    elementalValues: new Map([[Element.Water, 4]]),
+    elementalValues: new Map([[ElementType.Water, 4]]),
   },
   {
     id: 86,
@@ -1050,7 +1050,7 @@ export const EXTRA_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Powerful Start',
     },
     lineType: QuartzLineType.Extra,
-    elementalValues: new Map([[Element.Fire, 4]]),
+    elementalValues: new Map([[ElementType.Fire, 4]]),
   },
   {
     id: 87,
@@ -1060,7 +1060,7 @@ export const EXTRA_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Gifted Start',
     },
     lineType: QuartzLineType.Extra,
-    elementalValues: new Map([[Element.Wind, 4]]),
+    elementalValues: new Map([[ElementType.Wind, 4]]),
   },
   {
     id: 88,
@@ -1070,7 +1070,7 @@ export const EXTRA_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Quick Start',
     },
     lineType: QuartzLineType.Extra,
-    elementalValues: new Map([[Element.Time, 4]]),
+    elementalValues: new Map([[ElementType.Time, 4]]),
   },
   {
     id: 89,
@@ -1080,7 +1080,7 @@ export const EXTRA_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Mystical Start',
     },
     lineType: QuartzLineType.Extra,
-    elementalValues: new Map([[Element.Space, 4]]),
+    elementalValues: new Map([[ElementType.Space, 4]]),
   },
   {
     id: 90,
@@ -1090,7 +1090,7 @@ export const EXTRA_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Phantom Start',
     },
     lineType: QuartzLineType.Extra,
-    elementalValues: new Map([[Element.Mirage, 4]]),
+    elementalValues: new Map([[ElementType.Mirage, 4]]),
   },
   {
     id: 91,
@@ -1100,7 +1100,7 @@ export const EXTRA_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Guarded Start II',
     },
     lineType: QuartzLineType.Extra,
-    elementalValues: new Map([[Element.Earth, 10]]),
+    elementalValues: new Map([[ElementType.Earth, 10]]),
     baseShardSkillId: 84,
   },
   {
@@ -1111,7 +1111,7 @@ export const EXTRA_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Healing Start II',
     },
     lineType: QuartzLineType.Extra,
-    elementalValues: new Map([[Element.Water, 10]]),
+    elementalValues: new Map([[ElementType.Water, 10]]),
     baseShardSkillId: 85,
   },
   {
@@ -1122,7 +1122,7 @@ export const EXTRA_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Powerful Start II',
     },
     lineType: QuartzLineType.Extra,
-    elementalValues: new Map([[Element.Fire, 10]]),
+    elementalValues: new Map([[ElementType.Fire, 10]]),
     baseShardSkillId: 86,
   },
   {
@@ -1133,7 +1133,7 @@ export const EXTRA_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Gifted Start II',
     },
     lineType: QuartzLineType.Extra,
-    elementalValues: new Map([[Element.Wind, 10]]),
+    elementalValues: new Map([[ElementType.Wind, 10]]),
     baseShardSkillId: 87,
   },
   {
@@ -1144,7 +1144,7 @@ export const EXTRA_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Quick Start II',
     },
     lineType: QuartzLineType.Extra,
-    elementalValues: new Map([[Element.Time, 10]]),
+    elementalValues: new Map([[ElementType.Time, 10]]),
     baseShardSkillId: 88,
   },
   {
@@ -1155,7 +1155,7 @@ export const EXTRA_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Mystical Start II',
     },
     lineType: QuartzLineType.Extra,
-    elementalValues: new Map([[Element.Space, 10]]),
+    elementalValues: new Map([[ElementType.Space, 10]]),
     baseShardSkillId: 89,
   },
   {
@@ -1166,7 +1166,7 @@ export const EXTRA_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Phantom Start II',
     },
     lineType: QuartzLineType.Extra,
-    elementalValues: new Map([[Element.Mirage, 10]]),
+    elementalValues: new Map([[ElementType.Mirage, 10]]),
     baseShardSkillId: 90,
   },
   {
@@ -1177,7 +1177,7 @@ export const EXTRA_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Golden Eye',
     },
     lineType: QuartzLineType.Extra,
-    elementalValues: new Map([[Element.Mirage, 2]]),
+    elementalValues: new Map([[ElementType.Mirage, 2]]),
   },
   {
     id: 99,
@@ -1188,8 +1188,8 @@ export const EXTRA_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Extra,
     elementalValues: new Map([
-      [Element.Time, 5],
-      [Element.Mirage, 3],
+      [ElementType.Time, 5],
+      [ElementType.Mirage, 3],
     ]),
   },
   {
@@ -1201,8 +1201,8 @@ export const EXTRA_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Extra,
     elementalValues: new Map([
-      [Element.Time, 10],
-      [Element.Mirage, 6],
+      [ElementType.Time, 10],
+      [ElementType.Mirage, 6],
     ]),
     baseShardSkillId: 99,
   },
@@ -1215,8 +1215,8 @@ export const EXTRA_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Extra,
     elementalValues: new Map([
-      [Element.Time, 3],
-      [Element.Space, 5],
+      [ElementType.Time, 3],
+      [ElementType.Space, 5],
     ]),
   },
   {
@@ -1228,8 +1228,8 @@ export const EXTRA_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Extra,
     elementalValues: new Map([
-      [Element.Time, 5],
-      [Element.Space, 10],
+      [ElementType.Time, 5],
+      [ElementType.Space, 10],
     ]),
     baseShardSkillId: 101,
   },
@@ -1242,8 +1242,8 @@ export const EXTRA_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Extra,
     elementalValues: new Map([
-      [Element.Fire, 4],
-      [Element.Space, 4],
+      [ElementType.Fire, 4],
+      [ElementType.Space, 4],
     ]),
   },
   {
@@ -1255,8 +1255,8 @@ export const EXTRA_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Extra,
     elementalValues: new Map([
-      [Element.Earth, 4],
-      [Element.Space, 4],
+      [ElementType.Earth, 4],
+      [ElementType.Space, 4],
     ]),
   },
   {
@@ -1268,8 +1268,8 @@ export const EXTRA_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Extra,
     elementalValues: new Map([
-      [Element.Time, 4],
-      [Element.Space, 4],
+      [ElementType.Time, 4],
+      [ElementType.Space, 4],
     ]),
   },
   {
@@ -1280,7 +1280,7 @@ export const EXTRA_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Energy Charger',
     },
     lineType: QuartzLineType.Extra,
-    elementalValues: new Map([[Element.Water, 6]]),
+    elementalValues: new Map([[ElementType.Water, 6]]),
   },
   {
     id: 107,
@@ -1290,7 +1290,7 @@ export const EXTRA_LINE_SHARD_SKILLS = [
       [LanguageCode.EN]: 'Energy Charger II',
     },
     lineType: QuartzLineType.Extra,
-    elementalValues: new Map([[Element.Water, 12]]),
+    elementalValues: new Map([[ElementType.Water, 12]]),
     baseShardSkillId: 106,
   },
   {
@@ -1302,8 +1302,8 @@ export const EXTRA_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Extra,
     elementalValues: new Map([
-      [Element.Fire, 6],
-      [Element.Wind, 3],
+      [ElementType.Fire, 6],
+      [ElementType.Wind, 3],
     ]),
   },
   {
@@ -1315,8 +1315,8 @@ export const EXTRA_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Extra,
     elementalValues: new Map([
-      [Element.Fire, 12],
-      [Element.Wind, 6],
+      [ElementType.Fire, 12],
+      [ElementType.Wind, 6],
     ]),
     baseShardSkillId: 108,
   },
@@ -1329,8 +1329,8 @@ export const EXTRA_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Extra,
     elementalValues: new Map([
-      [Element.Earth, 3],
-      [Element.Wind, 6],
+      [ElementType.Earth, 3],
+      [ElementType.Wind, 6],
     ]),
   },
   {
@@ -1342,8 +1342,8 @@ export const EXTRA_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Extra,
     elementalValues: new Map([
-      [Element.Earth, 6],
-      [Element.Wind, 12],
+      [ElementType.Earth, 6],
+      [ElementType.Wind, 12],
     ]),
     baseShardSkillId: 110,
   },
@@ -1356,8 +1356,8 @@ export const EXTRA_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Extra,
     elementalValues: new Map([
-      [Element.Earth, 6],
-      [Element.Fire, 3],
+      [ElementType.Earth, 6],
+      [ElementType.Fire, 3],
     ]),
   },
   {
@@ -1369,8 +1369,8 @@ export const EXTRA_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Extra,
     elementalValues: new Map([
-      [Element.Earth, 12],
-      [Element.Fire, 6],
+      [ElementType.Earth, 12],
+      [ElementType.Fire, 6],
     ]),
     baseShardSkillId: 112,
   },
@@ -1383,8 +1383,8 @@ export const EXTRA_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Extra,
     elementalValues: new Map([
-      [Element.Water, 3],
-      [Element.Mirage, 6],
+      [ElementType.Water, 3],
+      [ElementType.Mirage, 6],
     ]),
   },
   {
@@ -1396,8 +1396,8 @@ export const EXTRA_LINE_SHARD_SKILLS = [
     },
     lineType: QuartzLineType.Extra,
     elementalValues: new Map([
-      [Element.Water, 6],
-      [Element.Mirage, 12],
+      [ElementType.Water, 6],
+      [ElementType.Mirage, 12],
     ]),
     baseShardSkillId: 114,
   },

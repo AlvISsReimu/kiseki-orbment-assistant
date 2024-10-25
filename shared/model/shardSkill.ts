@@ -2,7 +2,7 @@ import {
   ALL_SHARD_SKILLS,
   ALL_SHARD_SKILLS_MAP,
 } from '../constants/shardSkill.js'
-import { Element } from '../enums/element.js'
+import { ElementType } from '../enums/elementType.js'
 import { LanguageCode } from '../enums/languageCode.js'
 import { QuartzLineType } from '../enums/quartzLineType.js'
 
@@ -11,7 +11,7 @@ export class ShardSkill {
   id: ShardSkillId
   name_i18n: { [key: string]: string }
   lineType: QuartzLineType
-  elementalValues: Map<Element, number>
+  elementalValues: Map<ElementType, number>
   /*
    * A shard skill can be a an 'advanced' shard skill of another one.
    */
