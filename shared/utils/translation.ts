@@ -24,5 +24,20 @@ export const translation = {
       [Language.JA]: '英語',
       [Language.EN]: 'English',
     },
+    enabled: {
+      [Language.ZH_CN]: '启用',
+      [Language.JA]: '有効',
+      [Language.EN]: 'Enabled',
+    },
+    disabled:{
+      [Language.ZH_CN]: '禁用',
+      [Language.JA]: '無効',
+      [Language.EN]: 'Disabled',
+    },
+    weighted: {
+      [Language.ZH_CN]: '加权',
+      [Language.JA]: '重み付け',
+      [Language.EN]: 'Weighted',
+    }
   }
 }

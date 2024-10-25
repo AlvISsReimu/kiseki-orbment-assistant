@@ -1,6 +1,6 @@
 import DarkModeIcon from '@mui/icons-material/DarkMode';
 import LightModeIcon from '@mui/icons-material/LightMode';
-import { FormControl, Input, InputLabel, MenuItem, Select, ThemeProvider, ToggleButton, ToggleButtonGroup, type SelectChangeEvent } from '@mui/material';
+import { CssBaseline, FormControl, Input, InputLabel, MenuItem, Select, ThemeProvider, ToggleButton, ToggleButtonGroup, type SelectChangeEvent } from '@mui/material';
 import { Language } from '@shared/enums/language';
 import { darkTheme, lightTheme } from '@shared/themes';
 import { translation } from '@shared/utils/translation';
@@ -28,6 +28,7 @@ const Main = () => {
 
   const translations = translation.global
   return <ThemeProvider theme={theme}>
+    <CssBaseline />
     <div style={{
       padding: '20px',
       display: 'flex',
