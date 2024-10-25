@@ -14,7 +14,15 @@ import { ElementLimitedSlot } from './slot.js'
 
 export abstract class QuartzLine {
   lineType: QuartzLineType
+
+  /*
+   * The total number of slots in the line.
+   */
   totalSlots: number
+
+  /*
+   * The quartz ids in the regular slots. No order.
+   */
   regularSlotQuartzIds: number[]
   elementLimitedSlots: ElementLimitedSlot[]
 
@@ -30,6 +38,11 @@ export abstract class QuartzLine {
     this.elementLimitedSlots = elementLimitedSlots
   }
 
+  /**
+   * Calculate the sum of elemental values of all quartz in the line.
+   * The elemental value of a quartz is doubled if it is in an element limited slot.
+   * @returns
+   */
   calcSumElementalValues(): Map<Element, number> {
     const res = new Map<Element, number>()
 
@@ -63,16 +76,24 @@ export abstract class QuartzLine {
     return res
   }
 
+  /**
+   * Add or replace a quartz in the line. The position of the quartz is random.
+   * @param quartzId
+   * @returns
+   */
   addOrReplaceQuartz(quartzId: QuartzId): void {
     const quartz = getQuartzById(quartzId)
     if (!quartz) return
 
+    // If the line has at least one element limited slot for the element of the quartz,
+    // the probability of the quartz going to regular slot or element limited slot is 50/50.
     let isRegular = true
     if (this._hasElementLimitedSlot(quartz.element)) {
       isRegular = Math.random() < 0.5
     }
 
     if (isRegular) {
+      // If the line is full, randomly replace one quartz
       if (this.regularSlotQuartzIds.length >= this._getRegularSlotCount()) {
         const index = Math.floor(
           Math.random() * this.regularSlotQuartzIds.length,
@@ -82,7 +103,7 @@ export abstract class QuartzLine {
         this.regularSlotQuartzIds.push(quartzId)
       }
     } else {
-      // random choose one element limited slot
+      // randomly choose one element limited slot
       const elementLimitedSlots = this.elementLimitedSlots.filter(
         elementLimitedSlot => elementLimitedSlot.element === quartz.element,
       )
@@ -92,6 +113,11 @@ export abstract class QuartzLine {
     }
   }
 
+  /**
+   * Try to remove a quartz from the line, regardless of the slot type.
+   * @param quartzId
+   * @returns If the quartz is removed successfully.
+   */
   removeQuartz(quartzId: QuartzId): boolean {
     const index = this.regularSlotQuartzIds.indexOf(quartzId)
     if (index !== -1) {
@@ -109,6 +135,10 @@ export abstract class QuartzLine {
     return false
   }
 
+  /**
+   * Analyze shard skills that can be activated by the current quartz combination in the line.
+   * @returns
+   */
   analyzeCurrentShardSkills(): ShardSkill[] {
     const allShardSkills = this.getAllAvailableShardSkills()
     const sumElementalValues = this.calcSumElementalValues()
@@ -133,6 +163,11 @@ export abstract class QuartzLine {
     )
   }
 
+  /**
+   * Check if the line has a quartz.
+   * @param quartzId
+   * @returns
+   */
   hasQuartz(quartzId: QuartzId): boolean {
     return (
       this.regularSlotQuartzIds.includes(quartzId) ||
@@ -142,6 +177,11 @@ export abstract class QuartzLine {
     )
   }
 
+  /**
+   * Return all quartz ids in the line, including regular and element limited slots.
+   * Note that the order of quartz ids is not guaranteed.
+   * @returns
+   */
   getFlattenedQuartzIds(): QuartzId[] {
     const res = [...this.regularSlotQuartzIds]
     for (const elementLimitedSlot of this.elementLimitedSlots) {
@@ -152,6 +192,11 @@ export abstract class QuartzLine {
     return res
   }
 
+  /**
+   * Calculate the score of the line, including quartz and shard skill scores.
+   * @param scoreMaps
+   * @returns
+   */
   calcScore(scoreMaps: ScoreMaps): number {
     const shardSkillScores = this.analyzeCurrentShardSkills()
       .map(shardSkill => shardSkill.id)
@@ -165,6 +210,11 @@ export abstract class QuartzLine {
     return shardSkillScores + QuartzScores
   }
 
+  /**
+   * Return the names of all quartz in the line in the specified language.
+   * @param language
+   * @returns The names of all quartz in the line, separated by commas.
+   */
   toQuartzNames(language: Language): string {
     const regularNames = this.regularSlotQuartzIds.map(quartzId => {
       const quartz = getQuartzById(quartzId)
@@ -181,6 +231,11 @@ export abstract class QuartzLine {
     return regularNames.join(', ')
   }
 
+  /**
+   * Return the names of all shard skills that can be activated by the current quartz combination in the line.
+   * @param language
+   * @returns The names of all shard skills that can be activated by the current quartz combination in the line, separated by commas.
+   */
   toShardSkillNames(language: Language): string {
     const shardSkills = this.analyzeCurrentShardSkills()
     return shardSkills
@@ -188,6 +243,10 @@ export abstract class QuartzLine {
       .join(', ')
   }
 
+  /**
+   * Return the sum of elemental values of all quartz in the line.
+   * @returns Seven numbers separated by commas, representing the sum of elemental values of Earth, Water, Fire, Wind, Time, Space, and Mirage.
+   */
   toElementValues(): string {
     const sumElementalValues = this.calcSumElementalValues()
     return `${sumElementalValues[Element.Earth] ?? 0}, ${
@@ -199,15 +258,29 @@ export abstract class QuartzLine {
     }, ${sumElementalValues[Element.Mirage] ?? 0}`
   }
 
+  /**
+   * Return the shard skill ids that can be activated by the current quartz combination in the line.
+   * Different line types have different available shard skill sets.
+   */
   abstract getAllAvailableShardSkills(): ShardSkill[]
+
   abstract deepCopy(): QuartzLine
 
+  /**
+   * Check if the line has at least one element limited slot for the given element.
+   * @param element
+   * @returns
+   */
   private _hasElementLimitedSlot(element: Element): boolean {
     return this.elementLimitedSlots.some(
       elementLimitedSlot => elementLimitedSlot.element === element,
     )
   }
 
+  /**
+   * Get the number of regular slots in the line.
+   * @returns
+   */
   private _getRegularSlotCount(): number {
     return this.totalSlots - this.elementLimitedSlots.length
   }

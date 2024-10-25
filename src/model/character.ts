@@ -6,9 +6,17 @@ export type CharacterId = number
 export class Character {
   id: CharacterId
   name_i18n: { [key: string]: string }
+  /*
+   * The holo core of the character. When a character is created, there is no quartz in the core.
+   */
   core: Core
 }
 
+/**
+ * Get a character by id. Returns null if not found.
+ * @param id
+ * @returns
+ */
 export const getCharacterById = (id: CharacterId): Character | null => {
   return ALL_CHARACTERS[id] ?? null
 }

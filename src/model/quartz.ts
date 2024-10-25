@@ -9,9 +9,18 @@ export class Quartz {
   name_i18n: { [key: string]: string }
   element: Element
   elementalValues: Map<Element, number>
-  lineTypeLimit: QuartzLineType[] | null
+  /*
+   * The line types that the quartz can be added to.
+   * If not specified, the quartz can be added to any line type.
+   */
+  lineTypeLimit?: QuartzLineType[]
 }
 
+/**
+ * Get a quartz by id. Returns null if not found.
+ * @param id
+ * @returns
+ */
 export const getQuartzById = (id: QuartzId): Quartz | null => {
   return ALL_QUARTZ_MAP.get(id) ?? null
 }
