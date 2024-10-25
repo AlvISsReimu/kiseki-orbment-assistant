@@ -19,7 +19,11 @@ export class ElementLimitedSlot {
   }
 
   deepCopy(): ElementLimitedSlot {
-    return new ElementLimitedSlot(this.elementType, this.position, this.quartzId)
+    return new ElementLimitedSlot(
+      this.elementType,
+      this.position,
+      this.quartzId,
+    )
   }
 }
 

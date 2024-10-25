@@ -105,7 +105,8 @@ export abstract class QuartzLine {
     } else {
       // randomly choose one element limited slot
       const elementLimitedSlots = this.elementLimitedSlots.filter(
-        elementLimitedSlot => elementLimitedSlot.elementType === quartz.elementType,
+        elementLimitedSlot =>
+          elementLimitedSlot.elementType === quartz.elementType,
       )
       // elementLimitedSlots won't be empty here
       const index = Math.floor(Math.random() * elementLimitedSlots.length)
