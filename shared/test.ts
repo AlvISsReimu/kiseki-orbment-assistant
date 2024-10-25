@@ -13,7 +13,7 @@ import {
   getShardSkillIdByNameJP,
   type ShardSkillId,
 } from './model/shardSkill'
-import { SimulatedAnnealing } from './simulatedAnnealing.js'
+import { SimulatedAnnealing } from './utils/simulatedAnnealing/simulatedAnnealing.js'
 
 const scoreMaps = new ScoreMaps(
   new Map<QuartzId, number>([
@@ -76,7 +76,6 @@ const bannedQuartzIds = [
   // getQuartzIdByNameJP('锻神'),
 ] as QuartzId[]
 
-
 export const test = () => {
   const language = Language.ZH_CN
   const sa = new SimulatedAnnealing<Core>({
@@ -88,10 +87,12 @@ export const test = () => {
     },
     fitness: (current: Core) => current.calcScore(standardizedScoreMaps),
   })
-  const { results, score } = sa.run()
+  const { bestResults, bestScore } = sa.run()
 
-  for (let i = 0; i < results.length; i++) {
-    const core = results[i]
+  console.log(`score: ${bestScore}, result size: ${bestResults.length}`)
+
+  for (let i = 0; i < bestResults.length; i++) {
+    const core = bestResults[i]
     console.log(`result ${i + 1}:\n${core.toString(language)}`)
     console.log('Missed quartz:')
     console.log(
@@ -106,6 +107,4 @@ export const test = () => {
         .map(id => getShardSkillById(id).name_i18n[language]),
     )
   }
-
-  return `score: ${score}, result size: ${results.length}`
 }
