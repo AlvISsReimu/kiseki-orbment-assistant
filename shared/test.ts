@@ -1,7 +1,6 @@
 import 'source-map-support/register.js'
 import { Language } from './enums/language'
-import { getCharacterById, getCharacterIdByNameJP } from './model/character.js'
-import { Core } from './model/core.js'
+import { getCharacterIdByNameJP } from './model/character.js'
 import {
   getQuartzById,
   getQuartzIdByNameJP,
@@ -13,7 +12,7 @@ import {
   getShardSkillIdByNameJP,
   type ShardSkillId,
 } from './model/shardSkill'
-import { SimulatedAnnealing } from './utils/simulatedAnnealing/simulatedAnnealing.js'
+import { calcOptimalOrbmentSetup } from './orbmentAssistant'
 
 const scoreMaps = new ScoreMaps(
   new Map<QuartzId, number>([
@@ -62,32 +61,33 @@ const scoreMaps = new ScoreMaps(
     [getShardSkillIdByNameJP('ヘブンリーラックII'), 10],
   ]),
 )
-const standardizedScoreMaps = scoreMaps.standardize()
 
 const characterId = getCharacterIdByNameJP('フェリ')
-const character = getCharacterById(characterId)
-const core = character.core
 
 const bannedQuartzIds = [
-  // getQuartzIdByNameJP('銀耀珠'),
-  // getQuartzIdByNameJP('精神3'),
-  // getQuartzIdByNameJP('行動力3'),
-  // getQuartzIdByNameJP('カリオペ'),
-  // getQuartzIdByNameJP('锻神'),
+  getQuartzIdByNameJP('銀耀珠'),
+  getQuartzIdByNameJP('精神3'),
+  getQuartzIdByNameJP('行動力3'),
+  getQuartzIdByNameJP('カリオペ'),
+  getQuartzIdByNameJP('锻神'),
 ] as QuartzId[]
 
 export const test = () => {
   const language = Language.ZH_CN
-  const sa = new SimulatedAnnealing<Core>({
-    init: () => core,
-    neighbor: (current: Core) => {
-      const cloned = current.deepCopy()
-      cloned.addOrReplaceRandomQuartz(bannedQuartzIds)
-      return cloned
-    },
-    fitness: (current: Core) => current.calcScore(standardizedScoreMaps),
+
+  const result = calcOptimalOrbmentSetup({
+    characterId,
+    scoreMaps,
+    bannedQuartzIds,
+    initTemperature: 1000,
+    coolingRate: 0.985,
+    endTemperature: 1e-2,
+    balance: 500,
+    maxIteration: 1200,
+    maxNoChangeIteration: 20,
+    resultSizeLimit: 10,
   })
-  const { bestResults, bestScore } = sa.run()
+  const { bestResults, bestScore } = result
 
   console.log(`score: ${bestScore}, result size: ${bestResults.length}`)
 

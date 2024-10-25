@@ -94,7 +94,7 @@ export interface Hashable {
   getHash(): string
 }
 
-interface SimulatedAnnealingResult<T extends Hashable> {
+export interface SimulatedAnnealingResult<T extends Hashable> {
   bestResults: T[]
   bestScore: number
 }
