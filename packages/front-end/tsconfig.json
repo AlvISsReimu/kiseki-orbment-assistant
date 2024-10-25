@@ -1,11 +1,11 @@
 {
   "compilerOptions": {
     "composite": true,
-    "target": "ESNext",
+    "target": "esnext",
     "lib": ["es2021", "esnext", "dom"],
     "useDefineForClassFields": false,
     "moduleDetection": "force",
-    "module": "ESNext",
+    "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "allowJs": true,

@@ -1,0 +1,141 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "eslint.autoFixOnSave": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    {
+      "language": "typescript",
+      "autoFix": true
+    },
+    {
+      "language": "typescriptreact",
+      "autoFix": true
+    }
+  ],
+  "editor.formatOnSave": true,
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+  "[javascriptreact]": {
+    "editor.formatOnSave": false
+  },
+  "[typescript]": {
+    "editor.formatOnSave": false
+  },
+  "[typescriptreact]": {
+    "editor.formatOnSave": false
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "cSpell.words": [
+    "alza",
+    "atleast",
+    "autofix",
+    "backoffice",
+    "bensons",
+    "bigtable",
+    "BSON",
+    "cdxpapi",
+    "cdxpapp",
+    "chatbots",
+    "Cmds",
+    "cocoaas",
+    "cocoass",
+    "codegen",
+    "Colours",
+    "compat",
+    "davinci",
+    "dedup",
+    "dola",
+    "Dominik",
+    "dont",
+    "dqbd",
+    "dsdemos",
+    "epub",
+    "eventsource",
+    "exponea",
+    "ffetch",
+    "fortaine",
+    "frontoffice",
+    "gcal",
+    "gcst",
+    "gdev",
+    "gdevexponea",
+    "gfal",
+    "gfci",
+    "gpts",
+    "healthz",
+    "hnsw",
+    "hola",
+    "hptronic",
+    "httpx",
+    "Jewellery",
+    "jingoext",
+    "KHTML",
+    "knowledgebase",
+    "kuba",
+    "kulibrk",
+    "monolite",
+    "msword",
+    "multitenancy",
+    "Oboril",
+    "officedocument",
+    "oneofs",
+    "openai",
+    "openapi",
+    "openxmlformats",
+    "outdir",
+    "outfile",
+    "papaparse",
+    "pdftotext",
+    "pico",
+    "picostyle",
+    "preact",
+    "proto",
+    "protobuf",
+    "protobufs",
+    "protoc",
+    "proxying",
+    "pydantic",
+    "qdrant",
+    "Reflexions",
+    "saxo",
+    "servedir",
+    "sizeme",
+    "SSOT",
+    "Stackable",
+    "Sunningdale",
+    "Svehla",
+    "textlint",
+    "tiktoken",
+    "Uložit",
+    "unshown",
+    "uuidv",
+    "validní",
+    "Vecs",
+    "vectorize",
+    "vectorizing",
+    "webchatplugin",
+    "weblayer",
+    "wedos",
+    "wordprocessingml"
+  ],
+  "FSharp.suggestGitignore": false,
+  "jest.rootPath": "e2e/"
+}
+// {
+//   "editor.formatOnSave": true,
+//   "editor.codeActionsOnSave": {
+//     "source.fixAll.eslint": "explicit"
+//   },
+//   "eslint.validate": [
+//     "javascript",
+//     "javascriptreact",
+//     "typescript",
+//     "typescriptreact"
+//   ],
+//   "prettier.requireConfig": true,
+//   "prettier.useEditorConfig": false
+// }

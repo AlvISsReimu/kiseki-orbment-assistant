@@ -11,7 +11,14 @@
     "build": "npm run build --workspace=frontend",
     "dev": "npm run dev --workspace=frontend"
   },
-  "dependencies": {
-    "@mui/base": "^5.0.0-beta.60"
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.11.0",
+    "@typescript-eslint/parser": "^8.11.0",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.37.2",
+    "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
+    "prettier": "^3.3.3"
   }
 }
