@@ -76,18 +76,18 @@ const bannedQuartzIds = [
   // getQuartzIdByNameJP('锻神'),
 ] as QuartzId[]
 
-const sa = new SimulatedAnnealing<Core>({
-  init: () => core,
-  neighbor: (current: Core) => {
-    const cloned = current.deepCopy()
-    cloned.addOrReplaceRandomQuartz(bannedQuartzIds)
-    return cloned
-  },
-  fitness: (current: Core) => current.calcScore(standardizedScoreMaps),
-})
 
 export const test = () => {
   const language = Language.ZH_CN
+  const sa = new SimulatedAnnealing<Core>({
+    init: () => core,
+    neighbor: (current: Core) => {
+      const cloned = current.deepCopy()
+      cloned.addOrReplaceRandomQuartz(bannedQuartzIds)
+      return cloned
+    },
+    fitness: (current: Core) => current.calcScore(standardizedScoreMaps),
+  })
   const { results, score } = sa.run()
 
   for (let i = 0; i < results.length; i++) {
