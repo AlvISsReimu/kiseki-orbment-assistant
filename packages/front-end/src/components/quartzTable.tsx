@@ -19,12 +19,12 @@ const data: Quartz[][] = (() => {
   const currentRow = new Array(headers.length).fill(0)
   const data = []
   ALL_QUARTZ.forEach(quartz => {
-    const row = currentRow[headers.indexOf(quartz.element)]
+    const row = currentRow[headers.indexOf(quartz.elementType)]
     if (!data[row]) {
       data[row] = []
     }
     data[row].push(quartz)
-    currentRow[headers.indexOf(quartz.element)] += 1
+    currentRow[headers.indexOf(quartz.elementType)] += 1
   })
   return data
 })()

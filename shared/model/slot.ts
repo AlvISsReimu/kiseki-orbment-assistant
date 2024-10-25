@@ -2,7 +2,7 @@ import { ElementType } from '../enums/elementType.js'
 import type { QuartzId } from './quartz'
 
 export class ElementLimitedSlot {
-  element: ElementType
+  elementType: ElementType
   /*
    * The index of the slot in the line. Starts from 0.
    */
@@ -12,14 +12,14 @@ export class ElementLimitedSlot {
    */
   quartzId?: QuartzId
 
-  constructor(element: ElementType, position: number, quartzId?: QuartzId) {
-    this.element = element
+  constructor(elementType: ElementType, position: number, quartzId?: QuartzId) {
+    this.elementType = elementType
     this.position = position
     this.quartzId = quartzId
   }
 
   deepCopy(): ElementLimitedSlot {
-    return new ElementLimitedSlot(this.element, this.position, this.quartzId)
+    return new ElementLimitedSlot(this.elementType, this.position, this.quartzId)
   }
 }
 
@@ -30,8 +30,8 @@ export class ElementLimitedSlot {
  * @returns
  */
 export const createElementLimitedSlot = (
-  element: ElementType,
+  elementType: ElementType,
   position: number,
 ): ElementLimitedSlot => {
-  return new ElementLimitedSlot(element, position)
+  return new ElementLimitedSlot(elementType, position)
 }

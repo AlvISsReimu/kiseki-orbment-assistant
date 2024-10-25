@@ -7,7 +7,7 @@ export type QuartzId = number
 export class Quartz {
   id: QuartzId
   name_i18n: { [key: string]: string }
-  element: ElementType
+  elementType: ElementType
   elementalValues: Map<ElementType, number>
   /*
    * The line types that the quartz can be added to.

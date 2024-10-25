@@ -88,7 +88,7 @@ export abstract class QuartzLine {
     // If the line has at least one element limited slot for the element of the quartz,
     // the probability of the quartz going to regular slot or element limited slot is 50/50.
     let isRegular = true
-    if (this._hasElementLimitedSlot(quartz.element)) {
+    if (this._hasElementLimitedSlot(quartz.elementType)) {
       isRegular = Math.random() < 0.5
     }
 
@@ -105,7 +105,7 @@ export abstract class QuartzLine {
     } else {
       // randomly choose one element limited slot
       const elementLimitedSlots = this.elementLimitedSlots.filter(
-        elementLimitedSlot => elementLimitedSlot.element === quartz.element,
+        elementLimitedSlot => elementLimitedSlot.elementType === quartz.elementType,
       )
       // elementLimitedSlots won't be empty here
       const index = Math.floor(Math.random() * elementLimitedSlots.length)
@@ -268,12 +268,12 @@ export abstract class QuartzLine {
 
   /**
    * Check if the line has at least one element limited slot for the given element.
-   * @param element
+   * @param elementType
    * @returns
    */
-  private _hasElementLimitedSlot(element: ElementType): boolean {
+  private _hasElementLimitedSlot(elementType: ElementType): boolean {
     return this.elementLimitedSlots.some(
-      elementLimitedSlot => elementLimitedSlot.element === element,
+      elementLimitedSlot => elementLimitedSlot.elementType === elementType,
     )
   }
 
