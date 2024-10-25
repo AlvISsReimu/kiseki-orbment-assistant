@@ -35,11 +35,11 @@ export interface OrbmentAssistantInput {
 export const calcOptimalOrbmentSetup = (
   input: OrbmentAssistantInput,
 ): SimulatedAnnealingResult<Core> => {
-  if (!input.characterId && !input.customizedCore) {
+  if (input.characterId == null && !input.customizedCore) {
     throw new Error('Either characterId or customizedCore should be provided')
   }
   let core: Core | null = null
-  if (input.characterId) {
+  if (input.characterId != null) {
     const character = getCharacterById(input.characterId)
     core = character?.core ?? input.customizedCore ?? null
   }
