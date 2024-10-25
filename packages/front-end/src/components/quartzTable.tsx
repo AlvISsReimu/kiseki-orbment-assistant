@@ -1,8 +1,9 @@
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 import { ALL_QUARTZ } from "@shared/constants/quartz";
 import { Element } from "@shared/enums/element";
-import { Language } from "@shared/enums/language";
 import type { Quartz } from "@shared/model/quartz";
+import { useContext } from "react";
+import { globalContext } from "../contexts/globalContext";
 
 const headers = Object.values(Element);
 const data: Quartz[][] = (() => {
@@ -21,13 +22,14 @@ const data: Quartz[][] = (() => {
 
 
 export const QuartzTable = () => {
+  const gc = useContext(globalContext.Context);
   return (
     <TableContainer component={Paper}>
       <Table>
         <TableHead>
           <TableRow>
             {headers.map((header, index) => (
-              <TableCell key={index} style={{textAlign:'center'}}>{header}</TableCell>
+              <TableCell key={index} style={{ textAlign: 'center' }}>{header}</TableCell>
             ))}
           </TableRow>
         </TableHead>
@@ -35,7 +37,7 @@ export const QuartzTable = () => {
           {data.map((row, index) => (
             <TableRow key={index}>
               {row.map((quartz, ind) => (
-                <TableCell key={ind}>{quartz.name_i18n[Language.ZH_CN]}</TableCell>
+                <TableCell key={ind}>{quartz.name_i18n[gc.language]}</TableCell>
               ))}
             </TableRow>
           ))}

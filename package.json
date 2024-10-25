@@ -10,5 +10,8 @@
   "scripts": {
     "build": "npm run build --workspace=frontend",
     "dev": "npm run dev --workspace=frontend"
+  },
+  "dependencies": {
+    "@mui/base": "^5.0.0-beta.60"
   }
 }
