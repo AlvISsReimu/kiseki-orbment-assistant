@@ -10,7 +10,7 @@ import {
 import { ALL_QUARTZ } from '@shared/constants/quartz'
 import { ElementType } from '@shared/enums/elementType'
 import { getNameByElementType } from '@shared/model/element'
-import type { Quartz } from '@shared/model/quartz'
+import { getQuartzById, type Quartz, type QuartzId } from '@shared/model/quartz'
 import { useContext } from 'react'
 import { globalContext } from '../contexts/globalContext'
 
@@ -75,7 +75,9 @@ const data: Quartz[][] = (() => {
   return data
 })()
 
-const getQuartzIcon = (quartz: Quartz): string => {
+const getQuartzIconById = (quartzId: QuartzId): string => {
+  // get qrartz object again
+  const quartz = getQuartzById(quartzId)
   const isAdvanced = quartz.elementalValues.size > 1
   return quartzIconMap[quartz.elementType][isAdvanced ? 'advanced' : 'regular']
 }
@@ -99,7 +101,7 @@ export const QuartzTable = () => {
             <TableRow key={index}>
               {row.map((quartz, ind) => (
                 <TableCell key={ind}>
-                  <img src={getQuartzIcon(quartz)}></img>
+                  <img src={getQuartzIconById(quartz.id)}></img>
                   {quartz.name_i18n[gc.language]}
                 </TableCell>
               ))}
