@@ -12,8 +12,8 @@
     "dev": "npm run dev --workspace=frontend",
     "lint": "eslint --ext .js,.ts,.tsx shared/ packages/",
     "lint-staged": "lint-staged",
-    "format-check": "prettier '**/*.{js,ts,tsx,json}' --ignore-path '{.gitignore,.prettierignore}' --check",
-    "format": "prettier '**/*.{js,ts,tsx,json}' --ignore-path '{.gitignore,.prettierignore}' --write",
+    "format-check": "prettier --check **/*.{js,ts,tsx,json}",
+    "format": "prettier --write **/*.{js,ts,tsx,json}",
     "test": "vitest --no-watch",
     "prepare": "husky"
   },
