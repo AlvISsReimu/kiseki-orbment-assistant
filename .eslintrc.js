@@ -16,6 +16,21 @@ module.exports = {
   rules: {
     // Add your custom rules here
     'react/react-in-jsx-scope': 'off',
+    // 'unused-imports/no-unused-imports': 'warn',
+    // 'unused-imports/no-unused-vars': [
+    //   'warn',
+    //   {
+    //     vars: 'all',
+    //     varsIgnorePattern: '^_',
+    //     args: 'after-used',
+    //     argsIgnorePattern: '^_',
+    //   },
+    // ],
+    // Warn instead of error for unused variables
+    '@typescript-eslint/no-unused-vars': [
+      'warn',
+      { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+    ],
   },
   settings: {
     react: {

@@ -1,17 +1,14 @@
 import { LanguageCode } from '@shared/enums/languageCode'
-import { useState } from 'react'
 import { genericHookContextBuilder } from '../utils/genericHookContextBuilder'
+import { useSingletonLocalStorage } from '../utils/utils'
 
 export const globalContext = genericHookContextBuilder(() => {
-  const [themeMode, setThemeMode] = useState<'light' | 'dark'>(() => {
-    const savedTheme = localStorage.getItem('theme')
-    return savedTheme ? JSON.parse(savedTheme) : 'dark'
-  })
-  const [language, setLanguage] = useState<LanguageCode>(LanguageCode.ZH_CN)
+  const [language, setLanguage] = useSingletonLocalStorage<LanguageCode>(
+    'language',
+    LanguageCode.ZH_CN,
+  )
 
   return {
-    themeMode,
-    setThemeMode,
     language,
     setLanguage,
   }
