@@ -52,10 +52,10 @@ export abstract class QuartzLine {
       for (const elementValue of quartz.elementalValues) {
         const element = elementValue[0]
         const value = elementValue[1]
-        if (res[element] === undefined) {
-          res[element] = 0
+        if (!res.has(element)) {
+          res.set(element, 0)
         }
-        res[element] += value
+        res.set(element, res.get(element) + value)
       }
     }
 
@@ -66,10 +66,10 @@ export abstract class QuartzLine {
       for (const elementValue of quartz.elementalValues) {
         const element = elementValue[0]
         const value = elementValue[1]
-        if (res[element] === undefined) {
-          res[element] = 0
+        if (!res.has(element)) {
+          res.set(element, 0)
         }
-        res[element] += value * 2
+        res.set(element, res.get(element) + value * 2)
       }
     }
 
@@ -78,12 +78,15 @@ export abstract class QuartzLine {
 
   /**
    * Add or replace a quartz in the line. The position of the quartz is random.
+   * If the quartz is already in the line, no action is taken.
    * @param quartzId
    * @returns
    */
   addOrReplaceQuartz(quartzId: QuartzId): void {
     const quartz = getQuartzById(quartzId)
-    if (!quartz) return
+    if (!quartz || this.hasQuartz(quartzId)) {
+      return
+    }
 
     // If the line has at least one element limited slot for the element of the quartz,
     // the probability of the quartz going to regular slot or element limited slot is 50/50.
@@ -148,8 +151,8 @@ export abstract class QuartzLine {
         const element = elementValue[0]
         const value = elementValue[1]
         if (
-          !sumElementalValues[element] ||
-          sumElementalValues[element] < value
+          !sumElementalValues.has(element) ||
+          sumElementalValues.get(element) < value
         ) {
           return false
         }
@@ -250,13 +253,13 @@ export abstract class QuartzLine {
    */
   toElementValues(): string {
     const sumElementalValues = this.calcSumElementalValues()
-    return `${sumElementalValues[ElementType.Earth] ?? 0}, ${
-      sumElementalValues[ElementType.Water] ?? 0
-    }, ${sumElementalValues[ElementType.Fire] ?? 0}, ${
-      sumElementalValues[ElementType.Wind] ?? 0
-    }, ${sumElementalValues[ElementType.Time] ?? 0}, ${
-      sumElementalValues[ElementType.Space] ?? 0
-    }, ${sumElementalValues[ElementType.Mirage] ?? 0}`
+    return `${sumElementalValues.get(ElementType.Earth) ?? 0}, ${
+      sumElementalValues.get(ElementType.Water) ?? 0
+    }, ${sumElementalValues.get(ElementType.Fire) ?? 0}, ${
+      sumElementalValues.get(ElementType.Wind) ?? 0
+    }, ${sumElementalValues.get(ElementType.Time) ?? 0}, ${
+      sumElementalValues.get(ElementType.Space) ?? 0
+    }, ${sumElementalValues.get(ElementType.Mirage) ?? 0}`
   }
 
   /**

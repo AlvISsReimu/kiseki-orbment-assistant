@@ -1,0 +1,56 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "target": "esnext",
+    "lib": [
+      "es2021",
+      "esnext",
+      "dom"
+    ],
+    "useDefineForClassFields": false,
+    "moduleDetection": "force",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "jsx": "react-jsx",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "outDir": "dist",
+    "importHelpers": true,
+    "verbatimModuleSyntax": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "noImplicitThis": false,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitOverride": true,
+    "skipLibCheck": true,
+    "rootDir": "./",
+    "paths": {
+      "@shared/*": [
+        "./shared/*"
+      ]
+    },
+    "types": [
+      "node"
+    ]
+  },
+  "include": [
+    "**/*",
+    "../../shared/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ],
+}

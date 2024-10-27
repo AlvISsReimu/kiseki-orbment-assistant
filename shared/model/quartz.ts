@@ -25,10 +25,12 @@ export const getQuartzById = (id: QuartzId): Quartz | null => {
   return ALL_QUARTZ_MAP.get(id) ?? null
 }
 
-// TODO: a temp function for testing
-export const getQuartzIdByNameJP = (name_jp: string): QuartzId | null => {
+export const getQuartzIdByName = (
+  name: string,
+  languageCode: LanguageCode,
+): QuartzId | null => {
   for (let i = 0; i < ALL_QUARTZ.length; i++) {
-    if (ALL_QUARTZ[i].name_i18n[LanguageCode.JA] === name_jp) {
+    if (ALL_QUARTZ[i].name_i18n[languageCode] === name) {
       return i
     }
   }
@@ -42,11 +44,14 @@ export const getQuartzIdByNameJP = (name_jp: string): QuartzId | null => {
  * @returns A random quartz id. Must be a valid index of ALL_QUARTZ.
  */
 export const getRandomQuartzId = (blacklistIds?: QuartzId[]): QuartzId => {
-  let index: number
-  let max = ALL_QUARTZ.length
-  do {
-    index = Math.floor(Math.random() * ALL_QUARTZ.length)
-    max--
-  } while (blacklistIds && blacklistIds.includes(index) && max > 0)
-  return index
+  const allQuartzIds = ALL_QUARTZ.map(quartz => quartz.id) as QuartzId[]
+  const availableQuartzIds = allQuartzIds.filter(
+    id => !blacklistIds?.includes(id),
+  )
+  if (availableQuartzIds.length === 0) {
+    return Math.floor(Math.random() * ALL_QUARTZ.length) as QuartzId
+  }
+  return availableQuartzIds[
+    Math.floor(Math.random() * availableQuartzIds.length)
+  ] as QuartzId
 }

@@ -21,10 +21,12 @@ export const getCharacterById = (id: CharacterId): Character | null => {
   return ALL_CHARACTERS[id] ?? null
 }
 
-// TODO: a temp function for testing
-export const getCharacterIdByNameJP = (name_jp: string): CharacterId | null => {
+export const getCharacterIdByName = (
+  name: string,
+  languageCode: LanguageCode,
+): CharacterId | null => {
   for (let i = 0; i < ALL_CHARACTERS.length; i++) {
-    if (ALL_CHARACTERS[i].name_i18n[LanguageCode.JA] === name_jp) {
+    if (ALL_CHARACTERS[i].name_i18n[languageCode] === name) {
       return i
     }
   }

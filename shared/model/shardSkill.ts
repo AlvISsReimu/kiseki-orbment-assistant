@@ -27,12 +27,12 @@ export const getShardSkillById = (id: ShardSkillId): ShardSkill | null => {
   return ALL_SHARD_SKILLS_MAP.get(id) ?? null
 }
 
-// TODO: a temp function for testing
-export const getShardSkillIdByNameJP = (
-  name_jp: string,
+export const getShardSkillIdByName = (
+  name: string,
+  languageCode: LanguageCode,
 ): ShardSkillId | null => {
   for (let i = 0; i < ALL_SHARD_SKILLS.length; i++) {
-    if (ALL_SHARD_SKILLS[i].name_i18n[LanguageCode.JA] === name_jp) {
+    if (ALL_SHARD_SKILLS[i].name_i18n[languageCode] === name) {
       return i
     }
   }
