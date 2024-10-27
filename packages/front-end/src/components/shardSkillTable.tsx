@@ -67,6 +67,9 @@ export const ShardSkillTable = () => {
       <Accordion
         sx={{
           boxShadow: 'none',
+          '&::before': {
+            content: 'none',
+          },
         }}
         expanded={expandedState[0]}
         onChange={(_, expanded) =>
@@ -93,6 +96,9 @@ export const ShardSkillTable = () => {
       <Accordion
         sx={{
           boxShadow: 'none',
+          '&::before': {
+            content: 'none',
+          },
         }}
         expanded={expandedState[1]}
         onChange={(_, expanded) =>
@@ -119,6 +125,9 @@ export const ShardSkillTable = () => {
       <Accordion
         sx={{
           boxShadow: 'none',
+          '&::before': {
+            content: 'none',
+          },
         }}
         expanded={expandedState[2]}
         onChange={(_, expanded) =>
@@ -145,6 +154,9 @@ export const ShardSkillTable = () => {
       <Accordion
         sx={{
           boxShadow: 'none',
+          '&::before': {
+            content: 'none',
+          },
         }}
         expanded={expandedState[3]}
         onChange={(_, expanded) =>
