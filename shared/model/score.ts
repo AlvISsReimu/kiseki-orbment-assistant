@@ -21,12 +21,12 @@ export class ScoreMaps {
   }
 
   /**
-   * Standardize the scores of quartz and shard skills to 100.
+   * Normalize the scores of quartz and shard skills to 100.
    * For example, if the total score of quartz and shard skills is 200,
    * the score of each quartz and shard skill will be divided by 2.
-   * @returns A new ScoreMaps object with standardized scores. The original object is not modified.
+   * @returns A new ScoreMaps object with normalized scores. The original object is not modified.
    */
-  standardize(): ScoreMaps {
+  normalize(): ScoreMaps {
     const totalScore = this._sumTotalScore()
 
     const quartzScores = new Map<QuartzId, number>()

@@ -47,7 +47,7 @@ export const calcOptimalOrbmentSetup = (
     throw new Error('Failed to get holo core')
   }
 
-  const standardizedScoreMaps = input.scoreMaps.standardize()
+  const standardizedScoreMaps = input.scoreMaps.normalize()
 
   const simulatedAnnealing = new SimulatedAnnealing<Core>({
     init: () => core,
