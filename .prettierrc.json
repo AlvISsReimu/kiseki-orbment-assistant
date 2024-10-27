@@ -12,25 +12,41 @@
   "useTabs": false,
   "overrides": [
     {
-      "files": ["*.mjs", "*.cjs", "*.js"],
+      "files": [
+        "*.mjs",
+        "*.cjs",
+        "*.js"
+      ],
       "options": {
         "parser": "babel"
       }
     },
     {
-      "files": ["*.mts", "*.cts", "*.ts"],
+      "files": [
+        "*.mts",
+        "*.cts",
+        "*.ts"
+      ],
       "options": {
         "parser": "babel-ts"
       }
     },
     {
-      "files": ["*.json", "*.jsonc", "*.json5"],
+      "files": [
+        "*.json",
+        "*.jsonc",
+        "*.json5"
+      ],
       "options": {
         "parser": "json5",
         "singleQuote": false,
         "quoteProps": "preserve",
-        "trailingComma": "none"
+        "trailingComma": "none",
+        "multilineArraysWrapThreshold": 0
       }
     }
+  ],
+  "plugins": [
+    "prettier-plugin-multiline-arrays"
   ]
 }

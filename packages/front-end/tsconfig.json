@@ -2,7 +2,11 @@
   "compilerOptions": {
     "composite": true,
     "target": "esnext",
-    "lib": ["es2021", "esnext", "dom"],
+    "lib": [
+      "es2021",
+      "esnext",
+      "dom"
+    ],
     "useDefineForClassFields": false,
     "moduleDetection": "force",
     "module": "esnext",
@@ -33,10 +37,20 @@
     "skipLibCheck": true,
     "rootDir": "../../",
     "paths": {
-      "@shared/*": ["../../shared/*"]
+      "@shared/*": [
+        "../../shared/*"
+      ]
     },
-    "types": ["node"]
+    "types": [
+      "node"
+    ]
   },
-  "include": ["**/*", "../../shared/**/*"],
-  "exclude": ["node_modules", "dist"]
+  "include": [
+    "**/*",
+    "../../shared/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
 }

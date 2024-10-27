@@ -37,7 +37,11 @@ module.exports = {
       version: 'detect',
     },
   },
-  plugins: ['@typescript-eslint', 'react', 'prettier'],
+  plugins: [
+    '@typescript-eslint',
+    'react',
+    'prettier',
+  ],
 }
 // module.exports = {
 //   parser: '@typescript-eslint/parser', // Specifies the ESLint parser

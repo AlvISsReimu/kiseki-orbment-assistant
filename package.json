@@ -11,7 +11,7 @@
     "build": "npm run build --workspace=frontend",
     "dev": "npm run dev --workspace=frontend",
     "lint": "eslint --ext .js,.ts,.tsx shared/ packages/",
-    "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|tsx|json)\"",
+    "format": "prettier '**/*.{js,ts,tsx,json}' --ignore-path '{.gitignore,.prettierignore}' --write",
     "test": "vitest --no-watch"
   },
   "devDependencies": {
@@ -23,6 +23,7 @@
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-sort-imports-es6-autofix": "^0.6.0",
     "prettier": "^3.3.3",
+    "prettier-plugin-multiline-arrays": "^3.0.6",
     "vite-tsconfig-paths": "^5.0.1",
     "vitest": "^2.1.3"
   }
