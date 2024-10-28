@@ -52,7 +52,7 @@ test('Add a quartz to a random regular slot in a quartz line which has element l
   quartzLine.addOrReplaceQuartz(quartzId)
   expect(quartzLine.regularSlotQuartzIds.length).toBe(1)
   expect(quartzLine.regularSlotQuartzIds[0]).toBe(quartzId)
-  expect(quartzLine.elementLimitedSlots[0].quartzId).toBeUndefined()
+  expect(quartzLine.elementLimitedSlots[0].quartzId).toBeNull()
 })
 
 test('Add a quartz to a line which has a limited slot whose element is the same as the quartz', () => {
@@ -129,6 +129,82 @@ test('Add a quartz to a line which already has the same quartz', () => {
   expect(quartzLine.regularSlotQuartzIds).toContain(secondQuartzIdInRegularSlot)
   expect(quartzLine.regularSlotQuartzIds).toContain(thirdQuartzIdInRegularSlot)
   expect(quartzLine.elementLimitedSlots[0].quartzId).toBe(quartzIdInLimitedSlot)
+})
+
+test('Remove a quartz from a regular slot', () => {
+  const languageCode = LanguageCode.JA
+
+  const firstQuartzIdInRegularSlot = getQuartzIdByName(
+    'アンクシャ',
+    languageCode,
+  )
+  const secondQuartzIdInRegularSlot = getQuartzIdByName('省EP1', languageCode)
+  const quartzIdInLimitedSlot = getQuartzIdByName('封技の刃', languageCode)
+
+  const quartzLine = new WeaponLine(
+    4,
+    [
+      firstQuartzIdInRegularSlot,
+      secondQuartzIdInRegularSlot,
+    ],
+    [new ElementLimitedSlot(ElementType.Wind, 3, quartzIdInLimitedSlot)],
+  )
+  const isRemoveSuccess = quartzLine.removeQuartz(firstQuartzIdInRegularSlot)
+
+  expect(isRemoveSuccess).toBe(true)
+  expect(quartzLine.regularSlotQuartzIds.length).toBe(1)
+  expect(quartzLine.regularSlotQuartzIds).toContain(secondQuartzIdInRegularSlot)
+  expect(quartzLine.elementLimitedSlots[0].quartzId).toBe(quartzIdInLimitedSlot)
+})
+
+test('Remove a quartz from an element limited slot', () => {
+  const languageCode = LanguageCode.JA
+
+  const firstQuartzIdInRegularSlot = getQuartzIdByName(
+    'アンクシャ',
+    languageCode,
+  )
+  const secondQuartzIdInRegularSlot = getQuartzIdByName('省EP1', languageCode)
+  const quartzIdInLimitedSlot = getQuartzIdByName('封技の刃', languageCode)
+
+  const quartzLine = new WeaponLine(
+    4,
+    [
+      firstQuartzIdInRegularSlot,
+      secondQuartzIdInRegularSlot,
+    ],
+    [new ElementLimitedSlot(ElementType.Wind, 3, quartzIdInLimitedSlot)],
+  )
+  const isRemoveSuccess = quartzLine.removeQuartz(quartzIdInLimitedSlot)
+
+  expect(isRemoveSuccess).toBe(true)
+  expect(quartzLine.regularSlotQuartzIds.length).toBe(2)
+  expect(quartzLine.regularSlotQuartzIds).toContain(firstQuartzIdInRegularSlot)
+  expect(quartzLine.regularSlotQuartzIds).toContain(secondQuartzIdInRegularSlot)
+  expect(quartzLine.elementLimitedSlots[0].quartzId).toBeNull()
+})
+
+test('Remove a quartz that does not exist in the line', () => {
+  const languageCode = LanguageCode.JA
+
+  const firstQuartzIdInRegularSlot = getQuartzIdByName(
+    'アンクシャ',
+    languageCode,
+  )
+  const secondQuartzIdInRegularSlot = getQuartzIdByName('省EP1', languageCode)
+  const quartzIdInLimitedSlot = getQuartzIdByName('封技の刃', languageCode)
+  const quartzIdNotInLine = getQuartzIdByName('省EP2', languageCode)
+
+  const quartzLine = new WeaponLine(
+    4,
+    [
+      firstQuartzIdInRegularSlot,
+      secondQuartzIdInRegularSlot,
+    ],
+    [new ElementLimitedSlot(ElementType.Wind, 3, quartzIdInLimitedSlot)],
+  )
+  const isRemoveSuccess = quartzLine.removeQuartz(quartzIdNotInLine)
+  expect(isRemoveSuccess).toBe(false)
 })
 
 // TODO: finish all tests
