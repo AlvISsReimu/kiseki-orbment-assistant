@@ -22,7 +22,8 @@ import { useSingletonLocalStorage } from '../utils/utils'
 
 import { ExpandMore } from '@mui/icons-material'
 import { getNameByElementType } from '@shared/model/element'
-import { getQuartzById, Quartz, type QuartzId } from '@shared/model/quartz'
+import { Quartz } from '@shared/model/quartz'
+import { getQuartzIconUrlById } from '../utils/assets'
 
 const headers = Object.values(ElementType)
 const data: Quartz[][] = (() => {
@@ -38,13 +39,6 @@ const data: Quartz[][] = (() => {
   })
   return data
 })()
-
-const getQuartzIconUrlById = (quartzId: QuartzId): string => {
-  // get qrartz object again
-  const quartz = getQuartzById(quartzId)
-  const isAdvanced = quartz.elementalValues.size > 1
-  return `quartz-icon/${quartz.elementType.toLocaleLowerCase()}_${isAdvanced ? 'advanced' : 'regular'}.webp`
-}
 
 export const QuartzTable = (props: { onChange: (v: number[]) => void }) => {
   const gc = useContext(globalContext.Context)
