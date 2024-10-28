@@ -91,6 +91,12 @@ export const QuartzTable = (props: { onChange: (v: number[]) => void }) => {
         {t('quartz_table_title')}
       </AccordionSummary>
       <AccordionDetails>
+        {/* TODO: show text better */}
+        <h1>{t('quartz_table_instruction_0')}</h1>
+        <div>{t('quartz_table_instruction_1')}</div>
+        <div>{t('quartz_table_instruction_2')}</div>
+        <div>{t('quartz_table_instruction_3')}</div>
+
         <TableContainer component={Paper}>
           <Table>
             <TableHead>

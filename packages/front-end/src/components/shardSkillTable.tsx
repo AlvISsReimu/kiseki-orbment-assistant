@@ -66,6 +66,8 @@ export const ShardSkillTable = () => {
         backgroundImage: 'var(--Paper-overlay)',
       }}
     >
+      {/* TODO: show text better */}
+      <div>{t('shard_skill_rule_table_instruction')}</div>
       <Accordion
         sx={{
           boxShadow: 'none',

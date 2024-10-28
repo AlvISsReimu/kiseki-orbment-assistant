@@ -76,7 +76,6 @@ const Main = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <h1>{t('website_name')}</h1>
       <div
         style={{
           padding: '20px',
@@ -120,6 +119,19 @@ const Main = () => {
           </ToggleButtonGroup>
         </div>
         {/* Your application components go here */}
+
+        {/* TODO: show text better */}
+        <h1>{t('website_name')}</h1>
+        <div>{t('website_description_0')}</div>
+        <div>1.&nbsp;{t('website_description_1')}</div>
+        <div>2.&nbsp;{t('website_description_2')}</div>
+        <div>3.&nbsp;{t('website_description_3')}</div>
+        <h2>{t('development_title')}</h2>
+        <div>
+          <Button variant="outlined">{t('repository')}</Button>
+        </div>
+        <div>{t('development_text')}</div>
+
         <CharacterComponent
           onCharacterIdChange={setCharacterId}
         ></CharacterComponent>
