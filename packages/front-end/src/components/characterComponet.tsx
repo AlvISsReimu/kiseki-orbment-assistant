@@ -14,19 +14,22 @@ import {
 } from '@mui/material'
 import { ALL_CHARACTERS } from '@shared/constants/character'
 import { getCharacterById } from '@shared/model/character'
-import { TRANSLATION } from '@shared/utils/translation'
-import { useContext, useEffect, useState } from 'react'
+import { useCallback, useContext, useEffect, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { globalContext } from '../contexts/globalContext'
+import i18next from '../i18n'
 import { useSingletonLocalStorage } from '../utils/utils'
 
-const translated = TRANSLATION.CHARACTER
+const _loadTableHead = () => {
+  return [
+    i18next.t('line_type_weapon'),
+    i18next.t('line_type_shield'),
+    i18next.t('line_type_drive'),
+    i18next.t('line_type_extra'),
+  ]
+}
+
 const coreKeys = ['weaponLine', 'shieldLine', 'driveLine', 'extraLine'] as const
-const tableHead = [
-  TRANSLATION.CHARACTER.weapon,
-  TRANSLATION.CHARACTER.shield,
-  TRANSLATION.CHARACTER.drive,
-  TRANSLATION.CHARACTER.extra,
-]
 const colorMap = {
   Earth: '#B56B1C',
   Water: '#1F4B8C',
@@ -69,13 +72,31 @@ export const CharacterComponent = (prop: {
     setCharacterId(id)
   }
 
+  const { t, i18n } = useTranslation()
+
+  const handleLanguageChanged = useCallback(() => {
+    tableHead = _loadTableHead()
+  }, [])
+
+  let tableHead = _loadTableHead()
+  useEffect(() => {
+    tableHead = _loadTableHead()
+  }, [])
+
+  useEffect(() => {
+    i18n.on('languageChanged', handleLanguageChanged)
+    return () => {
+      i18n.off('languageChanged', handleLanguageChanged)
+    }
+  }, [handleLanguageChanged])
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
       <FormControl fullWidth>
-        <InputLabel>{translated.character[gc.language]}</InputLabel>
+        <InputLabel>{t('character')}</InputLabel>
         <Select
           value={characterId.toString()}
-          label={translated.character[gc.language]}
+          label={t('character')}
           onChange={ev => updateCharacterId(ev)}
         >
           {ALL_CHARACTERS.map((character, index) => (
@@ -99,7 +120,7 @@ export const CharacterComponent = (prop: {
               {core.map((row, index) => (
                 <TableRow key={index}>
                   <TableCell sx={{ border: 'none' }}>
-                    {tableHead[index][gc.language]}
+                    {tableHead[index]}
                   </TableCell>
                   {row.map((element, ind) => (
                     <TableCell key={ind} sx={{ border: 'none' }}>

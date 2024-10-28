@@ -1,0 +1,37 @@
+{
+  "website_name": "Trails Orbment Assistant",
+  "website_description_0": "Welcome to the Trajectory Automatic Circuit Assistant.",
+  "website_description_1": "Currently only supports Trails of Boundary.",
+  "website_description_2": "The algorithm used is simulated annealing. The results may not be a global optimal solution, so it is recommended to run multiple times.",
+  "website_description_3": "Thanks to Wuerner Company and Basel Institute of Technology for their support of this project.",
+
+  "development_title": "Project Development",
+  "repository": "Project Repository",
+  "development_text": "If you have any suggestions or comments, or are interested in development, feel free to contact us.",
+
+  "quartz_table_status_enabled": "Enabled",
+  "quartz_table_status_disabled": "Disabled",
+  "quartz_table_status_weighted": "Weighted",
+  "quartz_table_title": "Circuit Settings",
+  "quartz_table_instruction_0": "Each circuit can be set to three states: enabled, disabled, or weighted.",
+  "quartz_table_instruction_1": "Enabled: This circuit will be used by the algorithm.",
+  "quartz_table_instruction_2": "Disabled: This circuit will not appear in the calculation results.",
+  "quartz_table_instruction_3": "Weighted: If you strongly wish for certain circuits to be adopted, you can set their weight (1-10), the higher the weight, the more likely they will be adopted.",
+
+  "shard_skill_rule_table_weapon_line_title": "Weapon Chip Skill Weight Settings",
+  "shard_skill_rule_table_shield_line_title": "Shield Chip Skill Weight Settings",
+  "shard_skill_rule_table_drive_line_title": "Drive Chip Skill Weight Settings",
+  "shard_skill_rule_table_extra_line_title": "EXTRA Chip Skill Weight Settings",
+  "shard_skill_rule_table_instruction": "You can set weights for chip skills (1-10). The higher the weight, the more likely the circuit combination will trigger this chip skill.",
+
+  "language": "Language",
+  "character": "Character",
+  "quartz": "Circuit",
+  "core": "Core",
+  "shard_skill": "Chip Skill",
+  "line_type_weapon": "Weapon",
+  "line_type_shield": "Shield",
+  "line_type_drive": "Drive",
+  "line_type_extra": "EXTRA",
+  "start_calculation": "Start Calculation"
+}

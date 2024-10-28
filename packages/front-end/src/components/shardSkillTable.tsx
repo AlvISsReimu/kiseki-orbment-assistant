@@ -12,8 +12,8 @@ import {
   WEAPON_LINE_SHARD_SKILLS,
 } from '@shared/constants/shardSkill'
 import type { ShardSkill } from '@shared/model/shardSkill'
-import { TRANSLATION } from '@shared/utils/translation'
 import { useContext } from 'react'
+import { useTranslation } from 'react-i18next'
 import { globalContext } from '../contexts/globalContext'
 import { useSingletonLocalStorage } from '../utils/utils'
 import { ShardSkillRuleTable } from './shardSkillRuleTable'
@@ -56,6 +56,8 @@ export const ShardSkillTable = () => {
     [true, true, true, true],
   )
 
+  const { t } = useTranslation()
+
   return (
     <Box
       sx={{
@@ -82,7 +84,7 @@ export const ShardSkillTable = () => {
         }
       >
         <AccordionSummary>
-          {TRANSLATION.SHARD_SKILL_TABLE.weaponLine[gc.language]}
+          {t('shard_skill_rule_table_weapon_line_title')}
         </AccordionSummary>
         <AccordionDetails>
           <ShardSkillRuleTable
@@ -111,7 +113,7 @@ export const ShardSkillTable = () => {
         }
       >
         <AccordionSummary>
-          {TRANSLATION.SHARD_SKILL_TABLE.shieldLine[gc.language]}
+          {t('shard_skill_rule_table_shield_line_title')}
         </AccordionSummary>
         <AccordionDetails>
           <ShardSkillRuleTable
@@ -140,7 +142,7 @@ export const ShardSkillTable = () => {
         }
       >
         <AccordionSummary>
-          {TRANSLATION.SHARD_SKILL_TABLE.driveLine[gc.language]}
+          {t('shard_skill_rule_table_drive_line_title')}
         </AccordionSummary>
         <AccordionDetails>
           <ShardSkillRuleTable
@@ -169,7 +171,7 @@ export const ShardSkillTable = () => {
         }
       >
         <AccordionSummary>
-          {TRANSLATION.SHARD_SKILL_TABLE.extraLine[gc.language]}
+          {t('shard_skill_rule_table_extra_line_title')}
         </AccordionSummary>
         <AccordionDetails>
           <ShardSkillRuleTable

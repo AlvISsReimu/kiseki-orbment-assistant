@@ -1,0 +1,37 @@
+{
+  "website_name": "轨迹回路助手",
+  "website_description_0": "欢迎使用轨迹自动回路助手。",
+  "website_description_1": "目前仅支持界之轨迹。",
+  "website_description_2": "采用算法为模拟退火算法。得出的结果不一定是全局最优解，推荐多运行几次。",
+  "website_description_3": "感谢乌尔努公司和巴塞尔工科大学对本项目的支持。",
+
+  "development_title": "项目开发",
+  "repository": "项目仓库",
+  "development_text": "如有任何建议和意见，或者对开发感兴趣，欢迎联系我们。",
+
+  "quartz_table_status_enabled": "启用",
+  "quartz_table_status_disabled": "禁用",
+  "quartz_table_status_weighted": "加权",
+  "quartz_table_title": "回路设置",
+  "quartz_table_instruction_0": "每个回路可以选择启用、禁用、加权三种状态。",
+  "quartz_table_instruction_1": "启用：该回路会被算法采用",
+  "quartz_table_instruction_2": "禁用：该回路不会出现在计算结果中。",
+  "quartz_table_instruction_3": "加权：如果强烈希望某些回路被采纳，可以设置其权重（1-10），权重越大越容易被采纳。",
+
+  "shard_skill_rule_table_weapon_line_title": "武器晶片技能权重设置",
+  "shard_skill_rule_table_shield_line_title": "护盾晶片技能权重设置",
+  "shard_skill_rule_table_drive_line_title": "驱动晶片技能权重设置",
+  "shard_skill_rule_table_extra_line_title": "EXTRA晶片技能权重设置",
+  "shard_skill_rule_table_instruction": "可以为晶片技能设置权重（1-10），权重越大，配出来的回路组合越容易触发此晶片技能。",
+
+  "language": "语言",
+  "character": "角色",
+  "quartz": "回路",
+  "core": "核心",
+  "shard_skill": "晶片技能",
+  "line_type_weapon": "武器",
+  "line_type_shield": "护盾",
+  "line_type_drive": "驱动",
+  "line_type_extra": "EXTRA",
+  "start_calculation": "开始计算"
+}

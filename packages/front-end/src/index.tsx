@@ -16,14 +16,16 @@ import { LanguageCode } from '@shared/enums/languageCode'
 import { getNameByLanguageCode } from '@shared/model/language'
 import { ScoreMaps } from '@shared/model/scoreMaps'
 import { calcOptimalOrbmentSetup } from '@shared/orbmentAssistant'
-import { TRANSLATION } from '@shared/utils/translation'
 import { SpeedInsights } from '@vercel/speed-insights/react'
+
 import { useContext, useEffect, useMemo, useState } from 'react'
 import { createRoot } from 'react-dom/client'
+import { useTranslation } from 'react-i18next'
 import { CharacterComponent } from './components/characterComponet'
 import { QuartzTable } from './components/quartzTable'
 import { ShardSkillTable } from './components/shardSkillTable'
 import { globalContext } from './contexts/globalContext'
+import './i18n'
 import { darkTheme, lightTheme } from './utils/themes'
 
 const Main = () => {
@@ -34,6 +36,8 @@ const Main = () => {
   })
   const [quartzState, setQuartzState] = useState<number[]>([])
   const [characterId, setCharacterId] = useState<number>(0)
+
+  const { t, i18n } = useTranslation()
 
   useEffect(() => {
     localStorage.setItem('theme', JSON.stringify(themeMode))
@@ -50,6 +54,7 @@ const Main = () => {
 
   const selectLanguage = (ev: SelectChangeEvent) => {
     gc.setLanguage(ev.target.value as LanguageCode)
+    i18n.changeLanguage(ev.target.value.slice(0, 2))
   }
 
   const getResult = () => {
@@ -68,10 +73,10 @@ const Main = () => {
     })
   }
 
-  const translations = TRANSLATION.GLOBAL
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <h1>{t('website_name')}</h1>
       <div
         style={{
           padding: '20px',
@@ -88,10 +93,10 @@ const Main = () => {
           }}
         >
           <FormControl fullWidth>
-            <InputLabel>{translations.language[gc.language]}</InputLabel>
+            <InputLabel>{t('language')}</InputLabel>
             <Select
               value={gc.language}
-              label={translations.language[gc.language]}
+              label={t('language')}
               onChange={selectLanguage}
             >
               <MenuItem value={LanguageCode.ZH_CN}>
@@ -121,7 +126,7 @@ const Main = () => {
         <QuartzTable onChange={setQuartzState}></QuartzTable>
         <ShardSkillTable></ShardSkillTable>
         <Button variant="outlined" onClick={getResult}>
-          Get Result
+          {t('start_calculation')}
         </Button>
       </div>
       <SpeedInsights />

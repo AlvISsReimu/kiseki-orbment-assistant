@@ -15,7 +15,6 @@ import {
 } from '@mui/material'
 import { ALL_QUARTZ } from '@shared/constants/quartz'
 import { ElementType } from '@shared/enums/elementType'
-import { TRANSLATION } from '@shared/utils/translation'
 import { useContext, useEffect } from 'react'
 import { globalContext } from '../contexts/globalContext'
 import { useSingletonLocalStorage } from '../utils/utils'
@@ -23,6 +22,8 @@ import { useSingletonLocalStorage } from '../utils/utils'
 import { ExpandMore } from '@mui/icons-material'
 import { getNameByElementType } from '@shared/model/element'
 import { Quartz } from '@shared/model/quartz'
+import { useTranslation } from 'react-i18next'
+import i18next from '../i18n'
 import { getQuartzIconUrlById } from '../utils/assets'
 
 const headers = Object.values(ElementType)
@@ -40,6 +41,14 @@ const data: Quartz[][] = (() => {
   return data
 })()
 
+const _loadOptionLabels = () => {
+  return {
+    disabled: i18next.t('quartz_table_status_disabled'),
+    enabled: i18next.t('quartz_table_status_enabled'),
+    weighted: i18next.t('quartz_table_status_weighted'),
+  }
+}
+
 export const QuartzTable = (props: { onChange: (v: number[]) => void }) => {
   const gc = useContext(globalContext.Context)
   const [quartzState, setQuartzState] = useSingletonLocalStorage(
@@ -51,13 +60,18 @@ export const QuartzTable = (props: { onChange: (v: number[]) => void }) => {
     props.onChange([...quartzState])
   }, [quartzState])
 
+  let optionLabels = _loadOptionLabels()
+  useEffect(() => {
+    optionLabels = _loadOptionLabels()
+  }, [])
+
   const getOptionLabel = (value: number) => {
     if (value === -1) {
-      return TRANSLATION.GLOBAL.disabled
+      return optionLabels.disabled
     } else if (value === 0) {
-      return TRANSLATION.GLOBAL.enabled
+      return optionLabels.enabled
     }
-    return TRANSLATION.GLOBAL.weighted
+    return optionLabels.weighted
   }
 
   const updateQuartzState = (ev: SelectChangeEvent, id: number) => {
@@ -69,10 +83,12 @@ export const QuartzTable = (props: { onChange: (v: number[]) => void }) => {
     })
   }
 
+  const { t } = useTranslation()
+
   return (
     <Accordion>
       <AccordionSummary expandIcon={<ExpandMore />}>
-        {TRANSLATION.QUARTZ_TABLE.title[gc.language]}
+        {t('quartz_table_title')}
       </AccordionSummary>
       <AccordionDetails>
         <TableContainer component={Paper}>
@@ -130,7 +146,7 @@ export const QuartzTable = (props: { onChange: (v: number[]) => void }) => {
                         >
                           {Array.from({ length: 12 }).map((_, index) => (
                             <MenuItem key={index} value={index - 1}>
-                              {getOptionLabel(index - 1)[gc.language] +
+                              {getOptionLabel(index - 1) +
                                 (index > 1 ? ` (${index - 1})` : '')}
                             </MenuItem>
                           ))}
