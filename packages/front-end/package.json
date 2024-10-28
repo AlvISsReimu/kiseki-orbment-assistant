@@ -28,6 +28,7 @@
     "@mui/base": "^5.0.0-beta.60",
     "@mui/icons-material": "^6.1.5",
     "@mui/material": "^6.1.5",
+    "@vercel/speed-insights": "^1.0.14",
     "@vitejs/plugin-react": "^4.3.3",
     "crypto-js": "^4.2.0",
     "react": "^18.3.1",

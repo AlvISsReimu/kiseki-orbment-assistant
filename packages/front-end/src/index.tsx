@@ -17,6 +17,7 @@ import { getNameByLanguageCode } from '@shared/model/language'
 import { ScoreMaps } from '@shared/model/score'
 import { calcOptimalOrbmentSetup } from '@shared/orbmentAssistant'
 import { TRANSLATION } from '@shared/utils/translation'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import { useContext, useEffect, useMemo, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { CharacterComponent } from './components/characterComponet'
@@ -123,6 +124,7 @@ const Main = () => {
           Get Result
         </Button>
       </div>
+      <SpeedInsights />
     </ThemeProvider>
   )
 }
