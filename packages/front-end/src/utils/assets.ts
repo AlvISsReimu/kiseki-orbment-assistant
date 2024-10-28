@@ -12,7 +12,7 @@ export const getQuartzIconUrlById = (quartzId: QuartzId) => {
   })
   return (
     //@ts-expect-error Ignore this error
-    quartzIconWebps[`/src/assets/quartz-icon/${quartzIconName}.webp`].default
+    quartzIconWebps[`../assets/quartz-icon/${quartzIconName}.webp`].default
   )
 }
 
@@ -25,7 +25,7 @@ export const getElementIconUrl = (
     query: '?url',
   })
   return elementIconWebps[
-    `/src/assets/element-icon/${elementType.toLocaleLowerCase()}_${languageCode}.webp`
+    `../assets/element-icon/${elementType.toLocaleLowerCase()}_${languageCode}.webp`
     //@ts-expect-error Ignore this error
   ].default
 }
