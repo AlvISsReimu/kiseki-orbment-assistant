@@ -14,16 +14,16 @@ import {
 } from '@mui/material'
 import { LanguageCode } from '@shared/enums/languageCode'
 import { getNameByLanguageCode } from '@shared/model/language'
+import { ScoreMaps } from '@shared/model/score'
+import { calcOptimalOrbmentSetup } from '@shared/orbmentAssistant'
 import { TRANSLATION } from '@shared/utils/translation'
 import { useContext, useEffect, useMemo, useState } from 'react'
 import { createRoot } from 'react-dom/client'
-import { QuartzTable } from './components/quartzTable'
-import { globalContext } from './contexts/globalContext'
 import { CharacterComponent } from './components/characterComponet'
-import { ScoreMaps } from '@shared/model/score'
-import { calcOptimalOrbmentSetup } from '@shared/orbmentAssistant'
-import { darkTheme, lightTheme } from './utils/themes'
+import { QuartzTable } from './components/quartzTable'
 import { ShardSkillTable } from './components/shardSkillTable'
+import { globalContext } from './contexts/globalContext'
+import { darkTheme, lightTheme } from './utils/themes'
 
 const Main = () => {
   const gc = useContext(globalContext.Context)

@@ -21,53 +21,8 @@ import { globalContext } from '../contexts/globalContext'
 import { useSingletonLocalStorage } from '../utils/utils'
 
 import { ExpandMore } from '@mui/icons-material'
-import { getQuartzById, Quartz, type QuartzId } from '@shared/model/quartz'
-import earth_advanced from '../assets/quartz-icon/earth_advanced.webp'
-import earth_regular from '../assets/quartz-icon/earth_regular.webp'
-import fire_advanced from '../assets/quartz-icon/fire_advanced.webp'
-import fire_regular from '../assets/quartz-icon/fire_regular.webp'
-import mirage_advanced from '../assets/quartz-icon/mirage_advanced.webp'
-import mirage_regular from '../assets/quartz-icon/mirage_regular.webp'
-import space_advanced from '../assets/quartz-icon/space_advanced.webp'
-import space_regular from '../assets/quartz-icon/space_regular.webp'
-import time_advanced from '../assets/quartz-icon/time_advanced.webp'
-import time_regular from '../assets/quartz-icon/time_regular.webp'
-import water_advanced from '../assets/quartz-icon/water_advanced.webp'
-import water_regular from '../assets/quartz-icon/water_regular.webp'
-import wind_advanced from '../assets/quartz-icon/wind_advanced.webp'
-import wind_regular from '../assets/quartz-icon/wind_regular.webp'
 import { getNameByElementType } from '@shared/model/element'
-
-const quartzIconMap = {
-  [ElementType.Earth]: {
-    regular: earth_regular,
-    advanced: earth_advanced,
-  },
-  [ElementType.Water]: {
-    regular: water_regular,
-    advanced: water_advanced,
-  },
-  [ElementType.Fire]: {
-    regular: fire_regular,
-    advanced: fire_advanced,
-  },
-  [ElementType.Wind]: {
-    regular: wind_regular,
-    advanced: wind_advanced,
-  },
-  [ElementType.Time]: {
-    regular: time_regular,
-    advanced: time_advanced,
-  },
-  [ElementType.Space]: {
-    regular: space_regular,
-    advanced: space_advanced,
-  },
-  [ElementType.Mirage]: {
-    regular: mirage_regular,
-    advanced: mirage_advanced,
-  },
-}
+import { getQuartzById, Quartz, type QuartzId } from '@shared/model/quartz'
 
 const headers = Object.values(ElementType)
 const data: Quartz[][] = (() => {
@@ -84,11 +39,11 @@ const data: Quartz[][] = (() => {
   return data
 })()
 
-const getQuartzIconById = (quartzId: QuartzId): string => {
+const getQuartzIconUrlById = (quartzId: QuartzId): string => {
   // get qrartz object again
   const quartz = getQuartzById(quartzId)
   const isAdvanced = quartz.elementalValues.size > 1
-  return quartzIconMap[quartz.elementType][isAdvanced ? 'advanced' : 'regular']
+  return `quartz-icon/${quartz.elementType.toLocaleLowerCase()}_${isAdvanced ? 'advanced' : 'regular'}.webp`
 }
 
 export const QuartzTable = (props: { onChange: (v: number[]) => void }) => {
@@ -162,7 +117,7 @@ export const QuartzTable = (props: { onChange: (v: number[]) => void }) => {
                           <img
                             width="24px"
                             height="24px"
-                            src={getQuartzIconById(quartz.id)}
+                            src={getQuartzIconUrlById(quartz.id)}
                           ></img>
                         </div>
                         <Select
