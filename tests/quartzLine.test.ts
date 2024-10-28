@@ -1,12 +1,17 @@
 import { ElementType } from '@shared/enums/elementType'
 import { LanguageCode } from '@shared/enums/languageCode'
-import { getQuartzIdByName } from '@shared/model/quartz'
+import { getQuartzIdByName, type QuartzId } from '@shared/model/quartz'
 import {
   DriveLine,
   ExtraLine,
   ShieldLine,
   WeaponLine,
 } from '@shared/model/quartzLine'
+import { ScoreMaps } from '@shared/model/score'
+import {
+  getShardSkillIdByName,
+  type ShardSkillId,
+} from '@shared/model/shardSkill'
 import {
   createElementLimitedSlot,
   ElementLimitedSlot,
@@ -207,4 +212,160 @@ test('Remove a quartz that does not exist in the line', () => {
   expect(isRemoveSuccess).toBe(false)
 })
 
-// TODO: finish all tests
+test('Analyze current shard skills', () => {
+  const languageCode = LanguageCode.ZH_CN
+
+  const firstQuartzIdInRegularSlot = getQuartzIdByName('卡利俄佩', languageCode)
+  const secondQuartzIdInRegularSlot = getQuartzIdByName(
+    '苍冰之诗',
+    languageCode,
+  )
+  const thirdQuartzIdInRegularSlot = getQuartzIdByName('库罗索', languageCode)
+  const quartzIdInLimitedSlot = getQuartzIdByName('杜兰达尔', languageCode)
+
+  const quartzLine = new DriveLine(
+    4,
+    [
+      firstQuartzIdInRegularSlot,
+      secondQuartzIdInRegularSlot,
+      thirdQuartzIdInRegularSlot,
+    ],
+    [new ElementLimitedSlot(ElementType.Mirage, 1, quartzIdInLimitedSlot)],
+  )
+  // Elemental values are: (5, 10, 0, 8, 0, 10, 12)
+  const shardSkills = quartzLine.analyzeCurrentShardSkills()
+  expect(shardSkills.length).toBe(9)
+  const shardSkillNames = shardSkills.map(
+    skill => skill.name_i18n[languageCode],
+  )
+  expect(shardSkillNames).toContain('大地增幅')
+  expect(shardSkillNames).toContain('水花增幅II')
+  expect(shardSkillNames).toContain('疾风增幅II')
+  expect(shardSkillNames).toContain('碧空增幅II')
+  expect(shardSkillNames).toContain('幻影增幅II')
+  expect(shardSkillNames).toContain('碎心者')
+  expect(shardSkillNames).toContain('碎魂者')
+  expect(shardSkillNames).toContain('神圣之羽改')
+  expect(shardSkillNames).toContain('奔流吸收')
+  expect(shardSkillNames).not.toContain('水花增幅')
+  expect(shardSkillNames).not.toContain('神圣之羽')
+  expect(shardSkillNames).not.toContain('奔流吸收II')
+})
+
+test('Analyze current shard skills with no quartz', () => {
+  const quartzLine = new ShieldLine(
+    4,
+    [],
+    [createElementLimitedSlot(ElementType.Fire, 1)],
+  )
+  const shardSkills = quartzLine.analyzeCurrentShardSkills()
+  expect(shardSkills.length).toBe(0)
+})
+
+test('Has quartz in the line', () => {
+  const languageCode = LanguageCode.JA
+
+  const firstQuartzIdInRegularSlot = getQuartzIdByName(
+    'アンクシャ',
+    languageCode,
+  )
+  const secondQuartzIdInRegularSlot = getQuartzIdByName('省EP1', languageCode)
+  const quartzIdInLimitedSlot = getQuartzIdByName('封技の刃', languageCode)
+  const quartzIdNotInLine = getQuartzIdByName('省EP2', languageCode)
+
+  const quartzLine = new WeaponLine(
+    3,
+    [
+      firstQuartzIdInRegularSlot,
+      secondQuartzIdInRegularSlot,
+    ],
+    [new ElementLimitedSlot(ElementType.Wind, 3, quartzIdInLimitedSlot)],
+  )
+  expect(quartzLine.hasQuartz(firstQuartzIdInRegularSlot)).toBe(true)
+  expect(quartzLine.hasQuartz(secondQuartzIdInRegularSlot)).toBe(true)
+  expect(quartzLine.hasQuartz(quartzIdInLimitedSlot)).toBe(true)
+  expect(quartzLine.hasQuartz(quartzIdNotInLine)).toBe(false)
+})
+
+test('Get flattened quartz ids', () => {
+  const languageCode = LanguageCode.ZH_CN
+
+  const firstQuartzIdInRegularSlot = getQuartzIdByName('卡利俄佩', languageCode)
+  const secondQuartzIdInRegularSlot = getQuartzIdByName(
+    '苍冰之诗',
+    languageCode,
+  )
+  const quartzIdInLimitedSlot = getQuartzIdByName('杜兰达尔', languageCode)
+
+  const quartzLine = new DriveLine(
+    4,
+    [
+      firstQuartzIdInRegularSlot,
+      secondQuartzIdInRegularSlot,
+    ],
+    [new ElementLimitedSlot(ElementType.Mirage, 0, quartzIdInLimitedSlot)],
+  )
+  const flattenedQuartzIds = quartzLine.getFlattenedQuartzIds()
+  expect(flattenedQuartzIds.length).toBe(3)
+  expect(flattenedQuartzIds).toContain(firstQuartzIdInRegularSlot)
+  expect(flattenedQuartzIds).toContain(secondQuartzIdInRegularSlot)
+  expect(flattenedQuartzIds).toContain(quartzIdInLimitedSlot)
+})
+
+test('Calculate score for many quartz and shard skills', () => {
+  const languageCode = LanguageCode.ZH_CN
+
+  const firstQuartzIdInRegularSlot = getQuartzIdByName('卡利俄佩', languageCode)
+  const secondQuartzIdInRegularSlot = getQuartzIdByName(
+    '苍冰之诗',
+    languageCode,
+  )
+  const thirdQuartzIdInRegularSlot = getQuartzIdByName('库罗索', languageCode)
+  const quartzIdInLimitedSlot = getQuartzIdByName('杜兰达尔', languageCode)
+
+  const quartzLine = new DriveLine(
+    4,
+    [
+      firstQuartzIdInRegularSlot,
+      secondQuartzIdInRegularSlot,
+      thirdQuartzIdInRegularSlot,
+    ],
+    [new ElementLimitedSlot(ElementType.Mirage, 1, quartzIdInLimitedSlot)],
+  )
+
+  const scoreMaps = new ScoreMaps(
+    new Map<QuartzId, number>([
+      [getQuartzIdByName('卡利俄佩', languageCode), 1],
+      [getQuartzIdByName('库罗索', languageCode), 4],
+      [getQuartzIdByName('杜兰达尔', languageCode), 8],
+      [getQuartzIdByName('ゴリアテ', languageCode), 114514], // not in the line
+    ]),
+    new Map<ShardSkillId, number>([
+      [getShardSkillIdByName('大地增幅', languageCode), 3],
+      [getShardSkillIdByName('水花增幅II', languageCode), 7],
+      [getShardSkillIdByName('神圣之羽改', languageCode), 10],
+      [getShardSkillIdByName('水花增幅', languageCode), 114514], // won't be triggered
+    ]),
+  )
+  const score = quartzLine.calcScore(scoreMaps)
+  expect(score).toBe(1 + 4 + 8 + 3 + 7 + 10)
+})
+
+test('Calculate score for a line with no quartz', () => {
+  const languageCode = LanguageCode.ZH_CN
+  const quartzLine = new ShieldLine(
+    4,
+    [],
+    [createElementLimitedSlot(ElementType.Water, 1)],
+  )
+  const scoreMaps = new ScoreMaps(
+    new Map<QuartzId, number>([
+      [getQuartzIdByName('ゴリアテ', languageCode), 114514],
+    ]),
+    new Map<ShardSkillId, number>([
+      [getShardSkillIdByName('水花增幅', languageCode), 114514],
+    ]),
+  )
+  const score = quartzLine.calcScore(scoreMaps)
+  expect(score).toBe(0)
+})
