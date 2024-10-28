@@ -14,7 +14,7 @@ import {
 } from '@mui/material'
 import { LanguageCode } from '@shared/enums/languageCode'
 import { getNameByLanguageCode } from '@shared/model/language'
-import { ScoreMaps } from '@shared/model/score'
+import { ScoreMaps } from '@shared/model/scoreMaps'
 import { calcOptimalOrbmentSetup } from '@shared/orbmentAssistant'
 import { TRANSLATION } from '@shared/utils/translation'
 import { SpeedInsights } from '@vercel/speed-insights/react'
