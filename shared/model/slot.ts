@@ -8,14 +8,34 @@ export class ElementLimitedSlot {
    */
   position: number
   /*
-   * The quartz id that is currently in this slot.
+   * The quartz id that is currently in this slot. Null if no quartz is in this slot.
    */
-  quartzId?: QuartzId
+  quartzId?: QuartzId | null = null
 
-  constructor(elementType: ElementType, position: number, quartzId?: QuartzId) {
+  constructor(
+    elementType: ElementType,
+    position: number,
+    quartzId?: QuartzId | null,
+  ) {
     this.elementType = elementType
     this.position = position
+    this.quartzId = quartzId ?? null
+  }
+
+  hasQuartz(): boolean {
+    return this.quartzId !== null
+  }
+
+  setQuartz(quartzId: QuartzId): void {
     this.quartzId = quartzId
+  }
+
+  removeQuartz(): boolean {
+    if (!this.hasQuartz()) {
+      return false
+    }
+    this.quartzId = null
+    return true
   }
 
   deepCopy(): ElementLimitedSlot {

@@ -60,7 +60,7 @@ export abstract class QuartzLine {
     }
 
     for (const elementLimitedSlot of this.elementLimitedSlots) {
-      if (!elementLimitedSlot.quartzId) continue
+      if (!elementLimitedSlot.hasQuartz()) continue
       const quartz = getQuartzById(elementLimitedSlot.quartzId)
       if (!quartz) continue
       for (const elementValue of quartz.elementalValues) {
@@ -131,7 +131,7 @@ export abstract class QuartzLine {
 
     for (const elementLimitedSlot of this.elementLimitedSlots) {
       if (elementLimitedSlot.quartzId === quartzId) {
-        elementLimitedSlot.quartzId = null
+        elementLimitedSlot.removeQuartz()
         return true
       }
     }
@@ -189,7 +189,7 @@ export abstract class QuartzLine {
   getFlattenedQuartzIds(): QuartzId[] {
     const res = [...this.regularSlotQuartzIds]
     for (const elementLimitedSlot of this.elementLimitedSlots) {
-      if (elementLimitedSlot.quartzId) {
+      if (elementLimitedSlot.hasQuartz()) {
         res.push(elementLimitedSlot.quartzId)
       }
     }
@@ -226,7 +226,7 @@ export abstract class QuartzLine {
     })
     for (const elementLimitedSlot of this.elementLimitedSlots) {
       let name = 'N/A'
-      if (elementLimitedSlot.quartzId) {
+      if (elementLimitedSlot.hasQuartz()) {
         const quartz = getQuartzById(elementLimitedSlot.quartzId)
         name = quartz?.name_i18n[languageCode] ?? 'N/A'
       }
