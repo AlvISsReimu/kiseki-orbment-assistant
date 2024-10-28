@@ -26,6 +26,9 @@ import { ShardSkillTable } from './components/shardSkillTable'
 import { globalContext } from './contexts/globalContext'
 import { darkTheme, lightTheme } from './utils/themes'
 
+import bb from './assets/1.png?url'
+import aa from './assets/2.webp?url'
+
 const Main = () => {
   const gc = useContext(globalContext.Context)
   const [themeMode, setThemeMode] = useState<'light' | 'dark'>(() => {
@@ -72,6 +75,8 @@ const Main = () => {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <img src={aa}></img>
+      <img src={bb}></img>
       <div
         style={{
           padding: '20px',
