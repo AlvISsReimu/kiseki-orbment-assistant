@@ -23,8 +23,8 @@ test('Get quartz by id', () => {
 })
 
 test('Get quartz by id with invalid id', () => {
-  let quartzId = -1 as QuartzId
-  let quartzById = getQuartzById(quartzId)
+  const quartzId = -1 as QuartzId
+  const quartzById = getQuartzById(quartzId)
   expect(quartzById).toBeNull()
 })
 

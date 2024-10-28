@@ -22,8 +22,8 @@ test('Get character by id', () => {
 })
 
 test('Get character by id with invalid id', () => {
-  let characterId = -1 as CharacterId
-  let characterById = getCharacterById(characterId)
+  const characterId = -1 as CharacterId
+  const characterById = getCharacterById(characterId)
   expect(characterById).toBeNull()
 })
 

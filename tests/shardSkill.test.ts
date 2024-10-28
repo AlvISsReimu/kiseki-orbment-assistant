@@ -23,8 +23,8 @@ test('Get shard skill by id', () => {
 })
 
 test('Get shard skill by id with invalid id', () => {
-  let shardSkillId = -1 as ShardSkillId
-  let shardSkillById = getShardSkillById(shardSkillId)
+  const shardSkillId = -1 as ShardSkillId
+  const shardSkillById = getShardSkillById(shardSkillId)
   expect(shardSkillById).toBeNull()
 })
 
