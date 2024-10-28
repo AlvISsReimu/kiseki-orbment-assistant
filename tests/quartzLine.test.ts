@@ -7,7 +7,7 @@ import {
   ShieldLine,
   WeaponLine,
 } from '@shared/model/quartzLine'
-import { ScoreMaps } from '@shared/model/score'
+import { ScoreMaps } from '@shared/model/scoreMaps'
 import {
   getShardSkillIdByName,
   type ShardSkillId,

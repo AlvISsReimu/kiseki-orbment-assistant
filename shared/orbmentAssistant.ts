@@ -1,7 +1,7 @@
 import { getCharacterById, type CharacterId } from './model/character'
 import type { Core } from './model/core'
 import type { QuartzId } from './model/quartz'
-import type { ScoreMaps } from './model/score'
+import type { ScoreMaps } from './model/scoreMaps'
 import {
   SimulatedAnnealing,
   type SimulatedAnnealingResult,

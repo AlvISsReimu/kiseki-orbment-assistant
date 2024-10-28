@@ -9,7 +9,7 @@ import {
   ShieldLine,
   WeaponLine,
 } from './quartzLine.js'
-import type { ScoreMaps } from './score.js'
+import type { ScoreMaps } from './scoreMaps.js'
 import { getShardSkillById, type ShardSkillId } from './shardSkill'
 
 export class Core {

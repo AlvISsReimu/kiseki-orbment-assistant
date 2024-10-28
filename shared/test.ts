@@ -2,7 +2,7 @@ import 'source-map-support/register.js'
 import { LanguageCode } from './enums/languageCode'
 import { getCharacterIdByName } from './model/character.js'
 import { getQuartzById, getQuartzIdByName, type QuartzId } from './model/quartz'
-import { ScoreMaps } from './model/score.js'
+import { ScoreMaps } from './model/scoreMaps.js'
 import {
   getShardSkillById,
   getShardSkillIdByName,

@@ -8,7 +8,7 @@ import { ElementType } from '../enums/elementType.js'
 import type { LanguageCode } from '../enums/languageCode.js'
 import { QuartzLineType } from '../enums/quartzLineType.js'
 import { getQuartzById, type QuartzId } from './quartz.js'
-import { ScoreMaps } from './score.js'
+import { ScoreMaps } from './scoreMaps.js'
 import { ShardSkill } from './shardSkill.js'
 import { ElementLimitedSlot } from './slot.js'
 
