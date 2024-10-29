@@ -7,7 +7,8 @@
 [![GitHub License](https://img.shields.io/github/license/AlvISsReimu/kiseki-orbment-assistant?style=flat&color=c0bed0)](LICENSE)
 
 # Trails Orbment Assistant
-An assistant tool to help user set up orbments in Trails Series games. (Only 'Kai no Kiseki' is supported for now)
+
+An assistant tool to help user set up orbment in Trails Series games. (Only 'Kai no Kiseki' is supported for now)
 
 ## Live Link
 
@@ -20,11 +21,13 @@ An assistant tool to help user set up orbments in Trails Series games. (Only 'Ka
 ![Typescript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 
 ### Resolve dependencies
+
 ```shell
 npm install
 ```
 
 ### Start a development server
+
 ```shell
 npm run dev     # Run vite
 ```
@@ -37,6 +40,7 @@ npm run format  # Use Prettier for code formatting
 ```
 
 ### Test
+
 ```shell
 npm test        # Run vitest
 ```
@@ -48,6 +52,7 @@ npm run build   # Run vite build
 ```
 
 ## Contributors
+
 This project is made possible by the following contributors. Feel free to contribute!
 
 ![Contributors](https://contrib.rocks/image?repo=AlvISsReimu/kiseki-orbment-assistant)
