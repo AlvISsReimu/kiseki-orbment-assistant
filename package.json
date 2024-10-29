@@ -7,6 +7,10 @@
   "workspaces": [
     "packages/*"
   ],
+  "engines": {
+    "npm": ">=9.0.0",
+    "node": ">=20.0.0 "
+  },
   "scripts": {
     "build": "npm run build --workspace=frontend",
     "dev": "npm run dev --workspace=frontend",
