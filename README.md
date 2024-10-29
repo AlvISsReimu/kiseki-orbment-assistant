@@ -1,10 +1,10 @@
-![GitHub Created At](https://img.shields.io/github/created-at/AlvISsReimu/kiseki-orbment-assistant?style=flat&color=b66e1d)
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/AlvISsReimu/kiseki-orbment-assistant/ci-workflow.yml?branch=main&style=flat&logo=github&label=CI&color=0786e7)
-![GitHub deployments](https://img.shields.io/github/deployments/AlvISsReimu/kiseki-orbment-assistant/Production?style=flat&logo=vercel&label=deployment&color=c75d5c)
-![GitHub License](https://img.shields.io/github/license/AlvISsReimu/kiseki-orbment-assistant?style=flat&color=10af6d)
-![GitHub last commit](https://img.shields.io/github/last-commit/AlvISsReimu/kiseki-orbment-assistant?style=flat&logo=github&color=5e5279)
-![GitHub commit activity](https://img.shields.io/github/commit-activity/m/AlvISsReimu/kiseki-orbment-assistant?style=flat&logo=github&label=commit&color=c7b960)
-![GitHub Repo stars](https://img.shields.io/github/stars/AlvISsReimu/kiseki-orbment-assistant?style=flat&logo=github&color=c0bed0)
+[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/AlvISsReimu/kiseki-orbment-assistant/ci-workflow.yml?branch=main&style=flat&logo=github&label=CI&color=b66e1d)](https://github.com/AlvISsReimu/kiseki-orbment-assistant/actions/workflows/ci-workflow.yml)
+[![GitHub deployments](https://img.shields.io/github/deployments/AlvISsReimu/kiseki-orbment-assistant/Production?style=flat&logo=vercel&label=CD&color=0786e7)](https://kiseki-orbment-assistant-front-end.vercel.app/)
+[![GitHub last commit](https://img.shields.io/github/last-commit/AlvISsReimu/kiseki-orbment-assistant?style=flat&color=c75d5c)](https://github.com/AlvISsReimu/kiseki-orbment-assistant/commits/main/)
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/AlvISsReimu/kiseki-orbment-assistant?style=flat&label=commit&color=10af6d)](https://github.com/AlvISsReimu/kiseki-orbment-assistant/graphs/commit-activity)
+[![GitHub contributors](https://img.shields.io/github/contributors/AlvISsReimu/kiseki-orbment-assistant?style=flat&color=5e5279)](https://github.com/AlvISsReimu/kiseki-orbment-assistant/graphs/contributors)
+[![GitHub Repo stars](https://img.shields.io/github/stars/AlvISsReimu/kiseki-orbment-assistant?style=flat&color=c7b960)](https://github.com/AlvISsReimu/kiseki-orbment-assistant/stargazers)
+[![GitHub License](https://img.shields.io/github/license/AlvISsReimu/kiseki-orbment-assistant?style=flat&color=c0bed0)](LICENSE)
 
 # Trails Orbment Assistant
 An assistant tool to help user set up orbments in Trails Series games. (Only 'Kai no Kiseki' is supported for now)
