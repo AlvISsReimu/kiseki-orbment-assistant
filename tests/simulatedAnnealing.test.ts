@@ -26,7 +26,7 @@ test('Run simulated annealing algorithm to get optimal quartz setup', () => {
     balance: isGithubAction ? 812 : 20,
     maxIteration: isGithubAction ? 1200 : 100,
     maxNoChangeIteration: isGithubAction ? 20 : 10,
-    resultSizeLimit: isGithubAction ? 20 : 5,
+    resultSizeLimit: isGithubAction ? 10 : 5,
   } as OrbmentAssistantInput
 
   const { bestResults, bestScore } = runSimulatedAnnealing(
@@ -35,7 +35,14 @@ test('Run simulated annealing algorithm to get optimal quartz setup', () => {
   expect(bestScore).toBeGreaterThan(0)
   expect(bestResults.length).toBeGreaterThan(0)
 
-  console.log(`score: ${bestScore}, result size: ${bestResults.length}`)
+  // print the result
+  let originalScore = 0
+  if (bestResults.length > 0) {
+    originalScore = bestResults[0].calcScore(scoreMaps)
+  }
+  console.log(
+    `result size: ${bestResults.length}, normalized score: ${bestScore}, original score: ${originalScore}`,
+  )
   for (let i = 0; i < bestResults.length; i++) {
     const core = bestResults[i]
     console.log(`result ${i + 1}:\n${core.toString(languageCode)}`)

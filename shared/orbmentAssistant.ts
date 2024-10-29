@@ -58,7 +58,12 @@ export const calcOptimalOrbmentSetup = (
     const extraLine = _convertQuartzLineToResultLine(bestResult.extraLine)
     return { weaponLine, shieldLine, driveLine, extraLine }
   })
-  const bestScore = saaResult.bestScore
+
+  // saaResult.bestScore is the normalized score, we need to calculate the original one
+  let bestScore = 0
+  if (saaResult.bestResults.length > 0) {
+    bestScore = saaResult.bestResults[0].calcScore(input.scoreMaps)
+  }
   return { bestResults, bestScore } as OrbmentAssistantResult
 }
 

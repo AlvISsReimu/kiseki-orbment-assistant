@@ -154,7 +154,14 @@ export const test = () => {
   })
   const { bestResults, bestScore } = result
 
-  console.log(`score: ${bestScore}, result size: ${bestResults.length}`)
+  let originalScore = 0
+  if (bestResults.length > 0) {
+    originalScore = bestResults[0].calcScore(scoreMaps)
+  }
+
+  console.log(
+    `result size: ${bestResults.length}, normalized score: ${bestScore}, original score: ${originalScore}`,
+  )
 
   const languageCode = LanguageCode.JA
   for (let i = 0; i < bestResults.length; i++) {
