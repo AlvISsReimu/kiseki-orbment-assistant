@@ -1,9 +1,12 @@
 {
   "name": "kiseki-orbment-assistant",
-  "version": "0.0.1",
-  "description": "",
-  "author": "",
-  "license": "ISC",
+  "version": "0.1.0",
+  "description": "An assistant tool to help user set up orbment in Trails Series games.",
+  "author": {
+    "name": "AlvISs_Reimu",
+    "email": "me@alvissreimu.com"
+  },
+  "license": "MIT",
   "workspaces": [
     "packages/*"
   ],

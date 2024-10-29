@@ -1,9 +1,12 @@
 {
-  "name": "frontend",
-  "version": "0.0.1",
+  "name": "kiseki-orbment-assistant-frontend",
+  "version": "0.1.0",
   "description": "",
-  "author": "",
-  "license": "ISC",
+  "author": {
+    "name": "AlvISs_Reimu",
+    "email": "me@alvissreimu.com"
+  },
+  "license": "MIT",
   "scripts": {
     "build": "vite build",
     "dev": "vite"
