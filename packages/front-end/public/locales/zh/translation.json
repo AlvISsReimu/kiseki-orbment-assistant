@@ -15,8 +15,8 @@
   "quartz_table_title": "回路设置",
   "quartz_table_instruction_0": "每个回路可以选择启用、禁用、加权三种状态。",
   "quartz_table_instruction_1": "启用：该回路会被算法采用",
-  "quartz_table_instruction_2": "禁用：该回路不会出现在计算结果中。",
-  "quartz_table_instruction_3": "加权：如果强烈希望某些回路被采纳，可以设置其权重（1-10），权重越大越容易被采纳。",
+  "quartz_table_instruction_2": "禁用：该回路不会出现在计算结果中",
+  "quartz_table_instruction_3": "加权：如果强烈希望某些回路被采纳，可以设置其权重（1-10），权重越大越容易被采纳",
 
   "shard_skill_rule_table_weapon_line_title": "武器晶片技能权重设置",
   "shard_skill_rule_table_shield_line_title": "护盾晶片技能权重设置",
