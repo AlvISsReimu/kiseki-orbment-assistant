@@ -1,10 +1,34 @@
-[![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/AlvISsReimu/kiseki-orbment-assistant/ci-workflow.yml?branch=main&style=flat&logo=github&label=CI&color=b66e1d)](https://github.com/AlvISsReimu/kiseki-orbment-assistant/actions/workflows/ci-workflow.yml)
-[![GitHub deployments](https://img.shields.io/github/deployments/AlvISsReimu/kiseki-orbment-assistant/Production?style=flat&logo=vercel&label=CD&color=0786e7)](https://kiseki-orbment-assistant-front-end.vercel.app/)
-[![GitHub last commit](https://img.shields.io/github/last-commit/AlvISsReimu/kiseki-orbment-assistant?style=flat&color=c75d5c)](https://github.com/AlvISsReimu/kiseki-orbment-assistant/commits/main/)
-[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/AlvISsReimu/kiseki-orbment-assistant?style=flat&label=commit&color=10af6d)](https://github.com/AlvISsReimu/kiseki-orbment-assistant/graphs/commit-activity)
-[![GitHub contributors](https://img.shields.io/github/contributors/AlvISsReimu/kiseki-orbment-assistant?style=flat&color=5e5279)](https://github.com/AlvISsReimu/kiseki-orbment-assistant/graphs/contributors)
-[![GitHub Repo stars](https://img.shields.io/github/stars/AlvISsReimu/kiseki-orbment-assistant?style=flat&color=c7b960)](https://github.com/AlvISsReimu/kiseki-orbment-assistant/stargazers)
-[![GitHub License](https://img.shields.io/github/license/AlvISsReimu/kiseki-orbment-assistant?style=flat&color=c0bed0)](LICENSE)
+<p align="center">
+  <a href="https://www.orbment.io/" target="_blank" rel="noopener noreferrer">
+    <img width="360" src="https://github.com/user-attachments/assets/52e1e59e-939f-4bfb-9124-1c3344307501" alt="logo">
+  </a>
+</p>
+<br/>
+<p align="center">
+  <a href="https://github.com/AlvISsReimu/kiseki-orbment-assistant/actions/workflows/ci-workflow.yml">
+    <img src="https://img.shields.io/github/actions/workflow/status/AlvISsReimu/kiseki-orbment-assistant/ci-workflow.yml?branch=main&style=flat&logo=github&label=CI&color=b66e1d" alt="GitHub Actions Workflow Status">
+  </a>
+  <a href="https://kiseki-orbment-assistant-front-end.vercel.app/">
+    <img src="https://img.shields.io/github/deployments/AlvISsReimu/kiseki-orbment-assistant/Production?style=flat&logo=vercel&label=CD&color=0786e7" alt="GitHub deployments">
+  </a>
+  <a href="https://github.com/AlvISsReimu/kiseki-orbment-assistant/commits/main/">
+    <img src="https://img.shields.io/github/last-commit/AlvISsReimu/kiseki-orbment-assistant?style=flat&color=c75d5c" alt="GitHub last commit">
+  </a>
+  <a href="https://github.com/AlvISsReimu/kiseki-orbment-assistant/graphs/commit-activity">
+    <img src="https://img.shields.io/github/commit-activity/m/AlvISsReimu/kiseki-orbment-assistant?style=flat&label=commit&color=10af6d" alt="GitHub commit activity">
+  </a>
+  <a href="https://github.com/AlvISsReimu/kiseki-orbment-assistant/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/AlvISsReimu/kiseki-orbment-assistant?style=flat&color=5e5279" alt="GitHub contributors">
+  </a>
+  <a href="https://github.com/AlvISsReimu/kiseki-orbment-assistant/stargazers">
+    <img src="https://img.shields.io/github/stars/AlvISsReimu/kiseki-orbment-assistant?style=flat&color=c7b960" alt="GitHub Repo stars">
+  </a>
+  <a href="LICENSE">
+    <img src="https://img.shields.io/github/license/AlvISsReimu/kiseki-orbment-assistant?style=flat&color=c0bed0" alt="GitHub License">
+  </a>
+</p>
+
+
 
 # <img src="/packages/front-end/public/favicon.ico" width="28px" height="28px"></img> Trails Orbment Assistant
 
