@@ -1,10 +1,14 @@
 import 'source-map-support/register.js'
 import { LanguageCode } from './enums/languageCode'
 import { getCharacterIdByName } from './model/character.js'
-import { getQuartzIdByName, type QuartzId } from './model/quartz'
+import { getQuartzById, getQuartzIdByName, type QuartzId } from './model/quartz'
 import { ScoreMaps } from './model/scoreMaps.js'
-import { getShardSkillIdByName, type ShardSkillId } from './model/shardSkill'
-import { calcOptimalOrbmentSetup } from './orbmentAssistant'
+import {
+  getShardSkillById,
+  getShardSkillIdByName,
+  type ShardSkillId,
+} from './model/shardSkill'
+import { runSimulatedAnnealing } from './orbmentAssistant'
 
 const scoreMaps = new ScoreMaps(
   new Map<QuartzId, number>([
@@ -136,7 +140,7 @@ const bannedQuartzIds = [
 ] as QuartzId[]
 
 export const test = () => {
-  const result = calcOptimalOrbmentSetup({
+  const result = runSimulatedAnnealing({
     characterId,
     scoreMaps,
     bannedQuartzIds,
@@ -152,21 +156,21 @@ export const test = () => {
 
   console.log(`score: ${bestScore}, result size: ${bestResults.length}`)
 
-  // const languageCode = LanguageCode.JA
-  // for (let i = 0; i < bestResults.length; i++) {
-  //   const core = bestResults[i]
-  //   console.log(`result ${i + 1}:\n${core.toString(languageCode)}`)
-  //   console.log('Missed quartz:')
-  //   console.log(
-  //     core
-  //       .getMissedQuartzIds(scoreMaps.quartzScores)
-  //       .map(id => getQuartzById(id).name_i18n[languageCode]),
-  //   )
-  //   console.log('Missed shard skills:')
-  //   console.log(
-  //     core
-  //       .getMissedShardSkillIds(scoreMaps.shardSkillScores)
-  //       .map(id => getShardSkillById(id).name_i18n[languageCode]),
-  //   )
-  // }
+  const languageCode = LanguageCode.JA
+  for (let i = 0; i < bestResults.length; i++) {
+    const core = bestResults[i]
+    console.log(`result ${i + 1}:\n${core.toString(languageCode)}`)
+    console.log('Missed quartz:')
+    console.log(
+      core
+        .getMissedQuartzIds(scoreMaps.quartzScores)
+        .map(id => getQuartzById(id).name_i18n[languageCode]),
+    )
+    console.log('Missed shard skills:')
+    console.log(
+      core
+        .getMissedShardSkillIds(scoreMaps.shardSkillScores)
+        .map(id => getShardSkillById(id).name_i18n[languageCode]),
+    )
+  }
 }

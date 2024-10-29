@@ -50,6 +50,19 @@ export type OrbmentAssistantResult = {
 export const calcOptimalOrbmentSetup = (
   input: OrbmentAssistantInput,
 ): OrbmentAssistantResult => {
+  const saaResult = runSimulatedAnnealing(input)
+  const bestResults = saaResult.bestResults.map(bestResult => {
+    const weaponLine = _convertQuartzLineToResultLine(bestResult.weaponLine)
+    const shieldLine = _convertQuartzLineToResultLine(bestResult.shieldLine)
+    const driveLine = _convertQuartzLineToResultLine(bestResult.driveLine)
+    const extraLine = _convertQuartzLineToResultLine(bestResult.extraLine)
+    return { weaponLine, shieldLine, driveLine, extraLine }
+  })
+  const bestScore = saaResult.bestScore
+  return { bestResults, bestScore } as OrbmentAssistantResult
+}
+
+export const runSimulatedAnnealing = (input: OrbmentAssistantInput) => {
   if (input.characterId == null && !input.customizedCore) {
     throw new Error('Either characterId or customizedCore should be provided')
   }
@@ -81,17 +94,7 @@ export const calcOptimalOrbmentSetup = (
     resultSizeLimit: input.resultSizeLimit,
   })
 
-  const saaResult = simulatedAnnealing.run()
-
-  const bestResults = saaResult.bestResults.map(bestResult => {
-    const weaponLine = _convertQuartzLineToResultLine(bestResult.weaponLine)
-    const shieldLine = _convertQuartzLineToResultLine(bestResult.shieldLine)
-    const driveLine = _convertQuartzLineToResultLine(bestResult.driveLine)
-    const extraLine = _convertQuartzLineToResultLine(bestResult.extraLine)
-    return { weaponLine, shieldLine, driveLine, extraLine }
-  })
-  const bestScore = saaResult.bestScore
-  return { bestResults, bestScore } as OrbmentAssistantResult
+  return simulatedAnnealing.run()
 }
 
 const _convertQuartzLineToResultLine = (quartzLine: QuartzLine): ResultLine => {
