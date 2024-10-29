@@ -12,9 +12,8 @@ import {
   WEAPON_LINE_SHARD_SKILLS,
 } from '@shared/constants/shardSkill'
 import type { ShardSkill } from '@shared/model/shardSkill'
-import { useContext } from 'react'
+import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { globalContext } from '../contexts/globalContext'
 import { useSingletonLocalStorage } from '../utils/utils'
 import { ShardSkillRuleTable } from './shardSkillRuleTable'
 
@@ -29,8 +28,9 @@ const initRule = (skills: ShardSkill[]) => {
 // for each table set a minumum width for each column
 const minWidth = [362, 346, 362, 339]
 
-export const ShardSkillTable = () => {
-  const gc = useContext(globalContext.Context)
+export const ShardSkillTable = (props: {
+  onChange: (rules: number[][]) => void
+}) => {
   const theme = useTheme()
   const [weaponRule, setWeaponRule] = useSingletonLocalStorage(
     'weaponRule',
@@ -55,19 +55,24 @@ export const ShardSkillTable = () => {
     'shardSkillExpandedState',
     [true, true, true, true],
   )
-
   const { t } = useTranslation()
+
+  useEffect(() => {
+    props.onChange([weaponRule, shieldRule, driveRule, extraRule])
+  }, [weaponRule, shieldRule, driveRule, extraRule])
 
   return (
     <Box
       sx={{
-        padding: '20px 10px',
+        padding: '20px',
         backgroundColor: theme.palette.background.paper,
         backgroundImage: 'var(--Paper-overlay)',
       }}
     >
       {/* TODO: show text better */}
-      <div>{t('shard_skill_rule_table_instruction')}</div>
+      <div style={{ marginBottom: '12px' }}>
+        {t('shard_skill_rule_table_instruction')}
+      </div>
       <Accordion
         sx={{
           boxShadow: 'none',

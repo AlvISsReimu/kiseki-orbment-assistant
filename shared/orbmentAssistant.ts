@@ -1,3 +1,4 @@
+import type { ElementType } from './enums/elementType'
 import { getCharacterById, type CharacterId } from './model/character'
 import type { Core } from './model/core'
 import type { QuartzId } from './model/quartz'
@@ -25,6 +26,25 @@ export interface OrbmentAssistantInput {
   maxIteration?: number
   maxNoChangeIteration?: number
   resultSizeLimit?: number
+}
+
+type ResultLine = {
+  slots: number[]
+  elements: Record<ElementType, number>
+  fulfilledShardSkills: {
+    id: number
+    hightlight: boolean
+  }
+}
+
+export type OrbmentAssistantResult = {
+  bestResults: {
+    weaponLine: ResultLine
+    shieldLine: ResultLine
+    driveLine: ResultLine
+    extraLine: ResultLine
+  }
+  bestScore: number
 }
 
 /**

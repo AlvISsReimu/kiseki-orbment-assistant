@@ -20,10 +20,9 @@ export const ShardSkillRuleTable = (props: {
   }, [ruleCopy])
 
   const onWeightChange = (index: number, weight: number) => {
-    setRuleCopy({
-      ...ruleCopy,
-      [index]: weight,
-    })
+    const r = [...ruleCopy]
+    r[index] = weight
+    setRuleCopy(r)
   }
 
   return (

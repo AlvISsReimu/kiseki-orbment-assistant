@@ -17,7 +17,6 @@ import { ALL_QUARTZ } from '@shared/constants/quartz'
 import { ElementType } from '@shared/enums/elementType'
 import { useContext, useEffect } from 'react'
 import { globalContext } from '../contexts/globalContext'
-import { useSingletonLocalStorage } from '../utils/utils'
 
 import { ExpandMore } from '@mui/icons-material'
 import { getNameByElementType } from '@shared/model/element'
@@ -25,6 +24,7 @@ import { Quartz } from '@shared/model/quartz'
 import { useTranslation } from 'react-i18next'
 import i18next from '../i18n'
 import { getQuartzIconUrlById } from '../utils/assets'
+import { useSingletonLocalStorage } from '../utils/utils'
 
 const headers = Object.values(ElementType)
 const data: Quartz[][] = (() => {
@@ -49,16 +49,13 @@ const _loadOptionLabels = () => {
   }
 }
 
-export const QuartzTable = (props: { onChange: (v: number[]) => void }) => {
+export const QuartzTable = (props: {
+  data: number[]
+  setData: (v: number[]) => void
+}) => {
   const gc = useContext(globalContext.Context)
-  const [quartzState, setQuartzState] = useSingletonLocalStorage(
-    'quartzTable',
-    new Array(ALL_QUARTZ.length).fill(0),
-  )
-
-  useEffect(() => {
-    props.onChange([...quartzState])
-  }, [quartzState])
+  const [quartzTableExpanded, setQuartzTableExpanded] =
+    useSingletonLocalStorage('quartzTableExpanded', true)
 
   let optionLabels = _loadOptionLabels()
   useEffect(() => {
@@ -75,18 +72,19 @@ export const QuartzTable = (props: { onChange: (v: number[]) => void }) => {
   }
 
   const updateQuartzState = (ev: SelectChangeEvent, id: number) => {
-    const value = parseInt(ev.target.value)
-    setQuartzState(prev => {
-      const prevItems = [...prev]
-      prevItems[id] = value
-      return prevItems
-    })
+    const copy = [...props.data]
+    copy[id] = parseInt(ev.target.value)
+    console.log(copy)
+    props.setData(copy)
   }
 
   const { t } = useTranslation()
 
   return (
-    <Accordion>
+    <Accordion
+      expanded={quartzTableExpanded}
+      onChange={(_, expanded) => setQuartzTableExpanded(expanded)}
+    >
       <AccordionSummary expandIcon={<ExpandMore />}>
         {t('quartz_table_title')}
       </AccordionSummary>
@@ -137,7 +135,7 @@ export const QuartzTable = (props: { onChange: (v: number[]) => void }) => {
                           ></img>
                         </div>
                         <Select
-                          value={String(quartzState[quartz.id])}
+                          value={String(props.data[quartz.id])}
                           onChange={ev => updateQuartzState(ev, quartz.id)}
                           displayEmpty
                           inputProps={{ 'aria-label': 'Without label' }}

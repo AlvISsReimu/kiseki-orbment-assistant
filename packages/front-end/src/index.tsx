@@ -10,14 +10,19 @@ import {
   ThemeProvider,
   ToggleButton,
   ToggleButtonGroup,
+  Typography,
   type SelectChangeEvent,
 } from '@mui/material'
 import { LanguageCode } from '@shared/enums/languageCode'
 import { getNameByLanguageCode } from '@shared/model/language'
-import { ScoreMaps } from '@shared/model/scoreMaps'
-import { calcOptimalOrbmentSetup } from '@shared/orbmentAssistant'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 
+import { ALL_QUARTZ } from '@shared/constants/quartz'
+import { ScoreMaps } from '@shared/model/scoreMaps'
+import {
+  calcOptimalOrbmentSetup,
+  type OrbmentAssistantInput,
+} from '@shared/orbmentAssistant'
 import { useContext, useEffect, useMemo, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { useTranslation } from 'react-i18next'
@@ -27,6 +32,7 @@ import { ShardSkillTable } from './components/shardSkillTable'
 import { globalContext } from './contexts/globalContext'
 import './i18n'
 import { darkTheme, lightTheme } from './utils/themes'
+import { useSingletonLocalStorage } from './utils/utils'
 
 const Main = () => {
   const gc = useContext(globalContext.Context)
@@ -34,8 +40,14 @@ const Main = () => {
     const savedTheme = localStorage.getItem('theme')
     return savedTheme ? JSON.parse(savedTheme) : 'dark'
   })
-  const [quartzState, setQuartzState] = useState<number[]>([])
   const [characterId, setCharacterId] = useState<number>(0)
+
+  const [quartzState, setQuartzState] = useSingletonLocalStorage(
+    'quartzTable',
+    new Array(ALL_QUARTZ.length).fill(0),
+  )
+
+  const [shardSkillScores, setShardSkillScores] = useState<number[][]>([])
 
   const { t, i18n } = useTranslation()
 
@@ -66,11 +78,19 @@ const Main = () => {
       .filter(v => v[1] === -1)
       .map(v => v[0])
 
-    calcOptimalOrbmentSetup({
+    const scores: [number, number][] = shardSkillScores
+      .map(v => v.map((v, i) => [i, v]).filter(v => v[1] > 0))
+      .flat() as [number, number][]
+    const shardSkillMap = new Map<number, number>(scores)
+
+    const input: OrbmentAssistantInput = {
       characterId,
-      scoreMaps: new ScoreMaps(quartzMap, new Map()),
+      scoreMaps: new ScoreMaps(quartzMap, shardSkillMap),
       bannedQuartzIds,
-    })
+    }
+    console.log(input)
+    const res = calcOptimalOrbmentSetup(input)
+    console.log(res)
   }
 
   return (
@@ -121,12 +141,14 @@ const Main = () => {
         {/* Your application components go here */}
 
         {/* TODO: show text better */}
-        <h1>{t('website_name')}</h1>
+        <Typography variant="h3">{t('website_name')}</Typography>
         <div>{t('website_description_0')}</div>
         <div>1.&nbsp;{t('website_description_1')}</div>
         <div>2.&nbsp;{t('website_description_2')}</div>
         <div>3.&nbsp;{t('website_description_3')}</div>
-        <h2>{t('development_title')}</h2>
+        <Typography variant="h4" sx={{ marginTop: '1rem' }}>
+          {t('development_title')}
+        </Typography>
         <div>
           <Button variant="outlined">{t('repository')}</Button>
         </div>
@@ -135,8 +157,8 @@ const Main = () => {
         <CharacterComponent
           onCharacterIdChange={setCharacterId}
         ></CharacterComponent>
-        <QuartzTable onChange={setQuartzState}></QuartzTable>
-        <ShardSkillTable></ShardSkillTable>
+        <QuartzTable data={quartzState} setData={setQuartzState}></QuartzTable>
+        <ShardSkillTable onChange={setShardSkillScores}></ShardSkillTable>
         <Button variant="outlined" onClick={getResult}>
           {t('start_calculation')}
         </Button>
