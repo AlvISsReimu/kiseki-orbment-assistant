@@ -20,7 +20,6 @@ i18n
       order: [
         'localStorage',
       ],
-      lookupQuerystring: 'lng',
       lookupLocalStorage: 'i18nextLng',
       caches: ['localStorage'],
     },

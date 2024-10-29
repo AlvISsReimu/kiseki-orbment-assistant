@@ -23,7 +23,7 @@ import {
   calcOptimalOrbmentSetup,
   type OrbmentAssistantInput,
 } from '@shared/orbmentAssistant'
-import { useContext, useEffect, useMemo, useState } from 'react'
+import { useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { useTranslation } from 'react-i18next'
 import { CharacterComponent } from './components/characterComponet'
@@ -68,6 +68,20 @@ const Main = () => {
     gc.setLanguage(ev.target.value as LanguageCode)
     i18n.changeLanguage(ev.target.value.slice(0, 2))
   }
+
+  const setDocumentTitle = () => (document.title = t('website_name'))
+
+  const handleLanguageChanged = useCallback(() => setDocumentTitle(), [])
+
+  useEffect(() => {
+    setDocumentTitle()
+  }, [])
+  useEffect(() => {
+    i18n.on('languageChanged', handleLanguageChanged)
+    return () => {
+      i18n.off('languageChanged', handleLanguageChanged)
+    }
+  }, [handleLanguageChanged])
 
   const getResult = () => {
     const quartz = quartzState.map((v, i) => [i, v])
