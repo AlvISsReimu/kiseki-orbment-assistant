@@ -2,11 +2,9 @@ import type { ElementType } from './enums/elementType'
 import { getCharacterById, type CharacterId } from './model/character'
 import type { Core } from './model/core'
 import type { QuartzId } from './model/quartz'
+import type { QuartzLine } from './model/quartzLine'
 import type { ScoreMaps } from './model/scoreMaps'
-import {
-  SimulatedAnnealing,
-  type SimulatedAnnealingResult,
-} from './utils/simulatedAnnealing/simulatedAnnealing'
+import { SimulatedAnnealing } from './utils/simulatedAnnealing/simulatedAnnealing'
 
 /**
  * FE should provide these parameters to calculate the optimal orbment setup.
@@ -31,10 +29,7 @@ export interface OrbmentAssistantInput {
 type ResultLine = {
   slots: number[]
   elements: Record<ElementType, number>
-  fulfilledShardSkills: {
-    id: number
-    hightlight: boolean
-  }
+  fulfilledShardSkills: number[]
 }
 
 export type OrbmentAssistantResult = {
@@ -43,7 +38,7 @@ export type OrbmentAssistantResult = {
     shieldLine: ResultLine
     driveLine: ResultLine
     extraLine: ResultLine
-  }
+  }[]
   bestScore: number
 }
 
@@ -54,7 +49,7 @@ export type OrbmentAssistantResult = {
  */
 export const calcOptimalOrbmentSetup = (
   input: OrbmentAssistantInput,
-): SimulatedAnnealingResult<Core> => {
+): OrbmentAssistantResult => {
   if (input.characterId == null && !input.customizedCore) {
     throw new Error('Either characterId or customizedCore should be provided')
   }
@@ -86,5 +81,43 @@ export const calcOptimalOrbmentSetup = (
     resultSizeLimit: input.resultSizeLimit,
   })
 
-  return simulatedAnnealing.run()
+  const saaResult = simulatedAnnealing.run()
+
+  const bestResults = saaResult.bestResults.map(bestResult => {
+    const weaponLine = _convertQuartzLineToResultLine(bestResult.weaponLine)
+    const shieldLine = _convertQuartzLineToResultLine(bestResult.shieldLine)
+    const driveLine = _convertQuartzLineToResultLine(bestResult.driveLine)
+    const extraLine = _convertQuartzLineToResultLine(bestResult.extraLine)
+    return { weaponLine, shieldLine, driveLine, extraLine }
+  })
+  const bestScore = saaResult.bestScore
+  return { bestResults, bestScore } as OrbmentAssistantResult
+}
+
+const _convertQuartzLineToResultLine = (quartzLine: QuartzLine): ResultLine => {
+  const slots = [...quartzLine.regularSlotQuartzIds]
+  // insert quartz that is in elment-limited slot into slots in ResultLine
+  quartzLine.elementLimitedSlots
+    .filter(elementLimitedSlot => elementLimitedSlot.hasQuartz())
+    .forEach((elementLimitedSlot, i) => {
+      slots.splice(i, 0, elementLimitedSlot.quartzId)
+    })
+
+  const elements: Record<ElementType, number> = {} as Record<
+    ElementType,
+    number
+  >
+  quartzLine.calcSumElementalValues().forEach((value, key) => {
+    elements[key] = value
+  })
+
+  const fulfilledShardSkills = quartzLine
+    .analyzeCurrentShardSkills()
+    .map(shardSkill => shardSkill.id)
+
+  return {
+    slots,
+    elements,
+    fulfilledShardSkills,
+  } as ResultLine
 }
