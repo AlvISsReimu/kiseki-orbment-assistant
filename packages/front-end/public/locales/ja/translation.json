@@ -22,7 +22,8 @@
   "shard_skill_rule_table_shield_line_title": "シールドチップスキルの重み設定",
   "shard_skill_rule_table_drive_line_title": "ドライブチップスキルの重み設定",
   "shard_skill_rule_table_extra_line_title": "EXTRAチップスキルの重み設定",
-  "shard_skill_rule_table_instruction": "チップスキルに重み（1-10）を設定できます。重みが大きいほど、そのチップスキルを発動しやすくなります。",
+  "shard_skill_rule_table_instruction_0": "チップスキルに重み（1-10）を設定できます。重みが大きいほど、そのチップスキルを発動しやすくなります。",
+  "shard_skill_rule_table_instruction_1": "低レベルのスキルと高レベルのスキルが同時に発動した場合（例：大地衝撃と大地衝撃II）、計算には高レベルのスキルの重みのみが使用されます。",
 
   "language": "言語",
   "character": "キャラクター",

@@ -71,7 +71,8 @@ export const ShardSkillTable = (props: {
     >
       {/* TODO: show text better */}
       <div style={{ marginBottom: '12px' }}>
-        {t('shard_skill_rule_table_instruction')}
+        <div>{t('shard_skill_rule_table_instruction_0')}</div>
+        <div>{t('shard_skill_rule_table_instruction_1')}</div>
       </div>
       <Accordion
         sx={{

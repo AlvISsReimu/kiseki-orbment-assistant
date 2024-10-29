@@ -22,7 +22,8 @@
   "shard_skill_rule_table_shield_line_title": "Shield Chip Skill Weight Settings",
   "shard_skill_rule_table_drive_line_title": "Drive Chip Skill Weight Settings",
   "shard_skill_rule_table_extra_line_title": "EXTRA Chip Skill Weight Settings",
-  "shard_skill_rule_table_instruction": "You can set weights for chip skills (1-10). The higher the weight, the more likely the circuit combination will trigger this chip skill.",
+  "shard_skill_rule_table_instruction_0": "You can set weights for chip skills (1-10). The higher the weight, the more likely the circuit combination will trigger this chip skill.",
+  "shard_skill_rule_table_instruction_1": "When low-level skills and high-level skills are triggered at the same time (e.g. Earth Impact and Earth Impact II), only the weight of the high-level skill is used for calculation.",
 
   "language": "Language",
   "character": "Character",
