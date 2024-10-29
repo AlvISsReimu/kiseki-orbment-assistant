@@ -15,8 +15,8 @@
     "node": ">=20.0.0 "
   },
   "scripts": {
-    "build": "npm run build --workspace=frontend",
-    "dev": "npm run dev --workspace=frontend",
+    "build": "npm run build --workspace=kiseki-orbment-assistant-frontend",
+    "dev": "npm run dev --workspace=kiseki-orbment-assistant-frontend",
     "lint": "eslint --ext .js,.ts,.tsx shared/ packages/front-end/src/",
     "lint-staged": "lint-staged",
     "format-check": "prettier --check **/*.{js,ts,tsx,json}",
