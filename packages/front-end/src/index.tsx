@@ -200,7 +200,7 @@ const Main = () => {
         {/* TODO: show credits in a better way */}
         <div>{t('credit_title')}</div>
         <div>
-          {t('credit_0_first')}
+          {t('credit_0')}
           <Link
             href="https://kiseki.fandom.com/"
             underline="hover"
@@ -208,9 +208,8 @@ const Main = () => {
           >
             Kiseki Wiki
           </Link>
-          {t('credit_0_second')}
+          {t('credit_1')}
         </div>
-        <div>{t('credit_1')}</div>
       </div>
       <SpeedInsights />
     </ThemeProvider>
