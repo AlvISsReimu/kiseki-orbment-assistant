@@ -1,15 +1,17 @@
 import { LanguageCode } from '@shared/enums/languageCode'
 import { getCharacterIdByName } from '@shared/model/character'
+import type { Core } from '@shared/model/core'
 import { getQuartzById, getQuartzIdByName } from '@shared/model/quartz'
 import { getShardSkillById } from '@shared/model/shardSkill'
 import {
   runSimulatedAnnealing,
   type OrbmentAssistantInput,
 } from '@shared/orbmentAssistant'
+import type { SimulatedAnnealingResult } from '@shared/utils/simulatedAnnealing/simulatedAnnealing'
 import { expect, test } from 'vitest'
 import { getScoreMapsForTesting } from './utils'
 
-test('Run simulated annealing algorithm to get optimal quartz setup', () => {
+test('Run simulated annealing algorithm to get optimal quartz setup', async () => {
   const isGithubAction = process.env.GITHUB_ACTIONS === 'true'
   const languageCode = LanguageCode.JA
   const scoreMaps = getScoreMapsForTesting()
@@ -31,7 +33,8 @@ test('Run simulated annealing algorithm to get optimal quartz setup', () => {
 
   const { bestResults, bestScore } = runSimulatedAnnealing(
     orbmentAssistantInput,
-  )
+    false,
+  ) as SimulatedAnnealingResult<Core>
   expect(bestScore).toBeGreaterThan(0)
   expect(bestResults.length).toBeGreaterThan(0)
 
@@ -43,7 +46,8 @@ test('Run simulated annealing algorithm to get optimal quartz setup', () => {
   console.log(
     `result size: ${bestResults.length}, normalized score: ${bestScore}, original score: ${originalScore}`,
   )
-  for (let i = 0; i < bestResults.length; i++) {
+  for (let i = 0; i < 1; i++) {
+    // only print the first result for now
     const core = bestResults[i]
     console.log(`result ${i + 1}:\n${core.toString(languageCode)}`)
     console.log('Missed quartz:')

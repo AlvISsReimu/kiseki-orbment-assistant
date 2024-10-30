@@ -50,7 +50,7 @@ export type OrbmentAssistantResult = {
 export const calcOptimalOrbmentSetup = async (
   input: OrbmentAssistantInput,
 ): Promise<OrbmentAssistantResult> => {
-  const saaResult = await runSimulatedAnnealing(input)
+  const saaResult = await runSimulatedAnnealing(input, true)
   const bestResults = saaResult.bestResults.map(bestResult => {
     const weaponLine = _convertQuartzLineToResultLine(bestResult.weaponLine)
     const shieldLine = _convertQuartzLineToResultLine(bestResult.shieldLine)
@@ -67,7 +67,10 @@ export const calcOptimalOrbmentSetup = async (
   return { bestResults, bestScore } as OrbmentAssistantResult
 }
 
-export const runSimulatedAnnealing = (input: OrbmentAssistantInput) => {
+export const runSimulatedAnnealing = (
+  input: OrbmentAssistantInput,
+  isAsync: boolean,
+) => {
   if (input.characterId == null && !input.customizedCore) {
     throw new Error('Either characterId or customizedCore should be provided')
   }
@@ -99,7 +102,7 @@ export const runSimulatedAnnealing = (input: OrbmentAssistantInput) => {
     resultSizeLimit: input.resultSizeLimit,
   })
 
-  return simulatedAnnealing.run()
+  return isAsync ? simulatedAnnealing.runAsync() : simulatedAnnealing.runSync()
 }
 
 const _convertQuartzLineToResultLine = (quartzLine: QuartzLine): ResultLine => {

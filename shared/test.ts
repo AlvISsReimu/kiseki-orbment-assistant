@@ -139,20 +139,23 @@ const bannedQuartzIds = [
   // getQuartzIdByName('攻撃3'),
 ] as QuartzId[]
 
-export const test = () => {
-  const result = runSimulatedAnnealing({
-    characterId,
-    scoreMaps,
-    bannedQuartzIds,
-    // initTemperature: 1000,
-    // coolingRate: 0.985,
-    // endTemperature: 1e-2,
-    // balance: 500,
-    maxIteration: 1200,
-    maxNoChangeIteration: 20,
-    resultSizeLimit: 10,
-  })
-  const { bestResults, bestScore } = result
+export const test = async () => {
+  const result = await runSimulatedAnnealing(
+    {
+      characterId,
+      scoreMaps,
+      bannedQuartzIds,
+      // initTemperature: 1000,
+      // coolingRate: 0.985,
+      // endTemperature: 1e-2,
+      // balance: 500,
+      maxIteration: 1200,
+      maxNoChangeIteration: 20,
+      resultSizeLimit: 10,
+    },
+    true,
+  )
+  const { bestResults, bestScore } = await result
 
   let originalScore = 0
   if (bestResults.length > 0) {
