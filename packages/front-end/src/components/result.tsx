@@ -51,7 +51,7 @@ export const Result = (props: {
       }}
     >
       <AccordionSummary expandIcon={<ExpandMore />}>
-        {t('resut_table_title')} {props.ind + 1}
+        {t('result_table_title')} {props.ind + 1}
       </AccordionSummary>
       <AccordionDetails sx={{ paddingLeft: '32px', paddingRight: '32px' }}>
         <Typography>{t('result_table_quartz_title')}</Typography>

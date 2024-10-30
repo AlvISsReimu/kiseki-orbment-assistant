@@ -90,7 +90,7 @@ export const ShardSkillTable = (props: {
           }
         >
           <AccordionSummary expandIcon={<ExpandMore />}>
-            {t('shard_skill_rule_table_weapon_line_title')}
+            {t('line_type_weapon')}
           </AccordionSummary>
           <AccordionDetails>
             <ShardSkillRuleTable
@@ -118,7 +118,7 @@ export const ShardSkillTable = (props: {
           }
         >
           <AccordionSummary expandIcon={<ExpandMore />}>
-            {t('shard_skill_rule_table_shield_line_title')}
+            {t('line_type_shield')}
           </AccordionSummary>
           <AccordionDetails>
             <ShardSkillRuleTable
@@ -146,7 +146,7 @@ export const ShardSkillTable = (props: {
           }
         >
           <AccordionSummary expandIcon={<ExpandMore />}>
-            {t('shard_skill_rule_table_drive_line_title')}
+            {t('line_type_drive')}
           </AccordionSummary>
           <AccordionDetails>
             <ShardSkillRuleTable
@@ -174,7 +174,7 @@ export const ShardSkillTable = (props: {
           }
         >
           <AccordionSummary expandIcon={<ExpandMore />}>
-            {t('shard_skill_rule_table_extra_line_title')}
+            {t('line_type_extra')}
           </AccordionSummary>
           <AccordionDetails>
             <ShardSkillRuleTable

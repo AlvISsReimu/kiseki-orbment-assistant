@@ -9,7 +9,7 @@ export const Results = (props: { data: FEOrbmentAssistantResult }) => {
   return (
     <Accordion expanded>
       <AccordionSummary expandIcon={<ExpandMore />}>
-        {t('results_table_title')}: {props.data.bestScore}
+        {t('results_table_title')} {t('best_score')}: {props.data.bestScore}
       </AccordionSummary>
       <AccordionDetails>
         {props.data.bestResults.map((result, index) => (
