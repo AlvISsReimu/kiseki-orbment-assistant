@@ -1,6 +1,6 @@
 {
   "website_name": "轨迹回路助手",
-  "website_description_0": "欢迎使用轨迹自动回路助手。",
+  "website_description_0": "欢迎使用轨迹自动回路助手。本工具可以自动计算出最优化的回路组合。",
   "website_description_1": "目前仅支持界之轨迹。",
   "website_description_2": "采用算法为模拟退火算法。得出的结果不一定是全局最优解，推荐多运行几次。",
   "website_description_3": "感谢乌尔努公司和巴泽尔理科大学对本项目的支持。",

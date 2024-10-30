@@ -1,6 +1,6 @@
 {
   "website_name": "Trails Orbment Assistant",
-  "website_description_0": "Welcome to Trails Orbment Assistant.",
+  "website_description_0": "Welcome to Trails Orbment Assistant. This tool can automatically calculate the optimal quartz combination.",
   "website_description_1": "Currently only Kai no Kiseki is supported.",
   "website_description_2": "The algorithm used is simulated annealing. The results may not be the global optimum, so it is recommended to run it multiple times.",
   "website_description_3": "Thanks to Verne Company and Basel Institute of Science for their support on this project.",
