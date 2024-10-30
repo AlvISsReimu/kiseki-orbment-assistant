@@ -29,3 +29,12 @@ export const getElementIconUrl = (
     //@ts-expect-error Ignore this error
   ].default
 }
+
+export const getLoadingImg = (language: LanguageCode) => {
+  const loadingImgWebps = import.meta.glob('../assets/calculating/*.webp', {
+    eager: true,
+    query: '?url',
+  })
+  return loadingImgWebps[`../assets/calculating/calculating_${language}.webp`]
+    .default
+}

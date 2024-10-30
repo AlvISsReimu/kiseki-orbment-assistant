@@ -47,10 +47,10 @@ export type OrbmentAssistantResult = {
  * @param input
  * @returns
  */
-export const calcOptimalOrbmentSetup = (
+export const calcOptimalOrbmentSetup = async (
   input: OrbmentAssistantInput,
-): OrbmentAssistantResult => {
-  const saaResult = runSimulatedAnnealing(input)
+): Promise<OrbmentAssistantResult> => {
+  const saaResult = await runSimulatedAnnealing(input)
   const bestResults = saaResult.bestResults.map(bestResult => {
     const weaponLine = _convertQuartzLineToResultLine(bestResult.weaponLine)
     const shieldLine = _convertQuartzLineToResultLine(bestResult.shieldLine)

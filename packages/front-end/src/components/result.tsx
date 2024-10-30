@@ -32,6 +32,7 @@ export const Result = (props: {
   const theme = useTheme()
   const textColor = theme.palette.text.primary
   const { t } = useTranslation()
+  const [expanded, setExpanded] = useState(props.ind === 0)
 
   useEffect(() => {
     setTableHead(_loadCoreHeaders())
@@ -39,6 +40,8 @@ export const Result = (props: {
 
   return (
     <Accordion
+      expanded={expanded}
+      onChange={() => setExpanded(!expanded)}
       sx={{
         '&:not(:last-child)': { borderBottom: `1px solid ${textColor}` },
         boxShadow: 'none',

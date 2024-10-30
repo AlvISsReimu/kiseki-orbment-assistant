@@ -7,7 +7,7 @@ import { Result } from './result'
 export const Results = (props: { data: FEOrbmentAssistantResult }) => {
   const { t } = useTranslation()
   return (
-    <Accordion>
+    <Accordion expanded>
       <AccordionSummary expandIcon={<ExpandMore />}>
         {t('results_table_title')}: {props.data.bestScore}
       </AccordionSummary>

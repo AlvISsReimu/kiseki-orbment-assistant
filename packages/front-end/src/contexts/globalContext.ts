@@ -1,5 +1,5 @@
 import { LanguageCode } from '@shared/enums/languageCode'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { genericHookContextBuilder } from '../utils/genericHookContextBuilder'
 import { useSingletonLocalStorage } from '../utils/utils'
@@ -18,6 +18,7 @@ export const globalContext = genericHookContextBuilder(() => {
     'language',
     LanguageCode.ZH_CN,
   )
+  const [showLoading, setShowLoading] = useState(false)
   const { i18n } = useTranslation()
 
   useEffect(() => {
@@ -32,5 +33,7 @@ export const globalContext = genericHookContextBuilder(() => {
 
   return {
     language,
+    showLoading,
+    setShowLoading,
   }
 })

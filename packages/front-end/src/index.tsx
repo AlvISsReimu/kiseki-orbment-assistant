@@ -19,18 +19,21 @@ import { SpeedInsights } from '@vercel/speed-insights/react'
 
 import { ALL_QUARTZ } from '@shared/constants/quartz'
 import { ScoreMaps } from '@shared/model/scoreMaps'
-import { type OrbmentAssistantInput } from '@shared/orbmentAssistant'
+import {
+  calcOptimalOrbmentSetup,
+  type OrbmentAssistantInput,
+} from '@shared/orbmentAssistant'
 import { useContext, useEffect, useMemo, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { useTranslation } from 'react-i18next'
 import { CharacterComponent } from './components/characterComponet'
+import { Loading } from './components/Loading'
 import { QuartzTable } from './components/quartzTable'
 import { Results } from './components/results'
 import { ShardSkillTable } from './components/shardSkillTable'
 import { globalContext } from './contexts/globalContext'
 import './i18n'
 import type { FEOrbmentAssistantResult } from './types/types'
-import { testResult } from './utils/testData'
 import { darkTheme, lightTheme } from './utils/themes'
 import { useSingletonLocalStorage } from './utils/utils'
 
@@ -72,7 +75,7 @@ const Main = () => {
     i18n.changeLanguage(ev.target.value.slice(0, 2))
   }
 
-  const getResult = () => {
+  const getResult = async () => {
     const quartz = quartzState.map((v, i) => [i, v])
     const quartzMap = new Map<number, number>(
       quartz.filter(v => v[1] > 0) as [number, number][],
@@ -91,23 +94,25 @@ const Main = () => {
       scoreMaps: new ScoreMaps(quartzMap, shardSkillMap),
       bannedQuartzIds,
     }
-    // const res = calcOptimalOrbmentSetup(input)
-    const res = testResult
+    gc.setShowLoading(true)
+    const res = await calcOptimalOrbmentSetup(input)
+    // const res = testResult
     setResult({
       ...res,
-      // @ts-expect-error test data
       bestResults: res.bestResults
         .slice(0, 5)
         .map(v => [v.weaponLine, v.shieldLine, v.driveLine, v.extraLine]),
     })
+    gc.setShowLoading(false)
   }
 
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
+      <Loading />
       <div
         style={{
-          padding: '20px',
+          padding: '32px',
           display: 'flex',
           flexDirection: 'column',
           gap: '20px',
