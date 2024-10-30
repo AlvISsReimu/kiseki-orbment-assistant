@@ -5,6 +5,7 @@ import {
   CssBaseline,
   FormControl,
   InputLabel,
+  Link,
   MenuItem,
   Select,
   ThemeProvider,
@@ -17,6 +18,7 @@ import { LanguageCode } from '@shared/enums/languageCode'
 import { getNameByLanguageCode } from '@shared/model/language'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 
+import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import { DefaultParameterValues } from '@shared/constants/defaultParameterValues'
 import { ALL_QUARTZ } from '@shared/constants/quartz'
 import { ScoreMaps } from '@shared/model/scoreMaps'
@@ -174,7 +176,14 @@ const Main = () => {
           {t('development_title')}
         </Typography>
         <div>
-          <Button variant="outlined">{t('repository')}</Button>
+          <Button
+            variant="outlined"
+            href="https://github.com/AlvISsReimu/kiseki-orbment-assistant"
+            target="_blank"
+            endIcon={<OpenInNewIcon />}
+          >
+            {t('repository')}
+          </Button>
         </div>
         <div>{t('development_text')}</div>
 
@@ -187,6 +196,21 @@ const Main = () => {
         <Button variant="outlined" onClick={getResult}>
           {t('start_calculation')}
         </Button>
+
+        {/* TODO: show credits in a better way */}
+        <div>{t('credit_title')}</div>
+        <div>
+          {t('credit_0_first')}
+          <Link
+            href="https://kiseki.fandom.com/"
+            underline="hover"
+            target="_blank"
+          >
+            Kiseki Wiki
+          </Link>
+          {t('credit_0_second')}
+        </div>
+        <div>{t('credit_1')}</div>
       </div>
       <SpeedInsights />
     </ThemeProvider>

@@ -35,5 +35,9 @@
   "line_type_shield": "护盾",
   "line_type_drive": "驱动",
   "line_type_extra": "EXTRA",
-  "start_calculation": "开始计算"
+  "start_calculation": "开始计算",
+  "credit_title": "图片来源",
+  "credit_0_first": "回路、空洞核心和属性图片来源于",
+  "credit_0_second": "，根据CC BY-SA 3.0许可使用。",
+  "credit_1": "角色图片 © 日本Falcom公司。仅用于非商业的个人用途。如有疑问，请与站长联系。"
 }
