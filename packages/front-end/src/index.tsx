@@ -17,6 +17,7 @@ import { LanguageCode } from '@shared/enums/languageCode'
 import { getNameByLanguageCode } from '@shared/model/language'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 
+import { DefaultParameterValues } from '@shared/constants/defaultParameterValues'
 import { ALL_QUARTZ } from '@shared/constants/quartz'
 import { ScoreMaps } from '@shared/model/scoreMaps'
 import {
@@ -93,6 +94,15 @@ const Main = () => {
       characterId,
       scoreMaps: new ScoreMaps(quartzMap, shardSkillMap),
       bannedQuartzIds,
+
+      // SAA parameters
+      initTemperature: DefaultParameterValues.INIT_TEMPERATURE,
+      coolingRate: DefaultParameterValues.COOLING_RATE,
+      endTemperature: DefaultParameterValues.END_TEMPERATURE,
+      balance: DefaultParameterValues.BALANCE,
+      maxIteration: DefaultParameterValues.MAX_ITERATION,
+      maxNoChangeIteration: DefaultParameterValues.MAX_NO_CHANGE_ITERATION,
+      resultSizeLimit: DefaultParameterValues.RESULT_SIZE_LIMIT,
     }
     gc.setShowLoading(true)
     const res = await calcOptimalOrbmentSetup(input)
