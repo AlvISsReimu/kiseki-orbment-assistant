@@ -9,7 +9,7 @@ i18n
   .use(initReactI18next)
   .init<HttpBackendOptions>({
     fallbackLng: 'zh',
-    debug: import.meta.env.MODE === 'development',
+    // debug: import.meta.env.MODE === 'development',
     interpolation: {
       escapeValue: false,
     },
@@ -17,9 +17,7 @@ i18n
       loadPath: '/locales/{{lng}}/{{ns}}.json',
     },
     detection: {
-      order: [
-        'localStorage',
-      ],
+      order: ['localStorage'],
       lookupLocalStorage: 'i18nextLng',
       caches: ['localStorage'],
     },

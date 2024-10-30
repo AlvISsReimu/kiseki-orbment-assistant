@@ -1,8 +1,8 @@
+import { ExpandMore } from '@mui/icons-material'
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
-  Box,
   useTheme,
 } from '@mui/material'
 import {
@@ -53,7 +53,7 @@ export const ShardSkillTable = (props: {
   )
   const [expandedState, setExpandedState] = useSingletonLocalStorage(
     'shardSkillExpandedState',
-    [true, true, true, true],
+    [true, true, true, true, true],
   )
   const { t } = useTranslation()
 
@@ -62,134 +62,130 @@ export const ShardSkillTable = (props: {
   }, [weaponRule, shieldRule, driveRule, extraRule])
 
   return (
-    <Box
-      sx={{
-        padding: '20px',
-        backgroundColor: theme.palette.background.paper,
-        backgroundImage: 'var(--Paper-overlay)',
-      }}
+    <Accordion
+      expanded={expandedState[4]}
+      onChange={(_, expanded) =>
+        setExpandedState([...expandedState.slice(0, 4), expanded])
+      }
     >
-      {/* TODO: show text better */}
-      <div style={{ marginBottom: '12px' }}>
-        <div>{t('shard_skill_rule_table_instruction_0')}</div>
-        <div>{t('shard_skill_rule_table_instruction_1')}</div>
-      </div>
-      <Accordion
-        sx={{
-          boxShadow: 'none',
-          '&::before': {
-            content: 'none',
-          },
-        }}
-        expanded={expandedState[0]}
-        onChange={(_, expanded) =>
-          setExpandedState([
-            expanded,
-            expandedState[1],
-            expandedState[2],
-            expandedState[3],
-          ])
-        }
-      >
-        <AccordionSummary>
-          {t('shard_skill_rule_table_weapon_line_title')}
-        </AccordionSummary>
-        <AccordionDetails>
-          <ShardSkillRuleTable
-            itemMinWidth={minWidth[0]}
-            dataSet={WEAPON_LINE_SHARD_SKILLS}
-            dataRule={weaponRule}
-            onDataRuleChange={setWeaponRule}
-          />
-        </AccordionDetails>
-      </Accordion>
-      <Accordion
-        sx={{
-          boxShadow: 'none',
-          '&::before': {
-            content: 'none',
-          },
-        }}
-        expanded={expandedState[1]}
-        onChange={(_, expanded) =>
-          setExpandedState([
-            expandedState[0],
-            expanded,
-            expandedState[2],
-            expandedState[3],
-          ])
-        }
-      >
-        <AccordionSummary>
-          {t('shard_skill_rule_table_shield_line_title')}
-        </AccordionSummary>
-        <AccordionDetails>
-          <ShardSkillRuleTable
-            itemMinWidth={minWidth[1]}
-            dataSet={SHIELD_LINE_SHARD_SKILLS}
-            dataRule={shieldRule}
-            onDataRuleChange={setShieldRule}
-          />
-        </AccordionDetails>
-      </Accordion>
-      <Accordion
-        sx={{
-          boxShadow: 'none',
-          '&::before': {
-            content: 'none',
-          },
-        }}
-        expanded={expandedState[2]}
-        onChange={(_, expanded) =>
-          setExpandedState([
-            expandedState[0],
-            expandedState[1],
-            expanded,
-            expandedState[3],
-          ])
-        }
-      >
-        <AccordionSummary>
-          {t('shard_skill_rule_table_drive_line_title')}
-        </AccordionSummary>
-        <AccordionDetails>
-          <ShardSkillRuleTable
-            itemMinWidth={minWidth[2]}
-            dataSet={DRIVE_LINE_SHARD_SKILLS}
-            dataRule={driveRule}
-            onDataRuleChange={setDriveRule}
-          />
-        </AccordionDetails>
-      </Accordion>
-      <Accordion
-        sx={{
-          boxShadow: 'none',
-          '&::before': {
-            content: 'none',
-          },
-        }}
-        expanded={expandedState[3]}
-        onChange={(_, expanded) =>
-          setExpandedState([
-            expandedState[0],
-            expandedState[1],
-            expandedState[2],
-            expanded,
-          ])
-        }
-      >
-        <AccordionSummary>
-          {t('shard_skill_rule_table_extra_line_title')}
-        </AccordionSummary>
-        <AccordionDetails>
-          <ShardSkillRuleTable
-            itemMinWidth={minWidth[3]}
-            dataSet={EXTRA_LINE_SHARD_SKILLS}
-            dataRule={extraRule}
-            onDataRuleChange={setExtraRule}
-          />
-        </AccordionDetails>
-      </Accordion>
-    </Box>
+      <AccordionSummary expandIcon={<ExpandMore />}>
+        {t('shard_skill_rule_table_title')}
+      </AccordionSummary>
+      <AccordionDetails>
+        {/* TODO: show text better */}
+        <div style={{ marginBottom: '20px' }}>
+          <div>{t('shard_skill_rule_table_instruction_0')}</div>
+          <div>{t('shard_skill_rule_table_instruction_1')}</div>
+        </div>
+        <Accordion
+          sx={{
+            boxShadow: 'none',
+            '&::before': {
+              content: 'none',
+            },
+          }}
+          expanded={expandedState[0]}
+          onChange={(_, expanded) =>
+            setExpandedState([expanded, ...expandedState.slice(1)])
+          }
+        >
+          <AccordionSummary expandIcon={<ExpandMore />}>
+            {t('shard_skill_rule_table_weapon_line_title')}
+          </AccordionSummary>
+          <AccordionDetails>
+            <ShardSkillRuleTable
+              itemMinWidth={minWidth[0]}
+              dataSet={WEAPON_LINE_SHARD_SKILLS}
+              dataRule={weaponRule}
+              onDataRuleChange={setWeaponRule}
+            />
+          </AccordionDetails>
+        </Accordion>
+        <Accordion
+          sx={{
+            boxShadow: 'none',
+            '&::before': {
+              content: 'none',
+            },
+          }}
+          expanded={expandedState[1]}
+          onChange={(_, expanded) =>
+            setExpandedState([
+              ...expandedState.slice(0, 1),
+              expanded,
+              ...expandedState.slice(2),
+            ])
+          }
+        >
+          <AccordionSummary expandIcon={<ExpandMore />}>
+            {t('shard_skill_rule_table_shield_line_title')}
+          </AccordionSummary>
+          <AccordionDetails>
+            <ShardSkillRuleTable
+              itemMinWidth={minWidth[1]}
+              dataSet={SHIELD_LINE_SHARD_SKILLS}
+              dataRule={shieldRule}
+              onDataRuleChange={setShieldRule}
+            />
+          </AccordionDetails>
+        </Accordion>
+        <Accordion
+          sx={{
+            boxShadow: 'none',
+            '&::before': {
+              content: 'none',
+            },
+          }}
+          expanded={expandedState[2]}
+          onChange={(_, expanded) =>
+            setExpandedState([
+              ...expandedState.slice(0, 2),
+              expanded,
+              ...expandedState.slice(3),
+            ])
+          }
+        >
+          <AccordionSummary expandIcon={<ExpandMore />}>
+            {t('shard_skill_rule_table_drive_line_title')}
+          </AccordionSummary>
+          <AccordionDetails>
+            <ShardSkillRuleTable
+              itemMinWidth={minWidth[2]}
+              dataSet={DRIVE_LINE_SHARD_SKILLS}
+              dataRule={driveRule}
+              onDataRuleChange={setDriveRule}
+            />
+          </AccordionDetails>
+        </Accordion>
+        <Accordion
+          sx={{
+            boxShadow: 'none',
+            '&::before': {
+              content: 'none',
+            },
+          }}
+          expanded={expandedState[3]}
+          onChange={(_, expanded) =>
+            setExpandedState([
+              ...expandedState.slice(0, 3),
+              expanded,
+              ...expandedState.slice(4),
+            ])
+          }
+        >
+          <AccordionSummary expandIcon={<ExpandMore />}>
+            {t('shard_skill_rule_table_extra_line_title')}
+          </AccordionSummary>
+          <AccordionDetails>
+            <ShardSkillRuleTable
+              itemMinWidth={minWidth[3]}
+              dataSet={EXTRA_LINE_SHARD_SKILLS}
+              dataRule={extraRule}
+              onDataRuleChange={setExtraRule}
+            />
+          </AccordionDetails>
+        </Accordion>
+      </AccordionDetails>
+    </Accordion>
   )
 }

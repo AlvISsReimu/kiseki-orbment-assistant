@@ -2,7 +2,7 @@ import { Box, MenuItem, Select, Typography } from '@mui/material'
 import type { ShardSkill } from '@shared/model/shardSkill'
 import { useContext, useEffect, useState } from 'react'
 import { globalContext } from '../contexts/globalContext'
-import { ElementIconComponent } from './elementIcon'
+import { getElementIconUrl } from '../utils/assets'
 
 const gap = 8
 
@@ -97,10 +97,7 @@ export const ShardSkillRuleTable = (props: {
                     gap: '4px',
                   }}
                 >
-                  <ElementIconComponent
-                    languageCode={gc.language}
-                    elementType={k}
-                  ></ElementIconComponent>
+                  <img src={getElementIconUrl(k, gc.language)} />
                   <Typography>{v}</Typography>
                 </div>
               ))}

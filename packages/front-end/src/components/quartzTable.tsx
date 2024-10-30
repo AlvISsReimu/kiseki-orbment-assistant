@@ -2,6 +2,7 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
+  Box,
   MenuItem,
   Paper,
   Select,
@@ -15,7 +16,7 @@ import {
 } from '@mui/material'
 import { ALL_QUARTZ } from '@shared/constants/quartz'
 import { ElementType } from '@shared/enums/elementType'
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useRef } from 'react'
 import { globalContext } from '../contexts/globalContext'
 
 import { ExpandMore } from '@mui/icons-material'
@@ -56,29 +57,27 @@ export const QuartzTable = (props: {
   const gc = useContext(globalContext.Context)
   const [quartzTableExpanded, setQuartzTableExpanded] =
     useSingletonLocalStorage('quartzTableExpanded', true)
+  const { t } = useTranslation()
+  const optionLabels = useRef(_loadOptionLabels())
 
-  let optionLabels = _loadOptionLabels()
   useEffect(() => {
-    optionLabels = _loadOptionLabels()
-  }, [])
+    optionLabels.current = _loadOptionLabels()
+  }, [gc.language])
 
   const getOptionLabel = (value: number) => {
     if (value === -1) {
-      return optionLabels.disabled
+      return optionLabels.current.disabled
     } else if (value === 0) {
-      return optionLabels.enabled
+      return optionLabels.current.enabled
     }
-    return optionLabels.weighted
+    return optionLabels.current.weighted
   }
 
   const updateQuartzState = (ev: SelectChangeEvent, id: number) => {
     const copy = [...props.data]
     copy[id] = parseInt(ev.target.value)
-    console.log(copy)
     props.setData(copy)
   }
-
-  const { t } = useTranslation()
 
   return (
     <Accordion
@@ -90,12 +89,21 @@ export const QuartzTable = (props: {
       </AccordionSummary>
       <AccordionDetails>
         {/* TODO: show text better */}
-        <div>{t('quartz_table_instruction_0')}</div>
-        <div>{t('quartz_table_instruction_1')}</div>
-        <div>{t('quartz_table_instruction_2')}</div>
-        <div>{t('quartz_table_instruction_3')}</div>
-
-        <TableContainer component={Paper}>
+        <Box sx={{ marginBottom: '20px' }}>
+          <div>{t('quartz_table_instruction_0')}</div>
+          <div>{t('quartz_table_instruction_1')}</div>
+          <div>{t('quartz_table_instruction_2')}</div>
+          <div>{t('quartz_table_instruction_3')}</div>
+        </Box>
+        <TableContainer
+          component={Paper}
+          sx={{
+            boxShadow: 'none',
+            '&::before': {
+              content: 'none',
+            },
+          }}
+        >
           <Table>
             <TableHead>
               <TableRow>

@@ -14,20 +14,10 @@ import {
 } from '@mui/material'
 import { ALL_CHARACTERS } from '@shared/constants/character'
 import { getCharacterById } from '@shared/model/character'
-import { useCallback, useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { globalContext } from '../contexts/globalContext'
-import i18next from '../i18n'
-import { useSingletonLocalStorage } from '../utils/utils'
-
-const _loadTableHead = () => {
-  return [
-    i18next.t('line_type_weapon'),
-    i18next.t('line_type_shield'),
-    i18next.t('line_type_drive'),
-    i18next.t('line_type_extra'),
-  ]
-}
+import { _loadCoreHeaders, useSingletonLocalStorage } from '../utils/utils'
 
 const coreKeys = ['weaponLine', 'shieldLine', 'driveLine', 'extraLine'] as const
 const colorMap = {
@@ -51,6 +41,12 @@ export const CharacterComponent = (prop: {
   const [core, setCore] = useState<(string | undefined)[][]>([])
   const theme = useTheme()
   const textColor = theme.palette.text.primary
+  const { t } = useTranslation()
+  const [tableHead, setTableHead] = useState(_loadCoreHeaders())
+
+  useEffect(() => {
+    setTableHead(_loadCoreHeaders())
+  }, [gc.language])
 
   useEffect(() => {
     const character = getCharacterById(characterId)
@@ -71,24 +67,6 @@ export const CharacterComponent = (prop: {
     const id = Number(ev.target.value)
     setCharacterId(id)
   }
-
-  const { t, i18n } = useTranslation()
-
-  const handleLanguageChanged = useCallback(() => {
-    tableHead = _loadTableHead()
-  }, [])
-
-  let tableHead = _loadTableHead()
-  useEffect(() => {
-    tableHead = _loadTableHead()
-  }, [])
-
-  useEffect(() => {
-    i18n.on('languageChanged', handleLanguageChanged)
-    return () => {
-      i18n.off('languageChanged', handleLanguageChanged)
-    }
-  }, [handleLanguageChanged])
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>

@@ -1,3 +1,4 @@
+import i18next from 'i18next'
 import { useCallback, useState } from 'react'
 
 const constructSingletonLocalStorage = <T>(
@@ -64,5 +65,14 @@ export const useSingletonLocalStorage = <T>(key: string, initialValue: T) => {
     typeof storedValue,
     typeof setValue,
     typeof getValue,
+  ]
+}
+
+export const _loadCoreHeaders = () => {
+  return [
+    i18next.t('line_type_weapon'),
+    i18next.t('line_type_shield'),
+    i18next.t('line_type_drive'),
+    i18next.t('line_type_extra'),
   ]
 }

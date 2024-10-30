@@ -19,18 +19,18 @@ import { SpeedInsights } from '@vercel/speed-insights/react'
 
 import { ALL_QUARTZ } from '@shared/constants/quartz'
 import { ScoreMaps } from '@shared/model/scoreMaps'
-import {
-  calcOptimalOrbmentSetup,
-  type OrbmentAssistantInput,
-} from '@shared/orbmentAssistant'
-import { useCallback, useContext, useEffect, useMemo, useState } from 'react'
+import { type OrbmentAssistantInput } from '@shared/orbmentAssistant'
+import { useContext, useEffect, useMemo, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import { useTranslation } from 'react-i18next'
 import { CharacterComponent } from './components/characterComponet'
 import { QuartzTable } from './components/quartzTable'
+import { Results } from './components/results'
 import { ShardSkillTable } from './components/shardSkillTable'
 import { globalContext } from './contexts/globalContext'
 import './i18n'
+import type { FEOrbmentAssistantResult } from './types/types'
+import { testResult } from './utils/testData'
 import { darkTheme, lightTheme } from './utils/themes'
 import { useSingletonLocalStorage } from './utils/utils'
 
@@ -41,19 +41,23 @@ const Main = () => {
     return savedTheme ? JSON.parse(savedTheme) : 'dark'
   })
   const [characterId, setCharacterId] = useState<number>(0)
-
   const [quartzState, setQuartzState] = useSingletonLocalStorage(
     'quartzTable',
     new Array(ALL_QUARTZ.length).fill(0),
   )
-
   const [shardSkillScores, setShardSkillScores] = useState<number[][]>([])
-
+  const [result, setResult] = useState<FEOrbmentAssistantResult | undefined>(
+    undefined,
+  )
   const { t, i18n } = useTranslation()
 
   useEffect(() => {
     localStorage.setItem('theme', JSON.stringify(themeMode))
   }, [themeMode])
+
+  useEffect(() => {
+    document.title = t('website_name')
+  }, [gc.language])
 
   const theme = useMemo(
     () => (themeMode === 'dark' ? darkTheme : lightTheme),
@@ -65,23 +69,8 @@ const Main = () => {
   }
 
   const selectLanguage = (ev: SelectChangeEvent) => {
-    gc.setLanguage(ev.target.value as LanguageCode)
     i18n.changeLanguage(ev.target.value.slice(0, 2))
   }
-
-  const setDocumentTitle = () => (document.title = t('website_name'))
-
-  const handleLanguageChanged = useCallback(() => setDocumentTitle(), [])
-
-  useEffect(() => {
-    setDocumentTitle()
-  }, [])
-  useEffect(() => {
-    i18n.on('languageChanged', handleLanguageChanged)
-    return () => {
-      i18n.off('languageChanged', handleLanguageChanged)
-    }
-  }, [handleLanguageChanged])
 
   const getResult = () => {
     const quartz = quartzState.map((v, i) => [i, v])
@@ -102,9 +91,15 @@ const Main = () => {
       scoreMaps: new ScoreMaps(quartzMap, shardSkillMap),
       bannedQuartzIds,
     }
-    console.log(input)
-    const res = calcOptimalOrbmentSetup(input)
-    console.log(res)
+    // const res = calcOptimalOrbmentSetup(input)
+    const res = testResult
+    setResult({
+      ...res,
+      // @ts-expect-error test data
+      bestResults: res.bestResults
+        .slice(0, 5)
+        .map(v => [v.weaponLine, v.shieldLine, v.driveLine, v.extraLine]),
+    })
   }
 
   return (
@@ -173,6 +168,7 @@ const Main = () => {
         ></CharacterComponent>
         <QuartzTable data={quartzState} setData={setQuartzState}></QuartzTable>
         <ShardSkillTable onChange={setShardSkillScores}></ShardSkillTable>
+        {result && <Results data={result} />}
         <Button variant="outlined" onClick={getResult}>
           {t('start_calculation')}
         </Button>
