@@ -106,12 +106,26 @@ export const runSimulatedAnnealing = (
 }
 
 const _convertQuartzLineToResultLine = (quartzLine: QuartzLine): ResultLine => {
-  const slots = [...quartzLine.regularSlotQuartzIds]
-  // insert quartz that is in element-limited slot into slots in ResultLine
+  // -1 means empty slot
+  const slots = Array.from({ length: quartzLine.totalSlots }, () => -1)
+
+  const allElementLimitedSlotsPositions = quartzLine.elementLimitedSlots.map(
+    elementLimitedSlot => elementLimitedSlot.position,
+  )
+
+  let replaceIndex = 0
+  quartzLine.regularSlotQuartzIds.forEach(quartzId => {
+    while (allElementLimitedSlotsPositions.includes(replaceIndex)) {
+      replaceIndex++
+    }
+    slots[replaceIndex] = quartzId
+    replaceIndex++
+  })
+
   quartzLine.elementLimitedSlots
     .filter(elementLimitedSlot => elementLimitedSlot.hasQuartz())
     .forEach(elementLimitedSlot => {
-      slots.splice(elementLimitedSlot.position, 0, elementLimitedSlot.quartzId)
+      slots[elementLimitedSlot.position] = elementLimitedSlot.quartzId
     })
 
   const elements: Record<ElementType, number> = {} as Record<
