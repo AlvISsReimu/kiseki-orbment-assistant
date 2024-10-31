@@ -107,11 +107,11 @@ export const runSimulatedAnnealing = (
 
 const _convertQuartzLineToResultLine = (quartzLine: QuartzLine): ResultLine => {
   const slots = [...quartzLine.regularSlotQuartzIds]
-  // insert quartz that is in elment-limited slot into slots in ResultLine
+  // insert quartz that is in element-limited slot into slots in ResultLine
   quartzLine.elementLimitedSlots
     .filter(elementLimitedSlot => elementLimitedSlot.hasQuartz())
-    .forEach((elementLimitedSlot, i) => {
-      slots.splice(i, 0, elementLimitedSlot.quartzId)
+    .forEach(elementLimitedSlot => {
+      slots.splice(elementLimitedSlot.position, 0, elementLimitedSlot.quartzId)
     })
 
   const elements: Record<ElementType, number> = {} as Record<
