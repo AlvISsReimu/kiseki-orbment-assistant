@@ -18,6 +18,7 @@ export const globalContext = genericHookContextBuilder(() => {
     'language',
     LanguageCode.ZH_CN,
   )
+  const [resultCharacterId, setResultCharacterId] = useState(0)
   const [showLoading, setShowLoading] = useState(false)
   const { i18n } = useTranslation()
 
@@ -35,5 +36,7 @@ export const globalContext = genericHookContextBuilder(() => {
     language,
     showLoading,
     setShowLoading,
+    resultCharacterId,
+    setResultCharacterId,
   }
 })

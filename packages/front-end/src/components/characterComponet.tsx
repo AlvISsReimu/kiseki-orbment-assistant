@@ -17,18 +17,8 @@ import { getCharacterById } from '@shared/model/character'
 import { useContext, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { globalContext } from '../contexts/globalContext'
+import { colorMap, coreKeys } from '../utils/constants'
 import { _loadCoreHeaders, useSingletonLocalStorage } from '../utils/utils'
-
-const coreKeys = ['weaponLine', 'shieldLine', 'driveLine', 'extraLine'] as const
-const colorMap = {
-  Earth: '#B56B1C',
-  Water: '#1F4B8C',
-  Fire: '#A03130',
-  Wind: '#0C834F',
-  Time: '#3B2059',
-  Space: '#AC9C3A',
-  Mirage: '#7D7D7D',
-}
 
 export const CharacterComponent = (prop: {
   onCharacterIdChange: (id: number) => void
@@ -93,11 +83,17 @@ export const CharacterComponent = (prop: {
             boxShadow: 'none',
           }}
         >
-          <Table>
+          <Table
+            sx={{
+              '& .MuiTableCell-root': {
+                padding: '8px', // Set padding specifically for this table's cells
+              },
+            }}
+          >
             <TableBody>
               {core.map((row, index) => (
                 <TableRow key={index}>
-                  <TableCell sx={{ border: 'none' }}>
+                  <TableCell sx={{ border: 'none', fontWeight: 'bolder' }}>
                     {tableHead[index]}
                   </TableCell>
                   {row.map((element, ind) => (

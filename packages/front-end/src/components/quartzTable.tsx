@@ -12,6 +12,8 @@ import {
   TableContainer,
   TableHead,
   TableRow,
+  Typography,
+  useTheme,
   type SelectChangeEvent,
 } from '@mui/material'
 import { ALL_QUARTZ } from '@shared/constants/quartz'
@@ -20,6 +22,8 @@ import { useContext, useEffect, useRef } from 'react'
 import { globalContext } from '../contexts/globalContext'
 
 import { ExpandMore } from '@mui/icons-material'
+import ClearIcon from '@mui/icons-material/Clear'
+import PriorityHighIcon from '@mui/icons-material/PriorityHigh'
 import { getNameByElementType } from '@shared/model/element'
 import { Quartz } from '@shared/model/quartz'
 import { useTranslation } from 'react-i18next'
@@ -59,6 +63,9 @@ export const QuartzTable = (props: {
     useSingletonLocalStorage('quartzTableExpanded', true)
   const { t } = useTranslation()
   const optionLabels = useRef(_loadOptionLabels())
+  const theme = useTheme()
+  const textColor = theme.palette.text.primary
+  const customOrange = theme.palette.colors.customOrange
 
   useEffect(() => {
     optionLabels.current = _loadOptionLabels()
@@ -70,7 +77,7 @@ export const QuartzTable = (props: {
     } else if (value === 0) {
       return optionLabels.current.enabled
     }
-    return optionLabels.current.weighted
+    return value
   }
 
   const updateQuartzState = (ev: SelectChangeEvent, id: number) => {
@@ -81,6 +88,7 @@ export const QuartzTable = (props: {
 
   return (
     <Accordion
+      elevation={0}
       expanded={quartzTableExpanded}
       onChange={(_, expanded) => setQuartzTableExpanded(expanded)}
     >
@@ -104,12 +112,40 @@ export const QuartzTable = (props: {
             },
           }}
         >
-          <Table>
+          <Table
+            sx={{
+              '& .MuiTableRow-root': {
+                boxShadow: `0px -1px 0px 0px ${textColor} inset`,
+              },
+              // '& .MuiTableRow-root': {
+              //   borderBottom: `1px solid ${textColor}`,
+              //   borderStyle: 'solid',
+              //   borderLeft: 'none',
+              //   borderRight: 'none',
+              // },
+            }}
+          >
             <TableHead>
               <TableRow>
                 {headers.map((header, index) => (
                   <TableCell key={index} style={{ textAlign: 'center' }}>
-                    {getNameByElementType(header, gc.language)}
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        placeContent: 'center',
+                        gap: 4,
+                      }}
+                    >
+                      <Typography sx={{ fontWeight: 'bolder' }}>
+                        {getNameByElementType(header, gc.language)}
+                      </Typography>
+                      <img
+                        width="24px"
+                        height="24px"
+                        src={getQuartzIconUrlById(data[0][index].id)}
+                      ></img>
+                    </div>
                   </TableCell>
                 ))}
               </TableRow>
@@ -122,26 +158,15 @@ export const QuartzTable = (props: {
                       <div
                         style={{
                           display: 'flex',
-                          flexDirection: 'column',
+                          // flexWrap: 'wrap',
                           alignItems: 'center',
                           placeContent: 'center',
+                          gap: 4,
                         }}
                       >
-                        <div
-                          style={{
-                            display: 'flex',
-                            alignItems: 'center',
-                            placeContent: 'center',
-                            gap: 4,
-                          }}
-                        >
-                          <span>{quartz.name_i18n[gc.language]}</span>
-                          <img
-                            width="24px"
-                            height="24px"
-                            src={getQuartzIconUrlById(quartz.id)}
-                          ></img>
-                        </div>
+                        <Typography sx={{ whiteSpace: 'nowrap' }}>
+                          {quartz.name_i18n[gc.language]}
+                        </Typography>
                         <Select
                           value={String(props.data[quartz.id])}
                           onChange={ev => updateQuartzState(ev, quartz.id)}
@@ -158,8 +183,31 @@ export const QuartzTable = (props: {
                         >
                           {Array.from({ length: 12 }).map((_, index) => (
                             <MenuItem key={index} value={index - 1}>
-                              {getOptionLabel(index - 1) +
-                                (index > 1 ? ` (${index - 1})` : '')}
+                              <Box
+                                sx={{
+                                  width: '100%',
+                                  display: 'flex',
+                                  placeContent: 'space-between',
+                                  alignItems: 'center',
+                                }}
+                              >
+                                <Typography>
+                                  {getOptionLabel(index - 1)}
+                                </Typography>
+                                {index === 0 && (
+                                  <ClearIcon
+                                    sx={{ color: 'red', fontSize: '20px' }}
+                                  />
+                                )}
+                                {index > 1 && (
+                                  <PriorityHighIcon
+                                    sx={{
+                                      color: customOrange[index - 2],
+                                      fontSize: '20px',
+                                    }}
+                                  />
+                                )}
+                              </Box>
                             </MenuItem>
                           ))}
                         </Select>

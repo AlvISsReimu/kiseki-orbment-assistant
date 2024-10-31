@@ -1,16 +1,17 @@
 import DarkModeIcon from '@mui/icons-material/DarkMode'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import {
+  AppBar,
+  Box,
   Button,
   CssBaseline,
-  FormControl,
-  InputLabel,
   Link,
   MenuItem,
   Select,
   ThemeProvider,
   ToggleButton,
   ToggleButtonGroup,
+  Toolbar,
   Typography,
   type SelectChangeEvent,
 } from '@mui/material'
@@ -106,6 +107,7 @@ const Main = () => {
       maxNoChangeIteration: DefaultParameterValues.MAX_NO_CHANGE_ITERATION,
       resultSizeLimit: DefaultParameterValues.RESULT_SIZE_LIMIT,
     }
+    gc.setResultCharacterId(characterId)
     gc.setShowLoading(true)
     const res = await calcOptimalOrbmentSetup(input)
     // const res = testResult
@@ -122,27 +124,41 @@ const Main = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Loading />
-      <div
-        style={{
-          padding: '32px',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '20px',
+      <AppBar
+        component="nav"
+        position="sticky"
+        sx={{
+          padding: '4px 0',
         }}
       >
-        <div
-          style={{
-            alignSelf: 'flex-end',
+        <Toolbar
+          sx={{
+            width: '100%',
             display: 'flex',
-            gap: '20px',
+            justifyContent: 'space-between',
+            alignItems: 'center',
           }}
         >
-          <FormControl fullWidth>
-            <InputLabel>{t('language')}</InputLabel>
+          <Typography variant="h5">{t('website_name')}</Typography>
+          <div
+            style={{
+              display: 'flex',
+              gap: '20px',
+            }}
+          >
             <Select
               value={gc.language}
-              label={t('language')}
+              inputProps={{ 'aria-label': 'Without label' }}
               onChange={selectLanguage}
+              sx={{
+                '& .MuiOutlinedInput-notchedOutline': {
+                  border: 'none',
+                },
+                color: 'white', // Use theme color here
+                '& .MuiSelect-icon': {
+                  color: 'white', // Change the icon color too
+                },
+              }}
             >
               <MenuItem value={LanguageCode.ZH_CN}>
                 {getNameByLanguageCode(LanguageCode.ZH_CN)}
@@ -154,38 +170,107 @@ const Main = () => {
                 {getNameByLanguageCode(LanguageCode.EN)}
               </MenuItem>
             </Select>
-          </FormControl>
-          <ToggleButtonGroup value={themeMode} exclusive onChange={toggleTheme}>
-            <ToggleButton value="light">
-              <LightModeIcon />
-            </ToggleButton>
-            <ToggleButton value="dark">
-              <DarkModeIcon />
-            </ToggleButton>
-          </ToggleButtonGroup>
-        </div>
+            <ToggleButtonGroup
+              value={themeMode}
+              exclusive
+              onChange={toggleTheme}
+              sx={{
+                '& .MuiToggleButtonGroup-firstButton': {
+                  borderRadius: '50%',
+                  borderTopRightRadius: '50%',
+                  borderBottomRightRadius: '50%',
+                  color: 'white',
+                },
+                '& .MuiToggleButtonGroup-lastButton': {
+                  borderRadius: '50%',
+                  borderTopRightRadius: '50%',
+                  borderBottomRightRadius: '50%',
+                  color: 'white',
+                },
+              }}
+            >
+              <ToggleButton
+                value="light"
+                sx={{
+                  width: '56px',
+                  height: '56px',
+                  border: 'none',
+                  '&.Mui-selected': {
+                    color: 'white',
+                  },
+                }}
+              >
+                <LightModeIcon />
+              </ToggleButton>
+              <ToggleButton
+                value="dark"
+                sx={{
+                  width: '56px',
+                  height: '56px',
+                  border: 'none',
+                  '&.Mui-selected': {
+                    color: 'white',
+                  },
+                }}
+              >
+                <DarkModeIcon />
+              </ToggleButton>
+            </ToggleButtonGroup>
+          </div>
+        </Toolbar>
+      </AppBar>
+      <Box
+        sx={{
+          padding: '32px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '20px',
+          margin: {
+            xs: 0,
+            sm: '0 5%',
+            md: '0 10%',
+            lg: '0 15%',
+          },
+        }}
+      >
         {/* Your application components go here */}
 
         {/* TODO: show text better */}
-        <Typography variant="h3">{t('website_name')}</Typography>
-        <div>{t('website_description_0')}</div>
-        <div>1.&nbsp;{t('website_description_1')}</div>
-        <div>2.&nbsp;{t('website_description_2')}</div>
-        <div>3.&nbsp;{t('website_description_3')}</div>
-        <Typography variant="h4" sx={{ marginTop: '1rem' }}>
-          {t('development_title')}
-        </Typography>
-        <div>
-          <Button
-            variant="outlined"
-            href="https://github.com/AlvISsReimu/kiseki-orbment-assistant"
-            target="_blank"
-            endIcon={<OpenInNewIcon />}
-          >
-            {t('repository')}
-          </Button>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            gap: '20px',
+            flexWrap: 'wrap',
+            paddingBottom: '20px',
+          }}
+        >
+          <div style={{ paddingRight: '20px' }}>
+            <Typography variant="h4" sx={{ marginBottom: '1rem' }}>
+              {t('website_description_title')}
+            </Typography>
+            <div>{t('website_description_0')}</div>
+            <div>1.&nbsp;{t('website_description_1')}</div>
+            <div>2.&nbsp;{t('website_description_2')}</div>
+            <div>3.&nbsp;{t('website_description_3')}</div>
+          </div>
+          <div>
+            <Typography variant="h5" sx={{ marginBottom: '1rem' }}>
+              {t('development_title')}
+            </Typography>
+            <div style={{ marginBottom: '0.5rem' }}>
+              <Button
+                variant="outlined"
+                href="https://github.com/AlvISsReimu/kiseki-orbment-assistant"
+                target="_blank"
+                endIcon={<OpenInNewIcon />}
+              >
+                {t('repository')}
+              </Button>
+            </div>
+            <div>{t('development_text')}</div>
+          </div>
         </div>
-        <div>{t('development_text')}</div>
 
         <CharacterComponent
           onCharacterIdChange={setCharacterId}
@@ -193,24 +278,26 @@ const Main = () => {
         <QuartzTable data={quartzState} setData={setQuartzState}></QuartzTable>
         <ShardSkillTable onChange={setShardSkillScores}></ShardSkillTable>
         {result && <Results data={result} />}
-        <Button variant="outlined" onClick={getResult}>
+        <Button variant="contained" onClick={getResult}>
           {t('start_calculation')}
         </Button>
 
         {/* TODO: show credits in a better way */}
-        <div>{t('credit_title')}</div>
-        <div>
-          {t('credit_0')}
-          <Link
-            href="https://kiseki.fandom.com/"
-            underline="hover"
-            target="_blank"
-          >
-            Kiseki Wiki
-          </Link>
-          {t('credit_1')}
-        </div>
-      </div>
+        <Box sx={{ fontSize: '0.8rem' }}>
+          <Box sx={{ marginBottom: '8px' }}>{t('credit_title')}</Box>
+          <Box>
+            {t('credit_0')}
+            <Link
+              href="https://kiseki.fandom.com/"
+              underline="hover"
+              target="_blank"
+            >
+              Kiseki Wiki
+            </Link>
+            {t('credit_1')}
+          </Box>
+        </Box>
+      </Box>
       <SpeedInsights />
     </ThemeProvider>
   )
