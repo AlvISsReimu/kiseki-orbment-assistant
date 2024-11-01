@@ -103,7 +103,24 @@ export const Result = (props: {
                         }}
                       >
                         {quartzId === -1 ? (
-                          <span>⎯</span>
+                          <span
+                            style={{
+                              padding: '0 4px',
+                              backgroundColor: limitedSlots[index]?.includes(
+                                ind,
+                              )
+                                ? colorMap[
+                                    getQuartzById(quartzId)
+                                      .elementType as keyof typeof colorMap
+                                  ]
+                                : 'unset',
+                              color: limitedSlots[index]?.includes(ind)
+                                ? 'white'
+                                : 'unset',
+                            }}
+                          >
+                            ⎯
+                          </span>
                         ) : (
                           <>
                             <span
