@@ -183,15 +183,11 @@ export const QuartzTable = (props: {
                                 }}
                               >
                                 <Typography>
-                                  {
-                                    optionLabels[
-                                      index < 1
-                                        ? 'disabled'
-                                        : index > 1
-                                          ? 'weighted'
-                                          : 'enabled'
-                                    ]
-                                  }
+                                  {index > 1
+                                    ? index - 1
+                                    : optionLabels[
+                                        index < 1 ? 'disabled' : 'enabled'
+                                      ]}
                                 </Typography>
                                 {index === 0 && (
                                   <ClearIcon
