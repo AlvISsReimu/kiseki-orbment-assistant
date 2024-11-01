@@ -18,7 +18,7 @@ import {
 } from '@mui/material'
 import { ALL_QUARTZ } from '@shared/constants/quartz'
 import { ElementType } from '@shared/enums/elementType'
-import { useContext, useEffect, useRef } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { globalContext } from '../contexts/globalContext'
 
 import { ExpandMore } from '@mui/icons-material'
@@ -62,23 +62,14 @@ export const QuartzTable = (props: {
   const [quartzTableExpanded, setQuartzTableExpanded] =
     useSingletonLocalStorage('quartzTableExpanded', true)
   const { t } = useTranslation()
-  const optionLabels = useRef(_loadOptionLabels())
+  const [optionLabels, setOptionLabels] = useState(_loadOptionLabels())
   const theme = useTheme()
   const textColor = theme.palette.text.primary
   const customOrange = theme.palette.colors.customOrange
 
   useEffect(() => {
-    optionLabels.current = _loadOptionLabels()
+    setOptionLabels(_loadOptionLabels())
   }, [gc.language])
-
-  const getOptionLabel = (value: number) => {
-    if (value === -1) {
-      return optionLabels.current.disabled
-    } else if (value === 0) {
-      return optionLabels.current.enabled
-    }
-    return value
-  }
 
   const updateQuartzState = (ev: SelectChangeEvent, id: number) => {
     const copy = [...props.data]
@@ -192,7 +183,15 @@ export const QuartzTable = (props: {
                                 }}
                               >
                                 <Typography>
-                                  {getOptionLabel(index - 1)}
+                                  {
+                                    optionLabels[
+                                      index < 1
+                                        ? 'disabled'
+                                        : index > 1
+                                          ? 'weighted'
+                                          : 'enabled'
+                                    ]
+                                  }
                                 </Typography>
                                 {index === 0 && (
                                   <ClearIcon
