@@ -17,6 +17,7 @@
   "quartz_table_instruction_1": "启用：该回路会被算法采用",
   "quartz_table_instruction_2": "禁用：该回路不会出现在计算结果的回路组合中",
   "quartz_table_instruction_3": "加权：如果强烈希望某些回路被采纳，可以设置其权重（1-10），权重越大越容易被采纳",
+  "quartz_table_instruction_4": "（表格可以横向滑动）",
   "shard_skill_rule_table_title": "晶片技能权重设置",
   "shard_skill_rule_table_instruction_0": "可以为晶片技能设置权重（1-10），权重越大，配出来的回路组合越容易触发此晶片技能。",
   "shard_skill_rule_table_instruction_1": "低级技能和高级技能同时触发时（例如大地冲击和大地冲击II），只有高级技能的权重用于计算。",

@@ -17,6 +17,7 @@
   "quartz_table_instruction_1": "Enabled: This quartz will be used by the algorithm.",
   "quartz_table_instruction_2": "Disabled: This quartz will not be included in the quartz combinations of the calculation results.",
   "quartz_table_instruction_3": "Weighted: If you strongly wish for certain quartz to be adopted, you can set its weight (1-10); the higher the weight, the more likely it is to be adopted.",
+  "quartz_table_instruction_4": "(The table can scroll horizontally)",
   "shard_skill_rule_table_title": "Shard Skill Weight Settings",
   "shard_skill_rule_table_instruction_0": "You can set a weight (1-10) for shard skills; the higher the weight, the more likely the resulting quartz combination will trigger this shard skill.",
   "shard_skill_rule_table_instruction_1": "When both lower-tier and higher-tier skills are triggered simultaneously (e.g., Earth Impact and Earth Impact II), only the weight of the higher-tier skill is used in calculations.",
@@ -40,5 +41,5 @@
   "start_calculation": "Start Calculation",
   "credit_title": "Credits",
   "credit_0": "Quartz, hollow core, character and element images © Nihon Falcom Corporation. Sourced from ",
-  "credit_1": ", licensed under CC BY-SA 3.0. Used for non-commercial, personal purposes. Please contact me for any concerns."
+  "credit_1": ", licensed under CC BY-SA 3.0. Used for non-commercial, personal purposes. Please contact the website owner for any concerns."
 }

@@ -93,6 +93,7 @@ export const QuartzTable = (props: {
           <div>{t('quartz_table_instruction_1')}</div>
           <div>{t('quartz_table_instruction_2')}</div>
           <div>{t('quartz_table_instruction_3')}</div>
+          <div>{t('quartz_table_instruction_4')}</div>
         </Box>
         <TableContainer
           component={Paper}
