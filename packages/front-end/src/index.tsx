@@ -29,6 +29,7 @@ import {
 } from '@shared/orbmentAssistant'
 import { useContext, useEffect, useMemo, useState } from 'react'
 import { createRoot } from 'react-dom/client'
+import ReactGA from 'react-ga4'
 import { useTranslation } from 'react-i18next'
 import { CharacterComponent } from './components/characterComponet'
 import { Loading } from './components/Loading'
@@ -57,6 +58,8 @@ const Main = () => {
     undefined,
   )
   const { t, i18n } = useTranslation()
+
+  ReactGA.initialize('G-QCM9J8XK4T')
 
   useEffect(() => {
     localStorage.setItem('theme', JSON.stringify(themeMode))
@@ -109,7 +112,9 @@ const Main = () => {
     }
     gc.setResultCharacterId(characterId)
     gc.setShowLoading(true)
+    const startTime = Date.now()
     const res = await calcOptimalOrbmentSetup(input)
+    const timeMillis = Date.now() - startTime
     // const res = testResult
     setResult({
       ...res,
@@ -118,6 +123,33 @@ const Main = () => {
         .map(v => [v.weaponLine, v.shieldLine, v.driveLine, v.extraLine]),
     })
     gc.setShowLoading(false)
+
+    const payloadToGA = {
+      category: 'calculation',
+      action: 'calculation_success',
+      // input
+      characterId,
+      bannedQuartzIds: JSON.stringify(bannedQuartzIds),
+      quartzMap: JSON.stringify(Object.fromEntries(quartzMap)),
+      shardSkillMap: JSON.stringify(Object.fromEntries(shardSkillMap)),
+      // SAA params
+      initTemperature: input.initTemperature,
+      coolingRate: input.coolingRate,
+      endTemperature: input.endTemperature,
+      balance: input.balance,
+      maxIteration: input.maxIteration,
+      maxNoChangeIteration: input.maxNoChangeIteration,
+      resultSizeLimit: input.resultSizeLimit,
+      // time cost
+      timeMillis,
+      // SAA results
+      bestScore: res.bestScore,
+      bestResultSize: res.bestResults.length,
+      // misc
+      languageCode: gc.language,
+      theme: themeMode,
+    }
+    ReactGA.send(payloadToGA)
   }
 
   return (
