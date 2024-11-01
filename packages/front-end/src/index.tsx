@@ -149,7 +149,7 @@ const Main = () => {
       languageCode: gc.language,
       theme: themeMode,
     }
-    ReactGA.send(payloadToGA)
+    ReactGA.event(payloadToGA)
   }
 
   return (
