@@ -253,6 +253,9 @@ const Main = () => {
             <div>1.&nbsp;{t('website_description_1')}</div>
             <div>2.&nbsp;{t('website_description_2')}</div>
             <div>3.&nbsp;{t('website_description_3')}</div>
+            {gc.language === LanguageCode.EN && (
+              <div>4.&nbsp;{t('website_description_4')}</div>
+            )}
           </div>
           <div>
             <Typography variant="h5" sx={{ marginBottom: '1rem' }}>
