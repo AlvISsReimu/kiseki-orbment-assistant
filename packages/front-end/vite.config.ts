@@ -4,9 +4,6 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   plugins: [react()],
-  ssr: {
-    noExternal: ['@mui/material', '@mdi/react'],
-  },
   resolve: {
     alias: {
       '@shared': path.resolve(__dirname, '../../shared'),

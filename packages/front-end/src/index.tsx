@@ -1,8 +1,9 @@
-import { mdiEmail, mdiGithub, mdiTwitter } from '@mdi/js'
-import Icon from '@mdi/react'
 import DarkModeIcon from '@mui/icons-material/DarkMode'
+import EmailIcon from '@mui/icons-material/Email'
+import GitHubIcon from '@mui/icons-material/GitHub'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
+import TwitterIcon from '@mui/icons-material/Twitter'
 import {
   AppBar,
   Avatar,
@@ -346,16 +347,16 @@ const Main = () => {
                       href="https://github.com/AlvISsReimu"
                       target="_blank"
                     >
-                      <Icon path={mdiGithub} size={1} />
+                      <GitHubIcon />
                     </IconButton>
                     <IconButton
                       href="https://twitter.com/AlvISs_Reimu"
                       target="_blank"
                     >
-                      <Icon path={mdiTwitter} size={1} />
+                      <TwitterIcon />
                     </IconButton>
                     <IconButton href="mailto:alvissreimu@gmail.com">
-                      <Icon path={mdiEmail} size={1} />
+                      <EmailIcon />
                     </IconButton>
                   </Box>
                 </Box>
@@ -383,10 +384,10 @@ const Main = () => {
                       href="https://github.com/linicam"
                       target="_blank"
                     >
-                      <Icon path={mdiGithub} size={1} />
+                      <GitHubIcon />
                     </IconButton>
                     <IconButton href="mailto:li407017533@gmail.com">
-                      <Icon path={mdiEmail} size={1} />
+                      <EmailIcon />
                     </IconButton>
                   </Box>
                 </Box>
