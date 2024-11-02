@@ -43,7 +43,9 @@ export const Result = (props: {
   const textColor = theme.palette.text.primary
   const { t } = useTranslation()
   const [expanded, setExpanded] = useState(props.ind === 0)
-  const [limitedSlots, setLimitedSlots] = useState<number[][]>([])
+  const [limitedSlots, setLimitedSlots] = useState<[number, ElementType][][]>(
+    [],
+  )
   const [missedQuartz, setMissedQuartz] = useState<number[]>([])
   const [missedShardSkills, setMissedShardSkills] = useState<number[][]>([])
 
@@ -53,12 +55,13 @@ export const Result = (props: {
 
   useEffect(() => {
     const character = getCharacterById(gc.resultParams.characterId)
-    const coreLimitedArray: number[][] = []
+    const coreLimitedArray: [number, ElementType][][] = []
     coreKeys.forEach(key => {
       coreLimitedArray.push(
-        character?.core?.[key]?.elementLimitedSlots?.map(
-          slot => slot.position,
-        ) || [],
+        character?.core?.[key]?.elementLimitedSlots?.map(slot => [
+          slot.position,
+          slot.elementType,
+        ]) || [],
       )
     })
     setLimitedSlots(coreLimitedArray)
@@ -162,15 +165,18 @@ export const Result = (props: {
                           <span
                             style={{
                               padding: '0 4px',
-                              backgroundColor: limitedSlots[index]?.includes(
-                                ind,
+                              backgroundColor: limitedSlots[index]?.find(
+                                slot => slot[0] === ind,
                               )
                                 ? colorMap[
-                                    getQuartzById(quartzId)
-                                      .elementType as keyof typeof colorMap
+                                    limitedSlots[index]?.find(
+                                      slot => slot[0] === ind,
+                                    )[1]
                                   ]
                                 : 'unset',
-                              color: limitedSlots[index]?.includes(ind)
+                              color: limitedSlots[index]?.find(
+                                slot => slot[0] === ind,
+                              )
                                 ? 'white'
                                 : 'unset',
                             }}
