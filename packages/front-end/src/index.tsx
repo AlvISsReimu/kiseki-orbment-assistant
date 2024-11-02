@@ -1,5 +1,8 @@
+import { mdiEmail, mdiGithub, mdiTwitter } from '@mdi/js'
+import Icon from '@mdi/react'
 import DarkModeIcon from '@mui/icons-material/DarkMode'
 import LightModeIcon from '@mui/icons-material/LightMode'
+import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import {
   AppBar,
   Avatar,
@@ -17,20 +20,16 @@ import {
   Typography,
   type SelectChangeEvent,
 } from '@mui/material'
-import { LanguageCode } from '@shared/enums/languageCode'
-import { getNameByLanguageCode } from '@shared/model/language'
-import { SpeedInsights } from '@vercel/speed-insights/react'
-
-import { mdiEmail, mdiGithub, mdiTwitter } from '@mdi/js'
-import Icon from '@mdi/react'
-import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import { DefaultParameterValues } from '@shared/constants/defaultParameterValues'
 import { ALL_QUARTZ } from '@shared/constants/quartz'
+import { LanguageCode } from '@shared/enums/languageCode'
+import { getNameByLanguageCode } from '@shared/model/language'
 import { ScoreMaps } from '@shared/model/scoreMaps'
 import {
   calcOptimalOrbmentSetup,
   type OrbmentAssistantInput,
 } from '@shared/orbmentAssistant'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import { useContext, useEffect, useMemo, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import ReactGA from 'react-ga4'
