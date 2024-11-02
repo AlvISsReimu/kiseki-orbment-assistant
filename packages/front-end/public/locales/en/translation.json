@@ -41,5 +41,7 @@
   "start_calculation": "Start Calculation",
   "credit_title": "Credits",
   "credit_0": "Quartz, hollow core, character and element images © Nihon Falcom Corporation. Sourced from ",
-  "credit_1": ", licensed under CC BY-SA 3.0. Used for non-commercial, personal purposes. Please contact the website owner for any concerns."
+  "credit_1": ", licensed under CC BY-SA 3.0. Used for non-commercial, personal purposes. Please contact the website owner for any concerns.",
+  "comma": ",",
+  "empty": "None"
 }

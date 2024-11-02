@@ -314,7 +314,7 @@ export const Result = (props: {
                         </Box>
                       ))
                     ) : (
-                      <Typography>{t('emtpy')}</Typography>
+                      <Typography>{t('empty')}</Typography>
                     )}
                   </Box>
                 </Box>
