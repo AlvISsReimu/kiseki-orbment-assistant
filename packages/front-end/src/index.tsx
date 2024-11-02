@@ -110,7 +110,11 @@ const Main = () => {
       maxNoChangeIteration: DefaultParameterValues.MAX_NO_CHANGE_ITERATION,
       resultSizeLimit: DefaultParameterValues.RESULT_SIZE_LIMIT,
     }
-    gc.setResultCharacterId(characterId)
+    gc.setResultParams({
+      characterId,
+      quartz: Object.fromEntries(quartz.filter(v => v[1] > 0)),
+      shardSkills: Object.fromEntries(scores),
+    })
     gc.setShowLoading(true)
     const startTime = Date.now()
     const res = await calcOptimalOrbmentSetup(input)

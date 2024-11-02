@@ -14,13 +14,17 @@ const getLanguageCode = (language: string): LanguageCode => {
 }
 
 export const globalContext = genericHookContextBuilder(() => {
+  const { i18n } = useTranslation()
   const [language, setLanguage] = useSingletonLocalStorage<LanguageCode>(
     'language',
-    LanguageCode.ZH_CN,
+    getLanguageCode(i18n.language),
   )
-  const [resultCharacterId, setResultCharacterId] = useState(0)
+  const [resultParams, setResultParams] = useState<{
+    characterId: number
+    quartz: { [key: number]: number }
+    shardSkills: { [key: number]: number }
+  }>({ characterId: 0, quartz: {}, shardSkills: {} })
   const [showLoading, setShowLoading] = useState(false)
-  const { i18n } = useTranslation()
 
   useEffect(() => {
     const handleLanguageChanged = () => {
@@ -36,7 +40,7 @@ export const globalContext = genericHookContextBuilder(() => {
     language,
     showLoading,
     setShowLoading,
-    resultCharacterId,
-    setResultCharacterId,
+    resultParams,
+    setResultParams,
   }
 })

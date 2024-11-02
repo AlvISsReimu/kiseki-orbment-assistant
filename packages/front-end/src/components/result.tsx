@@ -3,6 +3,7 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
+  Box,
   Paper,
   Table,
   TableBody,
@@ -13,9 +14,16 @@ import {
   Typography,
   useTheme,
 } from '@mui/material'
+import {
+  DRIVE_LINE_SHARD_SKILLS,
+  EXTRA_LINE_SHARD_SKILLS,
+  SHIELD_LINE_SHARD_SKILLS,
+  WEAPON_LINE_SHARD_SKILLS,
+} from '@shared/constants/shardSkill'
 import { ElementType } from '@shared/enums/elementType'
 import { getCharacterById } from '@shared/model/character'
 import { getQuartzById } from '@shared/model/quartz'
+import { getShardSkillById } from '@shared/model/shardSkill'
 import { useContext, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { globalContext } from '../contexts/globalContext'
@@ -36,13 +44,15 @@ export const Result = (props: {
   const { t } = useTranslation()
   const [expanded, setExpanded] = useState(props.ind === 0)
   const [limitedSlots, setLimitedSlots] = useState<number[][]>([])
+  const [missedQuartz, setMissedQuartz] = useState<number[]>([])
+  const [missedShardSkills, setMissedShardSkills] = useState<number[][]>([])
 
   useEffect(() => {
     setTableHead(_loadCoreHeaders())
   }, [gc.language])
 
   useEffect(() => {
-    const character = getCharacterById(gc.resultCharacterId)
+    const character = getCharacterById(gc.resultParams.characterId)
     const coreLimitedArray: number[][] = []
     coreKeys.forEach(key => {
       coreLimitedArray.push(
@@ -52,7 +62,41 @@ export const Result = (props: {
       )
     })
     setLimitedSlots(coreLimitedArray)
-  }, [gc.resultCharacterId])
+    const usedQuartz = props.data.reduce(
+      (acc, row) => [...acc, ...row.slots],
+      [],
+    )
+    const missedQuartz = Object.entries(gc.resultParams.quartz)
+      .filter(
+        // need to have weight
+        ([key, value]) => value > 0 && !usedQuartz.includes(Number(key)),
+      )
+      .map(([key, _]) => Number(key))
+    // console.log(gc.resultParams.quartz, usedQuartz, missedQuartz)
+    setMissedQuartz(missedQuartz)
+    const totalSkills = [
+      WEAPON_LINE_SHARD_SKILLS.map(skill => skill.id),
+      SHIELD_LINE_SHARD_SKILLS.map(skill => skill.id),
+      DRIVE_LINE_SHARD_SKILLS.map(skill => skill.id),
+      EXTRA_LINE_SHARD_SKILLS.map(skill => skill.id),
+    ]
+    // console.log(
+    //   gc.resultParams.shardSkills,
+    //   props.data.map(row => row.fulfilledShardSkills),
+    // )
+    setMissedShardSkills(
+      props.data.map((row, index) =>
+        Object.entries(gc.resultParams.shardSkills)
+          .filter(
+            ([key, value]) =>
+              value > 0 &&
+              totalSkills[index].includes(Number(key)) &&
+              !row.fulfilledShardSkills.includes(Number(key)),
+          )
+          .map(([key, _]) => Number(key)),
+      ),
+    )
+  }, [gc.resultParams, props.data])
 
   return (
     <Accordion
@@ -69,40 +113,48 @@ export const Result = (props: {
       <AccordionSummary expandIcon={<ExpandMore />}>
         {t('result_table_title')} {props.ind + 1}
       </AccordionSummary>
-      <AccordionDetails sx={{ paddingLeft: '32px', paddingRight: '32px' }}>
-        <Typography>{t('result_table_quartz_title')}</Typography>
-        <TableContainer
-          component={Paper}
-          sx={{
-            boxShadow: 'none',
-            '&::before': {
-              content: 'none',
-            },
-          }}
-        >
-          <Table
+      <AccordionDetails
+        sx={{
+          paddingLeft: '32px',
+          paddingRight: '32px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '12px',
+        }}
+      >
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+          <Typography>{t('result_table_quartz_title')}</Typography>
+          <TableContainer
+            component={Paper}
             sx={{
-              maxWidth: '1200px',
-              marginTop: '8px',
+              boxShadow: 'none',
+              '&::before': {
+                content: 'none',
+              },
             }}
           >
-            <TableBody>
-              {props.data.map((row, index) => (
-                <TableRow key={index}>
-                  <TableCell sx={{ border: 'none', fontWeight: 'bolder' }}>
-                    {tableHead[index]}
-                  </TableCell>
-                  {row.slots.map((quartzId, ind) => (
-                    <TableCell key={ind} sx={{ border: 'none' }}>
-                      <div
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          placeContent: 'center',
-                          gap: 4,
-                        }}
-                      >
-                        {quartzId === -1 ? (
+            <Table
+              sx={{
+                maxWidth: '1200px',
+                marginTop: '8px',
+              }}
+            >
+              <TableBody>
+                {props.data.map((row, index) => (
+                  <TableRow key={index}>
+                    <TableCell sx={{ border: 'none', fontWeight: 'bolder' }}>
+                      {tableHead[index]}
+                    </TableCell>
+                    {row.slots.map((quartzId, ind) => (
+                      <TableCell key={ind} sx={{ border: 'none' }}>
+                        <div
+                          style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            placeContent: 'center',
+                            gap: 4,
+                          }}
+                        >
                           <span
                             style={{
                               padding: '0 4px',
@@ -119,88 +171,157 @@ export const Result = (props: {
                                 : 'unset',
                             }}
                           >
-                            ⎯
+                            {quartzId === -1
+                              ? '⎯'
+                              : getQuartzById(quartzId).name_i18n[gc.language]}
                           </span>
-                        ) : (
-                          <>
-                            <span
-                              style={{
-                                padding: '0 4px',
-                                backgroundColor: limitedSlots[index]?.includes(
-                                  ind,
-                                )
-                                  ? colorMap[
-                                      getQuartzById(quartzId)
-                                        .elementType as keyof typeof colorMap
-                                    ]
-                                  : 'unset',
-                                color: limitedSlots[index]?.includes(ind)
-                                  ? 'white'
-                                  : 'unset',
-                              }}
-                            >
-                              {getQuartzById(quartzId).name_i18n[gc.language]}
-                            </span>
+                          {quartzId !== -1 && (
                             <img
                               width="24px"
                               height="24px"
                               src={getQuartzIconUrlById(quartzId)}
                             ></img>
-                          </>
-                        )}
-                      </div>
+                          )}
+                        </div>
+                      </TableCell>
+                    ))}
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </Box>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+          <Typography>{t('result_table_elements_title')}</Typography>
+          <Table
+            sx={{
+              maxWidth: '1200px',
+              marginTop: '8px',
+            }}
+          >
+            <TableHead>
+              <TableRow>
+                {headers.map((header, index) => (
+                  <TableCell key={index} sx={{ border: 'none' }}>
+                    <div
+                      style={{
+                        display: 'flex',
+                        placeContent: 'center',
+                        alignItems: 'center',
+                        gap: '4px',
+                      }}
+                    >
+                      <img src={getElementIconUrl(header, gc.language)} />
+                      {/* <Typography>
+                      {getNameByElementType(header, gc.language)}
+                    </Typography> */}
+                    </div>
+                  </TableCell>
+                ))}
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {props.data.map((row, index) => (
+                <TableRow key={index}>
+                  {headers.map((element, ind) => (
+                    <TableCell
+                      key={ind}
+                      sx={{ border: 'none', textAlign: 'center' }}
+                    >
+                      {row.elements[element] || '⎯'}
                     </TableCell>
                   ))}
                 </TableRow>
               ))}
             </TableBody>
           </Table>
-        </TableContainer>
-        <Typography sx={{ marginTop: '8px' }}>
-          {t('result_table_elements_title')}
-        </Typography>
-        <Table
-          sx={{
-            maxWidth: '1200px',
-            marginTop: '8px',
-          }}
-        >
-          <TableHead>
-            <TableRow>
-              {headers.map((header, index) => (
-                <TableCell key={index} sx={{ border: 'none' }}>
-                  <div
-                    style={{
-                      display: 'flex',
-                      placeContent: 'center',
-                      alignItems: 'center',
-                      gap: '4px',
-                    }}
-                  >
-                    <img src={getElementIconUrl(header, gc.language)} />
-                    {/* <Typography>
-                      {getNameByElementType(header, gc.language)}
-                    </Typography> */}
-                  </div>
-                </TableCell>
-              ))}
-            </TableRow>
-          </TableHead>
-          <TableBody>
+        </Box>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          <Typography>{t('result_table_shard_skills_title')}</Typography>
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '4px',
+            }}
+          >
             {props.data.map((row, index) => (
-              <TableRow key={index}>
-                {headers.map((element, ind) => (
-                  <TableCell
-                    key={ind}
-                    sx={{ border: 'none', textAlign: 'center' }}
-                  >
-                    {row.elements[element] || '⎯'}
-                  </TableCell>
-                ))}
-              </TableRow>
+              <Box key={index} sx={{ display: 'flex', gap: '20px' }}>
+                <Typography sx={{ minWidth: 60, maxWidth: 60 }}>
+                  {tableHead[index]}
+                </Typography>
+                <Box sx={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                  {row.fulfilledShardSkills.map((skillId, ind) => (
+                    <Box
+                      key={ind}
+                      sx={{
+                        display: 'flex',
+                        gap: '4px',
+                        alignItems: 'center',
+                      }}
+                    >
+                      <Typography>
+                        {getShardSkillById(skillId).name_i18n[gc.language]}
+                      </Typography>
+                    </Box>
+                  ))}
+                </Box>
+              </Box>
             ))}
-          </TableBody>
-        </Table>
+          </Box>
+        </Box>
+        {!!missedQuartz.length && (
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <Typography>{t('result_table_missed_quartz_title')}</Typography>
+            <Typography>
+              {missedQuartz
+                .map(quartzId => getQuartzById(quartzId).name_i18n[gc.language])
+                .join(`${t('comma')} `)}
+            </Typography>
+          </Box>
+        )}
+        {!!missedShardSkills.flat().length && (
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <Typography>
+              {t('result_table_missed_shard_skills_title')}
+            </Typography>
+            <Box
+              sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '4px',
+              }}
+            >
+              {missedShardSkills.map((row, index) => (
+                <Box key={index} sx={{ display: 'flex', gap: '20px' }}>
+                  <Typography sx={{ minWidth: 60, maxWidth: 60 }}>
+                    {tableHead[index]}
+                  </Typography>
+                  <Box sx={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                    {!!row.length ? (
+                      row.map((skillId, ind) => (
+                        <Box
+                          key={ind}
+                          sx={{
+                            display: 'flex',
+                            gap: '4px',
+                            alignItems: 'center',
+                          }}
+                        >
+                          <Typography>
+                            {getShardSkillById(skillId).name_i18n[gc.language]}
+                          </Typography>
+                        </Box>
+                      ))
+                    ) : (
+                      <Typography>{t('emtpy')}</Typography>
+                    )}
+                  </Box>
+                </Box>
+              ))}
+            </Box>
+          </Box>
+        )}
       </AccordionDetails>
     </Accordion>
   )
