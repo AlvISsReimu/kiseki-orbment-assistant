@@ -111,7 +111,9 @@ export const Result = (props: {
       }}
     >
       <AccordionSummary expandIcon={<ExpandMore />}>
-        {t('result_table_title')} {props.ind + 1}
+        <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+          {t('result_table_title')} {props.ind + 1}
+        </Typography>
       </AccordionSummary>
       <AccordionDetails
         sx={{
@@ -123,7 +125,9 @@ export const Result = (props: {
         }}
       >
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-          <Typography>{t('result_table_quartz_title')}</Typography>
+          <Typography sx={{ fontWeight: 'bold' }}>
+            {t('result_table_quartz_title')}
+          </Typography>
           <TableContainer
             component={Paper}
             sx={{
@@ -191,8 +195,11 @@ export const Result = (props: {
             </Table>
           </TableContainer>
         </Box>
+        <hr style={{ width: '100%', opacity: 0.5 }} />
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-          <Typography>{t('result_table_elements_title')}</Typography>
+          <Typography sx={{ fontWeight: 'bold' }}>
+            {t('result_table_elements_title')}
+          </Typography>
           <Table
             sx={{
               maxWidth: '1200px',
@@ -236,8 +243,11 @@ export const Result = (props: {
             </TableBody>
           </Table>
         </Box>
+        <hr style={{ width: '100%', opacity: 0.5 }} />
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-          <Typography>{t('result_table_shard_skills_title')}</Typography>
+          <Typography sx={{ fontWeight: 'bold' }}>
+            {t('result_table_shard_skills_title')}
+          </Typography>
           <Box
             sx={{
               display: 'flex',
@@ -247,80 +257,83 @@ export const Result = (props: {
           >
             {props.data.map((row, index) => (
               <Box key={index} sx={{ display: 'flex', gap: '20px' }}>
-                <Typography sx={{ minWidth: 60, maxWidth: 60 }}>
+                <Typography
+                  sx={{ minWidth: 80, maxWidth: 80, fontWeight: 'bolder' }}
+                >
                   {tableHead[index]}
                 </Typography>
-                <Box sx={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                  {row.fulfilledShardSkills.map((skillId, ind) => (
-                    <Box
-                      key={ind}
-                      sx={{
-                        display: 'flex',
-                        gap: '4px',
-                        alignItems: 'center',
-                      }}
-                    >
-                      <Typography>
-                        {getShardSkillById(skillId).name_i18n[gc.language]}
-                      </Typography>
-                    </Box>
-                  ))}
-                </Box>
+
+                <Typography>
+                  {row.fulfilledShardSkills
+                    .map(
+                      skillId =>
+                        getShardSkillById(skillId).name_i18n[gc.language],
+                    )
+                    .join(`${t('comma')} `)}
+                </Typography>
               </Box>
             ))}
           </Box>
         </Box>
         {!!missedQuartz.length && (
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            <Typography>{t('result_table_missed_quartz_title')}</Typography>
-            <Typography>
-              {missedQuartz
-                .map(quartzId => getQuartzById(quartzId).name_i18n[gc.language])
-                .join(`${t('comma')} `)}
-            </Typography>
-          </Box>
+          <>
+            <hr style={{ width: '100%', opacity: 0.5 }} />
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <Typography sx={{ fontWeight: 'bold' }}>
+                {t('result_table_missed_quartz_title')}
+              </Typography>
+              <Typography>
+                {missedQuartz
+                  .map(
+                    quartzId => getQuartzById(quartzId).name_i18n[gc.language],
+                  )
+                  .join(`${t('comma')} `)}
+              </Typography>
+            </Box>
+          </>
         )}
         {!!missedShardSkills.flat().length && (
-          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-            <Typography>
-              {t('result_table_missed_shard_skills_title')}
-            </Typography>
-            <Box
-              sx={{
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '4px',
-              }}
-            >
-              {missedShardSkills.map((row, index) => (
-                <Box key={index} sx={{ display: 'flex', gap: '20px' }}>
-                  <Typography sx={{ minWidth: 60, maxWidth: 60 }}>
-                    {tableHead[index]}
-                  </Typography>
-                  <Box sx={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-                    {!!row.length ? (
-                      row.map((skillId, ind) => (
-                        <Box
-                          key={ind}
-                          sx={{
-                            display: 'flex',
-                            gap: '4px',
-                            alignItems: 'center',
-                          }}
-                        >
-                          <Typography>
-                            {getShardSkillById(skillId).name_i18n[gc.language]}
-                          </Typography>
-                        </Box>
-                      ))
-                    ) : (
-                      <Typography>{t('empty')}</Typography>
-                    )}
+          <>
+            <hr style={{ width: '100%', opacity: 0.5 }} />
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+              <Typography sx={{ fontWeight: 'bold' }}>
+                {t('result_table_missed_shard_skills_title')}
+              </Typography>
+              <Box
+                sx={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '4px',
+                }}
+              >
+                {missedShardSkills.map((row, index) => (
+                  <Box key={index} sx={{ display: 'flex', gap: '20px' }}>
+                    <Typography
+                      sx={{ minWidth: 80, maxWidth: 80, fontWeight: 'bolder' }}
+                    >
+                      {tableHead[index]}
+                    </Typography>
+                    <Box sx={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+                      {!!row.length ? (
+                        <Typography>
+                          {row
+                            .map(
+                              skillId =>
+                                getShardSkillById(skillId).name_i18n[
+                                  gc.language
+                                ],
+                            )
+                            .join(`${t('comma')} `)}
+                        </Typography>
+                      ) : (
+                        <Typography>{t('empty')}</Typography>
+                      )}
+                    </Box>
                   </Box>
-                </Box>
-              ))}
+                ))}
+              </Box>
             </Box>
-          </Box>
+          </>
         )}
       </AccordionDetails>
     </Accordion>
