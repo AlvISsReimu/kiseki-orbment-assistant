@@ -244,7 +244,7 @@ export const Result = (props: {
           </Table>
         </Box>
         <hr style={{ width: '100%', opacity: 0.5 }} />
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
           <Typography sx={{ fontWeight: 'bold' }}>
             {t('result_table_shard_skills_title')}
           </Typography>
@@ -278,7 +278,7 @@ export const Result = (props: {
         {!!missedQuartz.length && (
           <>
             <hr style={{ width: '100%', opacity: 0.5 }} />
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               <Typography sx={{ fontWeight: 'bold' }}>
                 {t('result_table_missed_quartz_title')}
               </Typography>
@@ -295,7 +295,7 @@ export const Result = (props: {
         {!!missedShardSkills.flat().length && (
           <>
             <hr style={{ width: '100%', opacity: 0.5 }} />
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
               <Typography sx={{ fontWeight: 'bold' }}>
                 {t('result_table_missed_shard_skills_title')}
               </Typography>
