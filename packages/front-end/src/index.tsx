@@ -2,9 +2,11 @@ import DarkModeIcon from '@mui/icons-material/DarkMode'
 import LightModeIcon from '@mui/icons-material/LightMode'
 import {
   AppBar,
+  Avatar,
   Box,
   Button,
   CssBaseline,
+  IconButton,
   Link,
   MenuItem,
   Select,
@@ -19,6 +21,8 @@ import { LanguageCode } from '@shared/enums/languageCode'
 import { getNameByLanguageCode } from '@shared/model/language'
 import { SpeedInsights } from '@vercel/speed-insights/react'
 
+import { mdiEmail, mdiGithub, mdiTwitter } from '@mdi/js'
+import Icon from '@mdi/react'
 import OpenInNewIcon from '@mui/icons-material/OpenInNew'
 import { DefaultParameterValues } from '@shared/constants/defaultParameterValues'
 import { ALL_QUARTZ } from '@shared/constants/quartz'
@@ -294,20 +298,101 @@ const Main = () => {
             )}
           </div>
           <div>
-            <Typography variant="h5" sx={{ marginBottom: '1rem' }}>
-              {t('development_title')}
-            </Typography>
-            <div style={{ marginBottom: '0.5rem' }}>
+            <Box
+              sx={{
+                position: 'relative',
+                marginBottom: '1rem',
+              }}
+            >
+              <Typography variant="h5">{t('development_title')}</Typography>
               <Button
                 variant="outlined"
+                sx={{
+                  maxHeight: '40px',
+                  position: 'absolute',
+                  right: 0,
+                  top: 0,
+                }}
                 href="https://github.com/AlvISsReimu/kiseki-orbment-assistant"
                 target="_blank"
                 endIcon={<OpenInNewIcon />}
               >
                 {t('repository')}
               </Button>
-            </div>
+            </Box>
             <div>{t('development_text')}</div>
+            <Box sx={{ display: 'flex', gap: '80px', marginTop: '4px' }}>
+              <Box sx={{ display: 'flex', gap: '8px' }}>
+                <Avatar
+                  sx={{ width: '48px', height: '48px', alignSelf: 'center' }}
+                  alt="AlvISsReimu"
+                  src="https://avatars.githubusercontent.com/u/25188552?v=4"
+                />
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    placeContent: 'space-between',
+                  }}
+                >
+                  <Typography sx={{ padding: '8px 8px 0' }}>
+                    AlvISs_红白
+                  </Typography>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                    }}
+                  >
+                    <IconButton
+                      href="https://github.com/AlvISsReimu"
+                      target="_blank"
+                    >
+                      <Icon path={mdiGithub} size={1} />
+                    </IconButton>
+                    <IconButton
+                      href="https://twitter.com/AlvISs_Reimu"
+                      target="_blank"
+                    >
+                      <Icon path={mdiTwitter} size={1} />
+                    </IconButton>
+                    <IconButton href="mailto:alvissreimu@gmail.com">
+                      <Icon path={mdiEmail} size={1} />
+                    </IconButton>
+                  </Box>
+                </Box>
+              </Box>
+              <Box sx={{ display: 'flex', gap: '8px' }}>
+                <Avatar
+                  sx={{ width: '48px', height: '48px', alignSelf: 'center' }}
+                  alt="Tapir_li"
+                  src="https://avatars.githubusercontent.com/u/5591532?v=4"
+                />
+                <Box
+                  sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    placeContent: 'space-between',
+                  }}
+                >
+                  <Typography sx={{ padding: '8px 8px 0' }}>Tapir</Typography>
+                  <Box
+                    sx={{
+                      display: 'flex',
+                    }}
+                  >
+                    <IconButton
+                      href="https://github.com/linicam"
+                      target="_blank"
+                    >
+                      <Icon path={mdiGithub} size={1} />
+                    </IconButton>
+                    <IconButton href="mailto:li407017533@gmail.com">
+                      <Icon path={mdiEmail} size={1} />
+                    </IconButton>
+                  </Box>
+                </Box>
+              </Box>
+            </Box>
           </div>
         </div>
 

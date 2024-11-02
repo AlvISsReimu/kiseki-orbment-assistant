@@ -48,6 +48,8 @@
     "@rollup/rollup-linux-x64-gnu": "*"
   },
   "dependencies": {
+    "@mdi/js": "^7.4.47",
+    "@mdi/react": "^1.6.1",
     "i18next": "^23.16.4",
     "react-i18next": "^15.1.0"
   }
