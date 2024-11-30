@@ -23,7 +23,7 @@ import {
 import { ElementType } from '@shared/enums/elementType'
 import { getCharacterById } from '@shared/model/character'
 import { getQuartzById } from '@shared/model/quartz'
-import { getShardSkillById } from '@shared/model/shardSkill'
+import { getShardSkillById, type ShardSkillId } from '@shared/model/shardSkill'
 import { useContext, useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { globalContext } from '../contexts/globalContext'
@@ -88,16 +88,20 @@ export const Result = (props: {
     //   props.data.map(row => row.fulfilledShardSkills),
     // )
     setMissedShardSkills(
-      props.data.map((row, index) =>
-        Object.entries(gc.resultParams.shardSkills)
+      props.data.map((row, index) => {
+        const allBaseShardSkillIds = row.fulfilledShardSkills
+          .map(shardSkillId => getShardSkillById(shardSkillId).baseShardSkillId)
+          .filter(id => id !== undefined) as ShardSkillId[]
+        return Object.entries(gc.resultParams.shardSkills)
           .filter(
             ([key, value]) =>
               value > 0 &&
               totalSkills[index].includes(Number(key)) &&
-              !row.fulfilledShardSkills.includes(Number(key)),
+              !row.fulfilledShardSkills.includes(Number(key)) &&
+              !allBaseShardSkillIds.includes(Number(key)),
           )
-          .map(([key, _]) => Number(key)),
-      ),
+          .map(([key, _]) => Number(key))
+      }),
     )
   }, [gc.resultParams, props.data])
 
