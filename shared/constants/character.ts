@@ -285,9 +285,9 @@ export const ALL_CHARACTERS: Character[] = [
       [LanguageCode.EN]: 'Kevin',
     },
     core: new Core(
-      new WeaponLine(3, [], [createElementLimitedSlot(ElementType.Space, 2)]),
-      new ShieldLine(4, [], [createElementLimitedSlot(ElementType.Time, 1)]),
-      new DriveLine(4, [], []),
+      new WeaponLine(3, [], []),
+      new ShieldLine(4, [], [createElementLimitedSlot(ElementType.Space, 2)]),
+      new DriveLine(4, [], [createElementLimitedSlot(ElementType.Time, 1)]),
       new ExtraLine(4, [], [createElementLimitedSlot(ElementType.Space, 2)]),
     ),
   },
